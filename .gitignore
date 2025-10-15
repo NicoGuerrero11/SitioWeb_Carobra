@@ -22,3 +22,16 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Vercel
+.vercel
+
+# VSCode
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS generated files
+Thumbs.db
