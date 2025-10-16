@@ -1,43 +1,102 @@
-# Astro Starter Kit: Minimal
+# Sitio Web Carobra
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## 📋 Descripción
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Sitio web corporativo para **Carobra Consultores Especializados**, empresa líder en servicios financieros con más de 13 años de experiencia. Desarrollado con Astro, Tailwind CSS y optimizado para Vercel.
 
-## 🚀 Project Structure
+### 🏢 Sobre Carobra
+- **13+ años** de experiencia en el sector financiero
+- **+1,500 asesores** activos en todo el país
+- **#1 en AFORE** durante 12 años consecutivos
+- Alianzas con Skandia, Quálitas, Bradesco e Infinity
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Stack Tecnológico
+
+- **Framework:** Astro 5.14.5
+- **Estilos:** Tailwind CSS 4.1.14
+- **Deployment:** Vercel
+- **Lenguaje:** TypeScript
+
+## 📁 Estructura del Proyecto
 
 ```text
 /
-├── public/
+├── public/                 # Assets estáticos
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/         # Componentes reutilizables
+│   │   ├── Header.astro   # Navegación principal
+│   │   └── Footer.astro   # Footer con contacto
+│   ├── layouts/
+│   │   └── Layout.astro   # Layout base
+│   ├── pages/
+│   │   └── index.astro    # Página de inicio
+│   └── styles/
+│       └── global.css     # Estilos globales
+├── SITE_STRUCTURE.md      # Mapa de navegación completo
+├── vercel.json           # Configuración de Vercel
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🎨 Características Implementadas
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### ✅ **Diseño y Layout**
+- Header responsive con navegación completa
+- Footer con información de contacto y redes sociales
+- Diseño exacto basado en el sitio original de Carobra
+- Color de fondo personalizado (#BFBFBF)
 
-Any static assets, like images, can be placed in the `public/` directory.
+### ✅ **Página de Inicio**
+- Hero section con estadísticas clave
+- Sección de servicios (Pensiones, Seguros, Inversiones, Asesoría)
+- Sección "Quiénes somos" con historia de la empresa
+- Placeholders para imágenes ("Aquí va imagen")
 
-## 🧞 Commands
+### ✅ **Navegación**
+- Menú principal: Beneficios, Nosotros, Servicios, Trabaja con nosotros, Contacto
+- Dropdown para servicios individuales
+- Menú móvil responsive
 
-All commands are run from the root of the project, from a terminal:
+### ✅ **SEO y Performance**
+- Meta tags optimizados
+- Open Graph para redes sociales
+- Responsive design
+- Optimizado para Vercel
 
-| Command                   | Action                                           |
+## 🧞 Comandos de Desarrollo
+
+Todos los comandos se ejecutan desde la raíz del proyecto:
+
+| Comando                   | Acción                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm install`             | Instala las dependencias                        |
+| `npm run dev`             | Inicia servidor local en `localhost:4321`       |
+| `npm run build`           | Construye el sitio para producción en `./dist/` |
+| `npm run preview`         | Vista previa del build antes de deploy          |
+| `npm run astro ...`       | Ejecuta comandos CLI de Astro                   |
 
-## 👀 Want to learn more?
+## 📞 Información de Contacto (Carobra)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Dirección:** Av. Paseo Royal Country 4650, Puerta de Hierro, 45116 Zapopan, Jal.
+- **Email:** contacto@carobra.com.mx
+- **Teléfono:** (33) 3611-2959
+- **Horarios:** Lunes – Viernes, 9:00 AM – 6:00 PM
+
+## 🚀 Deployment
+
+El sitio está configurado para deployarse automáticamente en Vercel:
+
+1. Conectar repositorio a Vercel
+2. El deploy se realiza automáticamente en cada push a `main`
+3. Configuración incluida en `vercel.json`
+
+## 📋 Próximos Pasos
+
+- [ ] Crear páginas adicionales (Beneficios, Nosotros, Servicios, etc.)
+- [ ] Agregar imágenes reales
+- [ ] Implementar formularios de contacto
+- [ ] Optimizar SEO
+- [ ] Configurar analytics
+
+---
+
+**© 2025 Carobra Consultores Especializados. Todos los derechos reservados.**
