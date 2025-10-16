@@ -1,0 +1,118 @@
+---
+---
+
+<header class="bg-white shadow-lg sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="text-2xl font-bold text-blue-600">
+          Carobra
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="flex items-baseline space-x-6">
+          <a href="/beneficios" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            Beneficios
+          </a>
+          <a href="/nosotros" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            Nosotros
+          </a>
+          
+          <!-- Services Dropdown -->
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+              Servicios
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="/servicios/pensiones-afore" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                  Pensiones y AFORE
+                </a>
+                <a href="/servicios/seguros" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                  Seguros
+                </a>
+                <a href="/servicios/inversiones" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                  Inversiones
+                </a>
+                <a href="/servicios/asesoria" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                  Asesoría Personalizada
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/carrera" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            Trabaja con nosotros
+          </a>
+          <a href="/contacto" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            Contacto
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button type="button" class="mobile-menu-button bg-gray-100 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-expanded="false">
+          <span class="sr-only">Abrir menú principal</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-menu hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+        <a href="/beneficios" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+          Beneficios
+        </a>
+        <a href="/nosotros" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+          Nosotros
+        </a>
+        <div class="pl-3">
+          <div class="text-gray-700 font-medium py-2 text-sm">Servicios:</div>
+          <a href="/servicios/pensiones-afore" class="text-gray-600 hover:text-blue-600 block px-3 py-1 rounded-md text-sm">
+            Pensiones y AFORE
+          </a>
+          <a href="/servicios/seguros" class="text-gray-600 hover:text-blue-600 block px-3 py-1 rounded-md text-sm">
+            Seguros
+          </a>
+          <a href="/servicios/inversiones" class="text-gray-600 hover:text-blue-600 block px-3 py-1 rounded-md text-sm">
+            Inversiones
+          </a>
+          <a href="/servicios/asesoria" class="text-gray-600 hover:text-blue-600 block px-3 py-1 rounded-md text-sm">
+            Asesoría Personalizada
+          </a>
+        </div>
+        <a href="/carrera" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+          Trabaja con nosotros
+        </a>
+        <a href="/contacto" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>
