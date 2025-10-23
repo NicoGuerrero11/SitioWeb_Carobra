@@ -1,0 +1,438 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
+---
+
+<Layout 
+  title="Beneficios | Carobra - Únete a Nuestro Equipo" 
+  description="Más de 1,500 asesores ya confían en nosotros. Construye tu futuro con Carobra y forma parte de la red líder en servicios financieros."
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="text-center">Construye tu futuro<br/>con Carobra</h1>
+      
+      <p class="paragraph-1 text-center">Más de 1,500 asesores ya confían<br/>en nosotros. Tú puedes ser el<br/>siguiente.</p>
+      
+      <a href="/contacto" class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block">
+        Quiero ser asesor Carobra
+      </a>
+    </div>
+    <div class="hero-image hidden lg:flex">
+      Aquí va imagen - Equipo trabajando juntos
+    </div>
+  </section>
+
+  <!-- Sistema de comisiones -->
+  <SeccionBeneficio 
+    titulo="Sistema de Comisiones"
+    descripcion="En Carobra contamos con el plan de comisiones más competitivo de la industria AFORE, diseñado para que tu esfuerzo se traduzca en ingresos reales y constantes."
+    accordionTitulo="Conoce cómo funciona nuestro esquema de pagos rápidos y transparentes"
+    accordionItems={[
+      'Pagos rápidos dos veces por semana (martes y viernes).',
+      'Comisiones por traspasos y registros con los mejores porcentajes del mercado.',
+      'Bonos adicionales al cumplimiento de presupuestos mensuales.',
+      'Transparencia total en los montos y fechas de pago.'
+    ]}
+    imagen="Imagen de dinero"
+    imagenDerecha={true}
+    fondoBlanco={false}
+    accordionId="1"
+  />
+
+  <!-- Carobra University -->
+  <SeccionBeneficio 
+    titulo="Carobra University"
+    descripcion="Nuestra plataforma de capacitación continua para que nunca dejes de crecer."
+    accordionTitulo="Descubre todo lo que incluye nuestra plataforma de capacitación y certificación"
+    accordionItems={[
+      'Entrenamientos digitales y presenciales.',
+      'Manuales de ventas y estrategias comerciales.',
+      'Programas de <strong>desarrollo humano y liderazgo.</strong>',
+      'Material descargable disponible en todo momento.'
+    ]}
+    imagen="personas estudiando"
+    imagenDerecha={false}
+    fondoBlanco={true}
+    accordionId="2"
+  />
+
+  <!-- Carobra Rewards -->
+  <SeccionBeneficio
+    titulo="Carobra Rewards"
+    descripcion="Reconocemos tu esfuerzo con recompensas constantes además de tus comisiones."
+    accordionTitulo="Un programa de recompensas que reconoce tus resultados de forma tangible"
+    accordionItems={[
+      'Bonos adicionales según cumplimiento de metas.',
+      'Premios mensuales que reconocen tu constancia.',
+      'Programas especiales para asesores destacados.',
+      'Sistema exclusivo de recompensas para asesores.',
+      'Beneficios adicionales por desempeño destacado.',
+      'Reconocimientos que fortalecen tu trayectoria.'
+    ]}
+    imagen="personas celebrando"
+    imagenDerecha={true}
+    fondoBlanco={false}
+    accordionId="3"
+  />
+
+  <!-- Herramientas Tecnológicas y Operativas -->
+  <SeccionBeneficio
+    titulo="Herramientas Tecnológicas y Operativas"
+    descripcion="Recibe el respaldo tecnológico que necesitas para trabajar más rápido y mejor"
+    accordionTitulo="Tabletas, biométricos y sistemas digitales para facilitar tu trabajo diario"
+    accordionItems={[
+      'Equipo biométrico y tabletas para trámites rápidos.',
+      'Sistema <strong>SISCA</strong> para detalle y control de ventas.',
+      'Banners digitales y recursos de marketing listos para usar.',
+      'Acceso a plataformas digitales que simplifican tu gestión.'
+    ]}
+    imagen="equipo de trabajo"
+    imagenDerecha={false}
+    fondoBlanco={true}
+    accordionId="4"
+  />
+
+  <!-- Apoyo de Staff y Financiamiento -->
+  <SeccionBeneficio
+    titulo="Apoyo de Staff y Financiamiento"
+    descripcion="No trabajas solo: cuentas con el respaldo administrativo y financiero de Carobra"
+    accordionTitulo="Conoce el respaldo administrativo y financiero que ofrecemos"
+    accordionItems={[
+      'Acompañamiento constante de nuestro staff administrativo.',
+      'Apoyo en gestiones y trámites para que no pierdas tiempo.',
+      'Programas de financiamiento para impulsar tus operaciones.',
+      'Un equipo siempre disponible para resolver tus dudas.'
+    ]}
+    imagen="imagen de apoyando equipo"
+    imagenDerecha={true}
+    fondoBlanco={false}
+    accordionId="5"
+  />
+
+  <!-- Convenciones Nacionales e Internacionales -->
+  <SeccionBeneficio
+    titulo="Convenciones Nacionales e Internacionales"
+    descripcion="Porque también celebramos tus logros, premiamos tu esfuerzo con viajes únicos."
+    accordionTitulo="Viaja con nosotros a destinos únicos como parte de tus logros en Carobra"
+    accordionItems={[
+      'Convenciones exclusivas para asesores destacados.',
+      'Viajes nacionales e internacionales como <strong>Cancún, Cuba, Nueva York, Las Vegas, Costa Rica, Colombia.</strong>'
+    ]}
+    imagen="vuelo avion"
+    imagenDerecha={false}
+    fondoBlanco={true}
+    accordionId="6"
+  />
+
+  <!-- Testimonios -->
+  <section style="background-color: #DEDEDE" class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-gray-900 text-center mb-16 font-extrabold">
+        Testimonios de Asesores Carobra
+      </h2>
+      
+      <div class="testimonios-carousel relative flex items-center gap-8">
+        <!-- Prev Button -->
+        <button class="prev-btn bg-gray-800 hover:bg-gray-900 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+          ←
+        </button>
+
+        <!-- Testimonios -->
+        <div class="flex-1">
+          <div class="testimonio-item text-center">
+            <p class="text-gray-900 paragraph-1 mb-6">
+              "Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente."
+            </p>
+            <p class="text-gray-900 font-semibold paragraph-2">
+              María López
+            </p>
+          </div>
+
+          <div class="testimonio-item text-center hidden">
+            <p class="text-gray-900 paragraph-1 mb-6">
+              "El respaldo de Carobra es incomparable. Desde las herramientas tecnológicas hasta el apoyo del staff, todo está diseñado para que tengamos éxito. Las convenciones internacionales son un gran incentivo."
+            </p>
+            <p class="text-gray-900 font-semibold paragraph-2">
+              Carlos Martínez
+            </p>
+          </div>
+
+          <div class="testimonio-item text-center hidden">
+            <p class="text-gray-900 paragraph-1 mb-6">
+              "Lo que más valoro es la transparencia y el ambiente de crecimiento. Carobra no solo me ha dado ingresos estables, sino también la oportunidad de desarrollarme como líder."
+            </p>
+            <p class="text-gray-900 font-semibold paragraph-2">
+              Ana García
+            </p>
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <button class="next-btn bg-gray-800 hover:bg-gray-900 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+          →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Left: Título -->
+        <div>
+          <h2 class="text-gray-900 font-extrabold text-center lg:text-left">
+            FAQ
+          </h2>
+        </div>
+        
+        <!-- Right: Preguntas -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="border-t border-gray-300 pt-4">
+            <button 
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>¿Cómo puedo unirme a Carobra?</span>
+              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="faq-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 paragraph-2">
+                Puedes iniciar el proceso contactándonos a través de nuestro formulario de contacto o llamando directamente a nuestras oficinas. Te guiaremos en cada paso del proceso de integración.
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-300 pt-4">
+            <button 
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>¿Qué requisitos necesito para ser asesor?</span>
+              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="faq-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 paragraph-2">
+                Los requisitos básicos incluyen ser mayor de edad, contar con disponibilidad de tiempo y tener motivación para desarrollarte profesionalmente. Te brindaremos toda la capacitación necesaria.
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-300 pt-4">
+            <button 
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>¿Cuándo recibo mis comisiones?</span>
+              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="faq-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 paragraph-2">
+                Las comisiones se pagan dos veces por semana: los martes y viernes. Mantenemos total transparencia en los montos y fechas de pago.
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-300 pt-4">
+            <button 
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>¿Ofrecen capacitación inicial?</span>
+              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="faq-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 paragraph-2">
+                Sí, contamos con Carobra University, nuestra plataforma de capacitación continua que incluye entrenamientos digitales y presenciales, manuales de ventas y programas de desarrollo.
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-b border-gray-300 pt-4 pb-4">
+            <button 
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>¿Puedo trabajar desde cualquier parte de México?</span>
+              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="faq-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 paragraph-2">
+                Sí, contamos con presencia en todo el país a través de nuestras 38 sucursales y canales digitales. Puedes trabajar desde donde te encuentres con el respaldo de nuestra red.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section style="background-color: #DEDEDE" class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-gray-900 mb-6 font-bold">
+        Hoy <span style="color: #0B1F3A !important;">Construimos</span> el Mañana
+      </h2>
+      <p class="text-gray-700 mb-8 paragraph-1">
+        Con el mejor sistema de comisiones, capacitaciones constantes y reconocimiento a tus logros, en Carobra tu éxito está garantizado.
+      </p>
+      <a href="/contacto" class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block">
+        Empieza tu camino con nosotros
+      </a>
+    </div>
+  </section>
+
+  <style>
+  <style>
+    main {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-height: 100vh;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 3rem;
+      background: white;
+    }
+
+    .hero-content h1 {
+      color: #000;
+    }
+
+    .hero-content p {
+      color: #000;
+    }
+
+    .cta-button {
+      background: #000;
+      padding: 1.25rem 2.5rem;
+      font-size: 1.125rem;
+      cursor: pointer;
+      border-radius: 8px;
+      width: fit-content;
+      line-height: 1.5;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      background: #333;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      color: #999;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    @media (max-width: 1023px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-content {
+        padding: 3rem 2rem;
+        min-height: auto;
+      }
+
+      .hero-image {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    // Carrusel de testimonios
+    let currentTestimonio = 0;
+    const testimonios = document.querySelectorAll('.testimonio-item');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    function showTestimonio(index) {
+      testimonios.forEach((item, i) => {
+        if (i === index) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentTestimonio = (currentTestimonio - 1 + testimonios.length) % testimonios.length;
+        showTestimonio(currentTestimonio);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentTestimonio = (currentTestimonio + 1) % testimonios.length;
+        showTestimonio(currentTestimonio);
+      });
+    }
+
+    // FAQ Acordeones
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        // Cerrar todos los otros acordeones
+        faqButtons.forEach(otherButton => {
+          if (otherButton !== button) {
+            const otherContent = otherButton.nextElementSibling;
+            const otherIcon = otherButton.querySelector('.faq-icon');
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherContent.classList.add('hidden');
+            otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle el acordeon actual
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  </script>
+</Layout>
