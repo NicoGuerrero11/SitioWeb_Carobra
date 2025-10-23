@@ -1,1 +1,76 @@
 @import "tailwindcss";
+
+/* Font size base */
+html {
+  font-size: 16px;
+}
+
+/* Configuración global de tipografía */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 1.2em;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+/* Configuración de párrafos */
+p, body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0em;
+  line-height: 1.5em;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+/* Estilos de párrafos opcionales para diferentes tamaños */
+.paragraph-1 {
+  font-size: 1.4rem;
+}
+
+.paragraph-2 {
+  font-size: 1rem;
+}
+
+.paragraph-3 {
+  font-size: 0.9rem;
+}
+
+/* Botones */
+.btn-primary {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.btn-secondary {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-transform: none;
+  font-size: 1rem;
+}
