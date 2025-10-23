@@ -1,0 +1,156 @@
+---
+interface Props {
+  titulo: string;
+  imagen: string;
+  queEs: string;
+  queHace: string;
+  beneficios: string[];
+  ctaText: string;
+  ctaLink: string;
+  imagenIzquierda?: boolean;
+  fondoBlanco?: boolean;
+}
+
+const { 
+  titulo, 
+  imagen, 
+  queEs, 
+  queHace, 
+  beneficios, 
+  ctaText, 
+  ctaLink,
+  imagenIzquierda = false,
+  fondoBlanco = false
+} = Astro.props;
+---
+
+<section style={fondoBlanco ? 'background-color: #FFFFFF' : 'background-color: #DEDEDE'} class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${imagenIzquierda ? 'lg:flex-row-reverse' : ''}`}>
+      <!-- Imagen -->
+      <div class={imagenIzquierda ? 'lg:order-first' : 'lg:order-last'}>
+        <div class="bg-gray-300 rounded-lg aspect-[3/4] flex items-center justify-center text-gray-600 text-lg font-medium sticky top-24">
+          {imagen}
+        </div>
+      </div>
+      
+      <!-- Contenido -->
+      <div class={imagenIzquierda ? 'lg:order-last' : 'lg:order-first'}>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
+          {titulo}
+        </h2>
+        
+        <!-- Accordions -->
+        <div class="space-y-4">
+          <!-- Qué es -->
+          <div class="border-t border-gray-300 pt-4">
+            <button 
+              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>Qué es:</span>
+              <svg class="accordion-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="accordion-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 leading-relaxed" set:html={queEs} />
+            </div>
+          </div>
+
+          <!-- Qué hace Carobra -->
+          <div class="border-t border-gray-300 pt-4">
+            <button 
+              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>Qué hace Carobra:</span>
+              <svg class="accordion-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="accordion-content hidden overflow-hidden">
+              <div class="py-4 text-gray-700 leading-relaxed" set:html={queHace} />
+            </div>
+          </div>
+
+          <!-- Beneficios diferenciales -->
+          <div class="border-t border-b border-gray-300 pt-4 pb-4">
+            <button 
+              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              aria-expanded="false"
+            >
+              <span>Beneficios diferenciales de Carobra:</span>
+              <svg class="accordion-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </button>
+            <div class="accordion-content hidden overflow-hidden">
+              <div class="py-4">
+                <ul class="space-y-3">
+                  {beneficios.map((beneficio) => (
+                    <li class="text-gray-700 leading-relaxed flex items-start">
+                      <span class="mr-2 mt-1">•</span>
+                      <span set:html={beneficio} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-8 text-center">
+          <a 
+            href={ctaLink}
+            class="btn-primary inline-block bg-gray-800 hover:bg-gray-900 text-white py-4 px-12 rounded-lg transition-colors text-lg"
+          >
+            {ctaText}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+    
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling as HTMLElement;
+        const icon = button.querySelector('.accordion-icon') as HTMLElement;
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        // Encontrar el contenedor padre de acordeones para este servicio
+        const accordionContainer = button.closest('.space-y-4');
+        
+        if (isExpanded) {
+          // Si ya está abierto, solo cerrarlo
+          button.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          // Cerrar todos los otros acordeones en este servicio
+          if (accordionContainer) {
+            const allButtons = accordionContainer.querySelectorAll('.accordion-button');
+            allButtons.forEach(otherButton => {
+              const otherContent = otherButton.nextElementSibling as HTMLElement;
+              const otherIcon = otherButton.querySelector('.accordion-icon') as HTMLElement;
+              otherButton.setAttribute('aria-expanded', 'false');
+              otherContent.classList.add('hidden');
+              otherIcon.style.transform = 'rotate(0deg)';
+            });
+          }
+          
+          // Abrir el acordeón actual
+          button.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  });
+</script>
