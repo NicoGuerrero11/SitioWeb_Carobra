@@ -1,0 +1,98 @@
+---
+interface Props {
+  titulo: string;
+  descripcion: string;
+  accordionTitulo: string;
+  accordionItems: string[];
+  imagen: string;
+  imagenDerecha?: boolean;
+  fondoBlanco?: boolean;
+  accordionId: string;
+}
+
+const { 
+  titulo, 
+  descripcion, 
+  accordionTitulo,
+  accordionItems,
+  imagen, 
+  imagenDerecha = false,
+  fondoBlanco = false,
+  accordionId
+} = Astro.props;
+
+const bgColor = fondoBlanco ? 'bg-white' : 'style="background-color: #DEDEDE"';
+const imageOrder = imagenDerecha ? 'lg:order-last' : 'lg:order-first';
+const contentOrder = imagenDerecha ? 'lg:order-first' : 'lg:order-last';
+---
+
+<section class={`py-20 ${fondoBlanco ? 'bg-white' : ''}`} {...(!fondoBlanco ? { style: "background-color: #DEDEDE" } : {})}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <!-- Image ---->
+      <div class={imageOrder}>
+        <div class="bg-gray-300 rounded-lg aspect-[4/3] flex items-center justify-center text-gray-600 text-xl font-medium">
+          {imagen}
+        </div>
+      </div>
+      
+      <!-- Content ---->
+      <div class={contentOrder}>
+        <h2 class="text-gray-900 mb-6 font-extrabold text-center">
+          {titulo}
+        </h2>
+        
+        <p class="text-gray-700 paragraph-2 mb-6 text-center" set:html={descripcion} />
+        
+        <!-- Acordeon ---->
+        <div class="border-t border-gray-300 pt-4">
+          <button 
+            class={`accordion-button-${accordionId} w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors`}
+            aria-expanded="false"
+          >
+            <span>{accordionTitulo}</span>
+            <svg class={`accordion-icon-${accordionId} w-6 h-6 transition-transform duration-200`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </button>
+          <div class={`accordion-content-${accordionId} hidden overflow-hidden`}>
+            <div class="py-4">
+              <ul class="space-y-3">
+                {accordionItems.map((item) => (
+                  <li class="text-gray-700 paragraph-2 flex items-start">
+                    <span class="mr-2 mt-1">•</span>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ accordionId }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionButton = document.querySelector(`.accordion-button-${accordionId}`);
+    
+    if (accordionButton) {
+      accordionButton.addEventListener('click', () => {
+        const content = accordionButton.nextElementSibling;
+        const icon = accordionButton.querySelector(`.accordion-icon-${accordionId}`);
+        const isExpanded = accordionButton.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+          accordionButton.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          accordionButton.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    }
+  });
+</script>
