@@ -1,0 +1,23 @@
+---
+const fotos = [
+  { titulo: "Aquí va foto - Equipo colaborando en mesa" },
+  { titulo: "Aquí va foto - Vista de oficina moderna" },
+  { titulo: "Aquí va foto - Sala de reuniones con equipo" },
+  { titulo: "Aquí va foto - Compañeros celebrando logro" },
+  { titulo: "Aquí va foto - Capacitación grupal" },
+  { titulo: "Aquí va foto - Reunión uno a uno" }
+];
+---
+
+<section style="background-color: #DEDEDE" class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Grid de fotos 2x3 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {fotos.map((foto) => (
+        <div class="aspect-[4/3] bg-gray-300 rounded-lg overflow-hidden flex items-center justify-center text-gray-600 font-medium text-center px-4">
+          {foto.titulo}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

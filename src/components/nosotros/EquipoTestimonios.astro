@@ -1,0 +1,73 @@
+---
+const testimonios = [
+  {
+    texto: "Trabajar aquí es formar parte de una familia que valora el crecimiento y la creatividad.",
+    nombre: "María González"
+  },
+  {
+    texto: "La empresa me ha dado oportunidades únicas para crecer profesionalmente y desafiarme cada día.",
+    nombre: "Carlos Martínez"
+  },
+  {
+    texto: "Aquí cada idea cuenta, y el equipo te motiva a ir más allá de tus límites.",
+    nombre: "Ana López"
+  }
+];
+---
+
+<section style="background-color: #DEDEDE" class="py-20">
+  <div class="w-full">
+    <div class="text-center mb-16 px-4">
+      <h2 class="text-gray-900 mb-6">
+        El equipo que impulsa tu crecimiento
+      </h2>
+    </div>
+    
+    <div class="relative w-full">
+      <!-- Carousel Container -->
+      <div class="flex gap-8 overflow-visible justify-center px-4">
+        {testimonios.map((testimonio, index) => (
+          <div class="w-full md:w-[500px]" style="flex-shrink: 0;">
+            <div class="bg-white rounded-lg px-6 py-5 md:px-8 md:py-6 shadow-sm">
+              <!-- Comillas -->
+              <div class="text-3xl md:text-4xl text-blue-500 leading-none mb-3">
+                “
+              </div>
+              
+              <!-- Testimonio -->
+              <p class="text-sm md:text-base text-gray-900 max-w-[350px] mx-auto" style="line-height: 1.5;">
+                {testimonio.texto}
+              </p>
+              
+              <!-- Nombre -->
+              <div class="mt-5 pt-4 border-t border-gray-200 max-w-[350px] mx-auto">
+                <p class="text-sm md:text-base font-semibold text-gray-900">
+                  {testimonio.nombre}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Navigation Arrows -->
+      <button 
+        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-16 h-16 bg-gray-700 hover:bg-gray-800 rounded-full flex items-center justify-center text-white shadow-lg transition-colors"
+        aria-label="Anterior"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      
+      <button 
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-16 h-16 bg-gray-700 hover:bg-gray-800 rounded-full flex items-center justify-center text-white shadow-lg transition-colors"
+        aria-label="Siguiente"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
