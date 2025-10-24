@@ -1,15 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/index/hero-index.webp';
+import nosotrosImage from '../assets/images/index/nosotros-index.webp';
+import servicioPensionImage from '../assets/images/index/servicio-pension.webp';
+import servicioSeguroImage from '../assets/images/index/servicio-seguro.webp';
+import servicioInversionesImage from '../assets/images/index/servicio-inversiones.webp';
+import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp';
 ---
 
 <Layout title="Carobra | Grow Your Financial Future Today" description="El mejor lugar para crecer como asesor financiero. Más de 13 años de experiencia, +1,500 asesores y 12 años consecutivos como Broker #1 en AFORE.">
   
   <!-- Hero Section -->
-  <section style="background-color: #DEDEDE" class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Left Content -->
-        <div>
+  <section style="background-color: #DEDEDE" class="min-h-screen flex">
+    <div class="w-full h-full min-h-screen flex flex-col lg:flex-row">
+      <!-- Left Content -->
+      <div class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]">
+        <div class="max-w-2xl">
           <h1 class="mb-8 text-gray-900 font-bold text-center lg:text-left">
             El mejor lugar para crecer como asesor financiero
           </h1>
@@ -19,21 +26,23 @@ import Layout from '../layouts/Layout.astro';
           </p>
           
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors">
+            <a href="/carrera" class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors text-center">
               Únete a Carobra
-            </button>
-            <button class="btn-secondary border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white py-3 px-8 rounded-lg transition-colors">
+            </a>
+            <a href="/beneficios" class="btn-secondary border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white py-3 px-8 rounded-lg transition-colors text-center">
               Descubre beneficios
-            </button>
+            </a>
           </div>
         </div>
-        
-        <!-- Right Image -->
-        <div class="hidden lg:block lg:order-last">
-          <div class="bg-gray-300 rounded-lg aspect-[4/3] flex items-center justify-center text-gray-600 text-xl font-medium">
-            Aquí va imagen - Hero
-          </div>
-        </div>
+      </div>
+      
+      <!-- Right Image -->
+      <div class="hidden lg:block lg:w-1/2 relative min-h-screen">
+        <Image 
+          src={heroImage} 
+          alt="El mejor lugar para crecer como asesor financiero"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
     </div>
   </section>
@@ -53,8 +62,12 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Pensiones y AFORE -->
         <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 text-sm font-medium">
-            Aquí va imagen - Pensiones (circular isométrica)
+          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+            <Image 
+              src={servicioPensionImage} 
+              alt="Pensiones y AFORE"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h4 class="text-gray-900 mb-4">Pensiones y Afore</h4>
           <p class="text-gray-600 paragraph-2">
@@ -64,8 +77,12 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Seguros -->
         <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 text-sm font-medium">
-            Aquí va imagen - Seguros (circular isométrica)
+          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+            <Image 
+              src={servicioSeguroImage} 
+              alt="Seguros"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h4 class="text-gray-900 mb-4">Seguros</h4>
           <p class="text-gray-600 paragraph-2">
@@ -75,8 +92,12 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Inversiones -->
         <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 text-sm font-medium">
-            Aquí va imagen - Inversiones Skandia (circular isométrica)
+          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+            <Image 
+              src={servicioInversionesImage} 
+              alt="Inversiones Skandia"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h4 class="text-gray-900 mb-4">Inversiones Skandia</h4>
           <p class="text-gray-600 paragraph-2">
@@ -86,8 +107,12 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Asesoría -->
         <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 text-sm font-medium">
-            Aquí va imagen - Asesoría (circular isométrica)
+          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+            <Image 
+              src={servicioAsesoriaImage} 
+              alt="Asesoría Personalizada"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h4 class="text-gray-900 mb-4">Asesoría Personalizada</h4>
           <p class="text-gray-600 paragraph-2">
@@ -97,9 +122,9 @@ import Layout from '../layouts/Layout.astro';
       </div>
       
       <div class="text-center mt-16">
-        <button class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors">
+        <a href="/servicios" class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors inline-block">
           Ver Servicios
-        </button>
+        </a>
       </div>
     </div>
   </section>
@@ -110,9 +135,11 @@ import Layout from '../layouts/Layout.astro';
       <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
         <!-- Left Image -->
         <div class="mb-12 lg:mb-0">
-          <div class="bg-gray-300 rounded-lg aspect-[4/3] flex items-center justify-center text-gray-600 text-xl font-medium">
-            Aquí va imagen - Oficina corporativa
-          </div>
+          <Image 
+            src={nosotrosImage} 
+            alt="Quiénes somos en Carobra"
+            class="rounded-lg w-full h-auto object-cover"
+          />
         </div>
         
         <!-- Right Content -->
@@ -142,12 +169,12 @@ import Layout from '../layouts/Layout.astro';
           </div>
           
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors">
+            <a href="/nosotros" class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors text-center">
               Conoce nuestra historia
-            </button>
-            <button class="btn-secondary border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white py-3 px-8 rounded-lg transition-colors">
+            </a>
+            <a href="/beneficios" class="btn-secondary border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white py-3 px-8 rounded-lg transition-colors text-center">
               Ver más sobre Carobra
-            </button>
+            </a>
           </div>
         </div>
       </div>

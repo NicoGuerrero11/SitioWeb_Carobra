@@ -1,6 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
+
+// Importar imágenes
+import heroBeneficio from '../assets/images/beneficios/hero-beneficio.webp';
+import dineroComisiones from '../assets/images/beneficios/dinero-comisiones.webp';
+import carobraUniversity from '../assets/images/beneficios/carobra-university.webp';
+import rewards from '../assets/images/beneficios/rewards.webp';
+import herramientas from '../assets/images/beneficios/herramientas.webp';
+import apoyoStaff from '../assets/images/beneficios/apoyo-staff.webp';
+import convenciones from '../assets/images/beneficios/convensiones.webp';
 ---
 
 <Layout 
@@ -8,18 +18,35 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
   description="Más de 1,500 asesores ya confían en nosotros. Construye tu futuro con Carobra y forma parte de la red líder en servicios financieros."
 >
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="text-center">Construye tu futuro<br/>con Carobra</h1>
+  <section class="min-h-screen flex bg-white">
+    <div class="w-full h-full min-h-screen flex flex-col lg:flex-row">
+      <!-- Left Content -->
+      <div class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]">
+        <div class="max-w-2xl">
+          <h1 class="mb-12 text-gray-900 font-bold text-center">
+            Construye tu futuro con Carobra
+          </h1>
+          
+          <p class="mb-12 text-gray-700 paragraph-1 text-center">
+            Más de 1,500 asesores ya confían en nosotros. Tú puedes ser el siguiente.
+          </p>
+          
+          <div class="flex justify-center">
+            <a href="/carrera" class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors inline-block">
+              Quiero ser asesor Carobra
+            </a>
+          </div>
+        </div>
+      </div>
       
-      <p class="paragraph-1 text-center">Más de 1,500 asesores ya confían<br/>en nosotros. Tú puedes ser el<br/>siguiente.</p>
-      
-      <a href="/contacto" class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block">
-        Quiero ser asesor Carobra
-      </a>
-    </div>
-    <div class="hero-image hidden lg:flex">
-      Aquí va imagen - Equipo trabajando juntos
+      <!-- Right Image -->
+      <div class="hidden lg:block lg:w-1/2 relative min-h-screen">
+        <Image 
+          src={heroBeneficio}
+          alt="Construye tu futuro con Carobra"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
     </div>
   </section>
 
@@ -34,7 +61,8 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       'Bonos adicionales al cumplimiento de presupuestos mensuales.',
       'Transparencia total en los montos y fechas de pago.'
     ]}
-    imagen="Imagen de dinero"
+    imagen={dineroComisiones}
+    imagenAlt="Sistema de Comisiones"
     imagenDerecha={true}
     fondoBlanco={false}
     accordionId="1"
@@ -51,7 +79,8 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       'Programas de <strong>desarrollo humano y liderazgo.</strong>',
       'Material descargable disponible en todo momento.'
     ]}
-    imagen="personas estudiando"
+    imagen={carobraUniversity}
+    imagenAlt="Carobra University"
     imagenDerecha={false}
     fondoBlanco={true}
     accordionId="2"
@@ -70,7 +99,8 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       'Beneficios adicionales por desempeño destacado.',
       'Reconocimientos que fortalecen tu trayectoria.'
     ]}
-    imagen="personas celebrando"
+    imagen={rewards}
+    imagenAlt="Carobra Rewards"
     imagenDerecha={true}
     fondoBlanco={false}
     accordionId="3"
@@ -87,7 +117,8 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       'Banners digitales y recursos de marketing listos para usar.',
       'Acceso a plataformas digitales que simplifican tu gestión.'
     ]}
-    imagen="equipo de trabajo"
+    imagen={herramientas}
+    imagenAlt="Herramientas Tecnológicas y Operativas"
     imagenDerecha={false}
     fondoBlanco={true}
     accordionId="4"
@@ -104,10 +135,12 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       'Programas de financiamiento para impulsar tus operaciones.',
       'Un equipo siempre disponible para resolver tus dudas.'
     ]}
-    imagen="imagen de apoyando equipo"
+    imagen={apoyoStaff}
+    imagenAlt="Apoyo de Staff y Financiamiento"
     imagenDerecha={true}
     fondoBlanco={false}
     accordionId="5"
+    objectPosition="top"
   />
 
   <!-- Convenciones Nacionales e Internacionales -->
@@ -119,7 +152,8 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       'Convenciones exclusivas para asesores destacados.',
       'Viajes nacionales e internacionales como <strong>Cancún, Cuba, Nueva York, Las Vegas, Costa Rica, Colombia.</strong>'
     ]}
-    imagen="vuelo avion"
+    imagen={convenciones}
+    imagenAlt="Convenciones Nacionales e Internacionales"
     imagenDerecha={false}
     fondoBlanco={true}
     accordionId="6"
@@ -287,91 +321,12 @@ import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
       <p class="text-gray-700 mb-8 paragraph-1">
         Con el mejor sistema de comisiones, capacitaciones constantes y reconocimiento a tus logros, en Carobra tu éxito está garantizado.
       </p>
-      <a href="/contacto" class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block">
+      <a href="/carrera" class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block">
         Empieza tu camino con nosotros
       </a>
     </div>
   </section>
 
-  <style>
-  <style>
-    main {
-      margin: 0;
-      padding: 0;
-    }
-
-    .hero {
-      display: flex;
-      min-height: 100vh;
-      align-items: center;
-    }
-
-    .hero-content {
-      flex: 1;
-      min-height: 100vh;
-      padding: 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 3rem;
-      background: white;
-    }
-
-    .hero-content h1 {
-      color: #000;
-    }
-
-    .hero-content p {
-      color: #000;
-    }
-
-    .cta-button {
-      background: #000;
-      padding: 1.25rem 2.5rem;
-      font-size: 1.125rem;
-      cursor: pointer;
-      border-radius: 8px;
-      width: fit-content;
-      line-height: 1.5;
-      transition: background 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .cta-button:hover {
-      background: #333;
-    }
-
-    .hero-image {
-      flex: 1;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f5f5f5;
-      color: #999;
-      font-size: 1.5rem;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    @media (max-width: 1023px) {
-      .hero {
-        flex-direction: column;
-      }
-
-      .hero-content {
-        padding: 3rem 2rem;
-        min-height: auto;
-      }
-
-      .hero-image {
-        display: none !important;
-      }
-    }
-  </style>
 
   <script>
     // Carrusel de testimonios

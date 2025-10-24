@@ -1,7 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   titulo: string;
-  imagen: string;
+  imagen: ImageMetadata;
+  imagenAlt: string;
   queEs: string;
   queHace: string;
   beneficios: string[];
@@ -13,7 +17,8 @@ interface Props {
 
 const { 
   titulo, 
-  imagen, 
+  imagen,
+  imagenAlt,
   queEs, 
   queHace, 
   beneficios, 
@@ -29,8 +34,12 @@ const {
     <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${imagenIzquierda ? 'lg:flex-row-reverse' : ''}`}>
       <!-- Imagen -->
       <div class={imagenIzquierda ? 'lg:order-first' : 'lg:order-last'}>
-        <div class="bg-gray-300 rounded-lg aspect-[3/4] flex items-center justify-center text-gray-600 text-lg font-medium sticky top-24">
-          {imagen}
+        <div class="rounded-lg overflow-hidden aspect-[3/4] shadow-lg sticky top-24">
+          <Image 
+            src={imagen}
+            alt={imagenAlt}
+            class="w-full h-full object-cover"
+          />
         </div>
       </div>
       

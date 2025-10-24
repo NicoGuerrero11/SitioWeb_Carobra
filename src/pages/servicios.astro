@@ -2,6 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import HeroServicios from '../components/servicios/HeroServicios.astro';
 import ServicioItem from '../components/servicios/ServicioItem.astro';
+
+// Importar imágenes
+import pensionesImg from '../assets/images/servicios/pensiones.webp';
+import segurosImg from '../assets/images/servicios/seguros.webp';
+import inversionesImg from '../assets/images/servicios/inversiones.webp';
+import creditosImg from '../assets/images/servicios/creditos.webp';
+import tarjetaImg from '../assets/images/servicios/tarjeta.webp';
+import patrimonioCadaImg from '../assets/images/servicios/patrimonio-cada.webp';
+import asesoriaImg from '../assets/images/servicios/asesoria.webp';
 ---
 
 <Layout 
@@ -13,7 +22,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
   <!-- Pensiones y AFORE -->
   <ServicioItem 
     titulo="Pensiones y Afore"
-    imagen="Aquí va foto - Adultos mayores caminando"
+    imagen={pensionesImg}
+    imagenAlt="Pensiones y AFORE"
     queEs="El Sistema de Ahorro para el Retiro (AFORE) en México administra las aportaciones de trabajadores y empleadores para asegurar un ingreso estable en la jubilación. Además, existen planes complementarios que permiten ampliar el ahorro con beneficios fiscales y diferentes estrategias de inversión."
     queHace="En alianza con <strong>Principal Afore</strong>, líder en pensiones con más de 25 años en el mercado, ayudamos a nuestros clientes a tomar decisiones informadas y aprovechar al máximo su cuenta de ahorro. Nuestro papel como broker es acompañar, asesorar e intermediar para que cada trabajador entienda y optimice su plan de retiro.<br><br>Además, ponemos a disposición opciones complementarias como <strong>Plan Ideal, Slovo y Carobra 40</strong>, diseñadas para diversificar la estrategia de retiro, maximizar beneficios fiscales y brindar alternativas específicas, incluso para quienes comienzan a ahorrar después de los 40 años."
     beneficios={[
@@ -31,7 +41,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
   <!-- Seguros -->
   <ServicioItem 
     titulo="Seguros"
-    imagen="Aquí va foto - Grupo de amigos"
+    imagen={segurosImg}
+    imagenAlt="Seguros"
     queEs="Los seguros son herramientas financieras diseñadas para proteger a las personas, familias y empresas frente a riesgos como accidentes, enfermedades, daños materiales o pérdidas inesperadas. Funcionan como un respaldo económico que ofrece tranquilidad y estabilidad en situaciones imprevistas."
     queHace="En Carobra trabajamos en alianza con aseguradoras líderes como <strong>Quálitas y otras compañías de prestigio</strong>, para ofrecer pólizas personalizadas que se adapten a cada necesidad. Nuestro papel como broker es ayudar a los clientes a identificar los riesgos más relevantes, comparar opciones y contratar la cobertura adecuada con el respaldo de aseguradoras sólidas."
     beneficios={[
@@ -49,7 +60,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
   <!-- Inversiones -->
   <ServicioItem 
     titulo="Inversiones"
-    imagen="Aquí va foto - Planta creciendo en frasco con monedas"
+    imagen={inversionesImg}
+    imagenAlt="Inversiones"
     queEs="Las inversiones son herramientas financieras que permiten hacer crecer el capital a través de portafolios diseñados para distintos perfiles: desde quienes buscan seguridad y estabilidad hasta quienes desean mayores rendimientos a largo plazo."
     queHace="En Carobra conectamos a nuestros clientes con opciones de inversión sólidas gracias a alianzas con instituciones de prestigio como <strong>Skandia e Infinity</strong>. Nuestro papel como broker es acercar estas alternativas, explicar sus características y acompañar a los asesores para que puedan guiar mejor a cada cliente en la toma de decisiones."
     beneficios={[
@@ -66,7 +78,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
     <!-- Credito -->
     <ServicioItem
             titulo="Créditos"
-            imagen="mano firmando papeles"
+            imagen={creditosImg}
+            imagenAlt="Créditos"
             queEs="Los créditos son herramientas financieras que permiten a personas y empresas acceder a recursos económicos para consumo, inversión o consolidación de deudas, con planes de pago estructurados según sus necesidades."
             queHace="A través de nuestras alianzas con Bradesco y Bradescard, acercamos a los clientes productos de crédito respaldados por una de las instituciones financieras más importantes de Latinoamérica. Nuestro papel como broker es facilitar el acceso, brindar asesoría clara y acompañar el proceso para que cada cliente obtenga la solución adecuada.Además, contamos con la alianza de Creditaria, que nos permite ampliar la oferta hacia el crédito hipotecario y planes de financiamiento personal, dándole a los asesores más herramientas para cubrir distintas necesidades de sus clientes."
             beneficios={[
@@ -84,7 +97,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
     <!-- Tarjeta de Credito -->
     <ServicioItem
             titulo="Tarjeta de Crédito"
-            imagen="tarjeta pagando"
+            imagen={tarjetaImg}
+            imagenAlt="Tarjeta de Crédito"
             queEs="Las tarjetas de crédito son una herramienta financiera que permite a los clientes acceder a financiamiento inmediato para compras, con opciones de pago flexibles y beneficios adicionales según la institución emisora."
             queHace="En alianza con <strong>Dportenis</strong>, ofrecemos a nuestros asesores la posibilidad de acercar a sus clientes un producto de crédito accesible y con respaldo comercial. Nuestro papel como broker es facilitar la promoción y contratación de estas tarjetas, brindando soporte y asesoría durante todo el proceso."
             beneficios={[
@@ -101,7 +115,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
     <!-- División Patrimonial e Inmobiliaria -->
     <ServicioItem
             titulo="División Patrimonial e Inmobiliaria"
-            imagen="imagen de casa"
+            imagen={patrimonioCadaImg}
+            imagenAlt="División Patrimonial e Inmobiliaria"
             queEs="La gestión patrimonial e inmobiliaria permite a las personas proteger y hacer crecer su patrimonio a través de inversiones en bienes raíces y soluciones de asesoría financiera. Es un camino para diversificar activos y generar valor a largo plazo."
             queHace="En alianza con <strong>Patrimonial Ferdann</strong>, conectamos a nuestros clientes con oportunidades inmobiliarias curadas y estructuradas. Como broker, filtramos opciones, explicamos riesgos/beneficios, y acompañamos el proceso (análisis, propuesta, cierre y seguimiento) para que cada inversión encaje con el plan financiero del cliente."
             beneficios={[
@@ -119,7 +134,8 @@ import ServicioItem from '../components/servicios/ServicioItem.astro';
     <!-- Asesoría Personalizada -->
     <ServicioItem
             titulo="Asesoría Personalizada"
-            imagen="persona tomando nota"
+            imagen={asesoriaImg}
+            imagenAlt="Asesoría Personalizada"
             queEs="Cada cliente tiene necesidades financieras distintas: algunos buscan protegerse, otros crecer su capital, y otros asegurar su retiro. La asesoría personalizada es la clave para transformar esos objetivos en planes reales."
             queHace="En Carobra ponemos al centro el acompañamiento humano. Nuestros asesores no solo ofrecen productos, sino que entienden la situación de cada persona y diseñan estrategias a la medida. Nuestro papel como broker es brindarles capacitación, herramientas y respaldo para que esa asesoría sea clara, confiable y cercana."
             beneficios={[

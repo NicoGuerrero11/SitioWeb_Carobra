@@ -1,10 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import heroServicios from '../../assets/images/servicios/hero.webp';
 ---
 
 <section>
   <!-- Hero Image -->
-  <div class="hidden lg:flex w-full h-[350px] bg-gray-300 items-center justify-center text-gray-600 text-xl font-medium">
-    Aquí va foto - Edificios corporativos
+  <div class="hidden lg:flex w-full h-[350px] overflow-hidden shadow-lg">
+    <Image 
+      src={heroServicios}
+      alt="Nuestros Servicios"
+      class="w-full h-full object-cover"
+    />
   </div>
   
   <!-- Content Section -->
