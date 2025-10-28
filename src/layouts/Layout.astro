@@ -19,6 +19,8 @@ import SchemaOrganization from '../components/seo/SchemaOrganization.astro';
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 		<meta name="robots" content="index, follow" />
 		<meta name="googlebot" content="index, follow" />
 		<meta name="theme-color" content="#003366" />
@@ -58,8 +60,8 @@ import SchemaOrganization from '../components/seo/SchemaOrganization.astro';
 		<Header />
 		<main>
 			<slot />
-            <SpeedInsights />
 		</main>
 		<Footer />
+		<SpeedInsights />
 	</body>
 </html>

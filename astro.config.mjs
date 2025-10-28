@@ -11,8 +11,29 @@ export default defineConfig({
   site: 'https://carobra.com.mx',
   output: 'server',
   
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: 268402689
+      }
+    },
+    domains: [],
+    remotePatterns: []
+  },
+  
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true
+        }
+      }
+    }
   },
 
   adapter: vercel(),
