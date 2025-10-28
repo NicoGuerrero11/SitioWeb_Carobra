@@ -3,13 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import trajeImg from '../assets/images/carrera/traje.webp';
 import trabajandoImg from '../assets/images/carrera/trabajando.webp';
+import SchemaJobPosting from '../components/seo/SchemaJobPosting.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 ---
 
-<Layout title="Trabaja con nosotros | Carobra">
-	<section style="background-color: #DEDEDE" class="py-16 lg:py-24">
+<SchemaBreadcrumbs items={[
+  { name: 'Inicio', url: '/' },
+  { name: 'Trabaja con nosotros', url: '/carrera' }
+]} />
+
+<Layout
+  title="Trabaja en Carobra | Vacantes Asesor Financiero - Broker #1 AFORE" 
+  description="Aplica ahora como asesor financiero en Carobra. Broker #1 en AFORE por 12 años. Comisiones competitivas, capacitación continua, crecimiento profesional. 1,500+ asesores en México. Envía tu CV."
+>
+	<!-- Schema.org JobPosting -->
+	<SchemaJobPosting />
+	
+	<section class="bg-carobra-light-bg py-16 lg:py-24">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Título centrado -->
-			<h1 class="mb-12 text-gray-900 text-center">Sé parte de Carobra</h1>
+			<h1 class="mb-12 text-carobra-dark text-center">Sé parte de Carobra</h1>
 
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 				<!-- Columna izquierda - Imágenes -->
@@ -36,7 +49,10 @@ import trabajandoImg from '../assets/images/carrera/trabajando.webp';
 						Conviértete en asesor financiero y transforma tu futuro con el respaldo de un broker líder en México.
 					</p>
 
-					<form class="space-y-6">
+					<form id="carrera-form" class="space-y-6">
+						<!-- Mensaje de estado -->
+						<div id="form-message" class="hidden p-4 rounded-lg"></div>
+
 						<!-- Nombre -->
 						<div>
 							<label class="block text-sm font-medium text-gray-700 mb-2">
@@ -110,7 +126,7 @@ import trabajandoImg from '../assets/images/carrera/trabajando.webp';
 								/>
 								<label for="cv-upload" class="cursor-pointer">
 									<div class="text-5xl text-gray-400 mb-2">+</div>
-									<p class="text-gray-600 font-medium">Add a File</p>
+									<p class="text-gray-600 font-medium" id="file-name">Add a File</p>
 								</label>
 							</div>
 						</div>
@@ -130,11 +146,13 @@ import trabajandoImg from '../assets/images/carrera/trabajando.webp';
 
 						<!-- Botón Submit -->
 						<div class="flex justify-center">
-							<button 
-								type="submit"
-								class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors"
+						<button 
+							type="submit"
+							id="submit-btn"
+							class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 							>
-								Aplica Ahora
+								<span id="btn-text">Aplica Ahora</span>
+								<span id="btn-loading" class="hidden">Enviando...</span>
 							</button>
 						</div>
 					</form>
@@ -143,3 +161,85 @@ import trabajandoImg from '../assets/images/carrera/trabajando.webp';
 		</div>
 	</section>
 </Layout>
+
+<script>
+	// Mostrar nombre de archivo seleccionado
+	const fileInput = document.getElementById('cv-upload') as HTMLInputElement;
+	const fileNameDisplay = document.getElementById('file-name');
+
+	if (fileInput && fileNameDisplay) {
+		fileInput.addEventListener('change', (e) => {
+			const target = e.target as HTMLInputElement;
+			if (target.files && target.files[0]) {
+				fileNameDisplay.textContent = target.files[0].name;
+			} else {
+				fileNameDisplay.textContent = 'Add a File';
+			}
+		});
+	}
+
+	// Manejar envío del formulario
+	const form = document.getElementById('carrera-form') as HTMLFormElement;
+	const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+	const btnText = document.getElementById('btn-text');
+	const btnLoading = document.getElementById('btn-loading');
+	const formMessage = document.getElementById('form-message');
+
+	if (form) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			// Mostrar estado de carga
+			if (submitBtn && btnText && btnLoading && formMessage) {
+				submitBtn.disabled = true;
+				btnText.classList.add('hidden');
+				btnLoading.classList.remove('hidden');
+				formMessage.classList.add('hidden');
+
+				try {
+					// Enviar formulario
+					const formData = new FormData(form);
+					const response = await fetch('/api/carrera', {
+						method: 'POST',
+						body: formData,
+					});
+
+					const result = await response.json();
+
+					if (response.ok) {
+						// Mostrar mensaje de éxito
+						formMessage.textContent = '¡Aplicación enviada exitosamente! Nos pondremos en contacto contigo pronto.';
+						formMessage.className = 'p-4 rounded-lg bg-green-100 text-green-800';
+						formMessage.classList.remove('hidden');
+
+						// Limpiar formulario
+						form.reset();
+						if (fileNameDisplay) {
+							fileNameDisplay.textContent = 'Add a File';
+						}
+
+						// Scroll al mensaje
+						formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					} else {
+						// Mostrar mensaje de error
+						formMessage.textContent = result.error || 'Error al enviar la aplicación. Por favor, inténtalo de nuevo.';
+						formMessage.className = 'p-4 rounded-lg bg-red-100 text-red-800';
+						formMessage.classList.remove('hidden');
+						formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					}
+				} catch (error) {
+					console.error('Error:', error);
+					formMessage.textContent = 'Error de conexión. Por favor, verifica tu conexión a internet e inténtalo de nuevo.';
+					formMessage.className = 'p-4 rounded-lg bg-red-100 text-red-800';
+					formMessage.classList.remove('hidden');
+					formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+				} finally {
+					// Restaurar botón
+					submitBtn.disabled = false;
+					btnText.classList.remove('hidden');
+					btnLoading.classList.add('hidden');
+				}
+			}
+		});
+	}
+</script>

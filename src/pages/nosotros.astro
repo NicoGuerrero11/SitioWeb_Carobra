@@ -4,11 +4,17 @@ import HeroNosotros from '../components/nosotros/HeroNosotros.astro';
 import HistoriaTimeline from '../components/nosotros/HistoriaTimeline.astro';
 import EquipoTestimonios from '../components/nosotros/EquipoTestimonios.astro';
 import GaleriaFotos from '../components/nosotros/GaleriaFotos.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 ---
 
+<SchemaBreadcrumbs items={[
+  { name: 'Inicio', url: '/' },
+  { name: 'Nosotros', url: '/nosotros' }
+]} />
+
 <Layout 
-  title="Nosotros | Carobra - 13 años transformando el futuro financiero" 
-  description="Conoce la historia de Carobra, más de 13 años impulsando el crecimiento de asesores financieros y transformando el futuro de miles de clientes."
+  title="Nosotros | Carobra - Broker #1 AFORE | 13 Años Transformando México" 
+  description="Somos el broker líder en servicios financieros de México. #1 en AFORE por 12 años consecutivos, 1,500+ asesores, 13 años de experiencia. Alianzas con Skandia, Quálitas, Bradesco e Infinity."
 >
   <HeroNosotros />
   <HistoriaTimeline />

@@ -2,15 +2,24 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import esferaImg from '../assets/images/contacto/esfera.webp';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 ---
 
-<Layout title="Contacto | Carobra">
-	<section style="background-color: #DEDEDE" class="py-16 lg:py-24">
+<SchemaBreadcrumbs items={[
+  { name: 'Inicio', url: '/' },
+  { name: 'Contacto', url: '/contacto' }
+]} />
+
+<Layout
+  title="Contacto | Carobra - Broker #1 en AFORE | Asesoría Financiera" 
+  description="Contáctanos para asesoría en pensiones, seguros, inversiones y crédito. Broker #1 en AFORE por 12 años. Oficinas en Zapopan, Jalisco. Tel: 33-3611-2959. Más de 1,500 asesores en México."
+>
+	<section class="bg-carobra-light-bg py-16 lg:py-24">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Columna izquierda - Contenido y formulario -->
 				<div>
-					<h1 class="mb-6 text-gray-900">Contacto</h1>
+					<h1 class="mb-6 text-carobra-dark">Contacto</h1>
 					<p class="text-gray-700 mb-12 paragraph-1 italic">
 						¿Buscas más información sobre nuestros servicios financieros? Completa el formulario y uno de nuestros asesores te contactará.
 					</p>
@@ -77,7 +86,7 @@ import esferaImg from '../assets/images/contacto/esfera.webp';
 						<div>
 							<button 
 								type="submit"
-								class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors"
+								class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors"
 							>
 								Solicitar información
 							</button>
@@ -100,12 +109,12 @@ import esferaImg from '../assets/images/contacto/esfera.webp';
 	</section>
 
 	<!-- Sección Visítanos -->
-	<section style="background-color: #DEDEDE" class="py-16 lg:py-24">
+	<section class="bg-white py-16 lg:py-24">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Columna izquierda - Información -->
 				<div>
-					<h2 class="mb-12 text-gray-900 text-center">Visítanos</h2>
+					<h2 class="mb-12 text-carobra-dark text-center">Visítanos</h2>
 
 					<div class="space-y-8">
 						<!-- Dirección -->
@@ -119,14 +128,14 @@ import esferaImg from '../assets/images/contacto/esfera.webp';
 
 						<!-- Horario -->
 						<div class="text-center">
-							<p class="text-gray-900 paragraph-2 font-semibold mb-2">Horario</p>
+							<p class="text-carobra-primary paragraph-2 font-semibold mb-2">Horario</p>
 							<p class="text-gray-700 paragraph-2">Lunes–Viernes</p>
 							<p class="text-gray-700 paragraph-2">9am–6pm</p>
 						</div>
 
 						<!-- Teléfono -->
 						<div class="text-center">
-							<p class="text-gray-900 paragraph-2 font-semibold mb-2">Teléfono</p>
+							<p class="text-carobra-primary paragraph-2 font-semibold mb-2">Teléfono</p>
 							<p class="text-gray-700 paragraph-2">3336112959</p>
 						</div>
 					</div>

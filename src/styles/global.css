@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Colores Institucionales CAROBRA */
+@theme {
+  --color-carobra-dark: #0A2342;
+  --color-carobra-primary: #004E8A;
+  --color-carobra-light: #00A9E0;
+  --color-carobra-light-bg: #E6F4FA;
+  --color-carobra-lighter: #B3E0F2;
+}
+
 /* Font size base */
 html {
   font-size: 16px;

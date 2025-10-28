@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import HeroServicios from '../components/servicios/HeroServicios.astro';
 import ServicioItem from '../components/servicios/ServicioItem.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 
 // Importar imágenes
 import pensionesImg from '../assets/images/servicios/pensiones.webp';
@@ -13,9 +14,14 @@ import patrimonioCadaImg from '../assets/images/servicios/patrimonio-cada.webp';
 import asesoriaImg from '../assets/images/servicios/asesoria.webp';
 ---
 
+<SchemaBreadcrumbs items={[
+  { name: 'Inicio', url: '/' },
+  { name: 'Servicios', url: '/servicios' }
+]} />
+
 <Layout 
-  title="Servicios | Carobra - Soluciones Financieras Integrales" 
-  description="Descubre nuestros servicios en pensiones, seguros, inversiones y crédito. Más de 13 años de experiencia respaldados por instituciones líderes."
+  title="Servicios Financieros | Carobra - Pensiones, Seguros, Inversiones y Crédito" 
+  description="Broker #1 en AFORE. Servicios financieros integrales: pensiones con Principal, seguros con Quálitas, inversiones con Skandia, créditos con Bradesco. 13 años de experiencia, 1,500+ asesores en México."
 >
   <HeroServicios />
   

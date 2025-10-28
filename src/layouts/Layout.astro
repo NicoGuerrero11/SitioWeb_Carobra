@@ -5,10 +5,12 @@ export interface Props {
 }
 
 const { title, description = "Carobra - Consultores especializados en soluciones financieras. Más de 13 años de experiencia, +1,500 asesores y #1 en AFORE por 12 años consecutivos." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SpeedInsights from "@vercel/speed-insights/astro";
+import SchemaOrganization from '../components/seo/SchemaOrganization.astro';
 ---
 
 <!doctype html>
@@ -17,19 +19,40 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="theme-color" content="#003366" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL('/images/og-image-1200x630.png', Astro.site)} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Carobra - Consultores Especializados" />
+		<meta property="og:locale" content="es_MX" />
+		<meta property="og:site_name" content="Carobra" />
 		
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL('/images/og-image-1200x630.png', Astro.site)} />
+		<meta property="twitter:image:alt" content="Carobra - Consultores Especializados" />
+		
+		<!-- Schema.org JSON-LD -->
+		<SchemaOrganization />
 	</head>
 	<body class="bg-gray-50 text-gray-900">
 		<Header />

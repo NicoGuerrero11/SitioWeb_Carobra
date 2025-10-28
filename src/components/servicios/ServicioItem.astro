@@ -29,12 +29,12 @@ const {
 } = Astro.props;
 ---
 
-<section style={fondoBlanco ? 'background-color: #FFFFFF' : 'background-color: #DEDEDE'} class="py-20">
+<section class={`${fondoBlanco ? 'bg-white' : 'bg-carobra-light-bg'} py-20 md:py-28 lg:py-32`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${imagenIzquierda ? 'lg:flex-row-reverse' : ''}`}>
+    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start ${imagenIzquierda ? 'lg:flex-row-reverse' : ''}`}>
       <!-- Imagen -->
       <div class={imagenIzquierda ? 'lg:order-first' : 'lg:order-last'}>
-        <div class="rounded-lg overflow-hidden aspect-[3/4] shadow-lg sticky top-24">
+        <div class="rounded-lg overflow-hidden aspect-[3/4] shadow-lg sticky top-24 mb-8 lg:mb-0">
           <Image 
             src={imagen}
             alt={imagenAlt}
@@ -45,7 +45,7 @@ const {
       
       <!-- Contenido -->
       <div class={imagenIzquierda ? 'lg:order-last' : 'lg:order-first'}>
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-carobra-dark mb-12 text-center">
           {titulo}
         </h2>
         
@@ -54,7 +54,7 @@ const {
           <!-- Qué es -->
           <div class="border-t border-gray-300 pt-4">
             <button 
-              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>Qué es:</span>
@@ -70,7 +70,7 @@ const {
           <!-- Qué hace Carobra -->
           <div class="border-t border-gray-300 pt-4">
             <button 
-              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>Qué hace Carobra:</span>
@@ -86,7 +86,7 @@ const {
           <!-- Beneficios diferenciales -->
           <div class="border-t border-b border-gray-300 pt-4 pb-4">
             <button 
-              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="accordion-button w-full flex items-center justify-between text-left text-xl font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>Beneficios diferenciales de Carobra:</span>
@@ -113,7 +113,7 @@ const {
         <div class="mt-8 text-center">
           <a 
             href={ctaLink}
-            class="btn-primary inline-block bg-gray-800 hover:bg-gray-900 text-white py-4 px-12 rounded-lg transition-colors text-lg"
+            class="btn-primary inline-block bg-carobra-primary hover:bg-carobra-dark text-white py-4 px-12 rounded-lg transition-colors text-lg"
           >
             {ctaText}
           </a>

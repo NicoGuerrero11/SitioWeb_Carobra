@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
+import SchemaJobPosting from '../components/seo/SchemaJobPosting.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 
 // Importar imágenes
 import heroBeneficio from '../assets/images/beneficios/hero-beneficio.webp';
@@ -13,17 +15,25 @@ import apoyoStaff from '../assets/images/beneficios/apoyo-staff.webp';
 import convenciones from '../assets/images/beneficios/convensiones.webp';
 ---
 
+<SchemaBreadcrumbs items={[
+  { name: 'Inicio', url: '/' },
+  { name: 'Beneficios', url: '/beneficios' }
+]} />
+
 <Layout 
-  title="Beneficios | Carobra - Únete a Nuestro Equipo" 
-  description="Más de 1,500 asesores ya confían en nosotros. Construye tu futuro con Carobra y forma parte de la red líder en servicios financieros."
+  title="Trabaja como Asesor Financiero | Beneficios Carobra - Broker #1 AFORE" 
+  description="Únete al mejor equipo de asesores financieros de México. Broker #1 en AFORE 12 años consecutivos. Comisiones competitivas, capacitación continua, herramientas digitales. Más de 1,500 asesores confían en nosotros."
 >
+  <!-- Schema.org JobPosting -->
+  <SchemaJobPosting />
+  
   <!-- Hero Section -->
   <section class="min-h-screen flex bg-white">
     <div class="w-full h-full min-h-screen flex flex-col lg:flex-row">
       <!-- Left Content -->
       <div class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]">
         <div class="max-w-2xl">
-          <h1 class="mb-12 text-gray-900 font-bold text-center">
+          <h1 class="mb-12 text-carobra-dark font-bold text-center">
             Construye tu futuro con Carobra
           </h1>
           
@@ -32,7 +42,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
           </p>
           
           <div class="flex justify-center">
-            <a href="/carrera" class="btn-primary bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-lg transition-colors inline-block">
+            <a href="/carrera" class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors inline-block">
               Quiero ser asesor Carobra
             </a>
           </div>
@@ -160,50 +170,50 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
   />
 
   <!-- Testimonios -->
-  <section style="background-color: #DEDEDE" class="py-20">
+  <section class="bg-carobra-light-bg py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-gray-900 text-center mb-16 font-extrabold">
+      <h2 class="text-carobra-dark text-center mb-16 font-extrabold">
         Testimonios de Asesores Carobra
       </h2>
       
       <div class="testimonios-carousel relative flex items-center gap-8">
         <!-- Prev Button -->
-        <button class="prev-btn bg-gray-800 hover:bg-gray-900 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+        <button class="prev-btn bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
           ←
         </button>
 
         <!-- Testimonios -->
         <div class="flex-1">
           <div class="testimonio-item text-center">
-            <p class="text-gray-900 paragraph-1 mb-6">
+            <p class="text-carobra-dark paragraph-1 mb-6">
               "Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente."
             </p>
-            <p class="text-gray-900 font-semibold paragraph-2">
+            <p class="text-carobra-primary font-semibold paragraph-2">
               María López
             </p>
           </div>
 
           <div class="testimonio-item text-center hidden">
-            <p class="text-gray-900 paragraph-1 mb-6">
+            <p class="text-carobra-dark paragraph-1 mb-6">
               "El respaldo de Carobra es incomparable. Desde las herramientas tecnológicas hasta el apoyo del staff, todo está diseñado para que tengamos éxito. Las convenciones internacionales son un gran incentivo."
             </p>
-            <p class="text-gray-900 font-semibold paragraph-2">
+            <p class="text-carobra-primary font-semibold paragraph-2">
               Carlos Martínez
             </p>
           </div>
 
           <div class="testimonio-item text-center hidden">
-            <p class="text-gray-900 paragraph-1 mb-6">
+            <p class="text-carobra-dark paragraph-1 mb-6">
               "Lo que más valoro es la transparencia y el ambiente de crecimiento. Carobra no solo me ha dado ingresos estables, sino también la oportunidad de desarrollarme como líder."
             </p>
-            <p class="text-gray-900 font-semibold paragraph-2">
+            <p class="text-carobra-primary font-semibold paragraph-2">
               Ana García
             </p>
           </div>
         </div>
 
         <!-- Next Button -->
-        <button class="next-btn bg-gray-800 hover:bg-gray-900 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+        <button class="next-btn bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
           →
         </button>
       </div>
@@ -216,7 +226,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <!-- Left: Título -->
         <div>
-          <h2 class="text-gray-900 font-extrabold text-center lg:text-left">
+          <h2 class="text-carobra-dark font-extrabold text-center lg:text-left">
             FAQ
           </h2>
         </div>
@@ -225,7 +235,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
         <div class="lg:col-span-2 space-y-4">
           <div class="border-t border-gray-300 pt-4">
             <button 
-              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Cómo puedo unirme a Carobra?</span>
@@ -242,7 +252,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 
           <div class="border-t border-gray-300 pt-4">
             <button 
-              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Qué requisitos necesito para ser asesor?</span>
@@ -259,7 +269,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 
           <div class="border-t border-gray-300 pt-4">
             <button 
-              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Cuándo recibo mis comisiones?</span>
@@ -276,7 +286,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 
           <div class="border-t border-gray-300 pt-4">
             <button 
-              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Ofrecen capacitación inicial?</span>
@@ -293,7 +303,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 
           <div class="border-t border-b border-gray-300 pt-4 pb-4">
             <button 
-              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors"
+              class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Puedo trabajar desde cualquier parte de México?</span>
@@ -313,10 +323,10 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
   </section>
 
   <!-- CTA Final -->
-  <section style="background-color: #DEDEDE" class="py-20">
+  <section class="bg-carobra-light-bg py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-gray-900 mb-6 font-bold">
-        Hoy <span style="color: #0B1F3A !important;">Construimos</span> el Mañana
+      <h2 class="text-carobra-dark mb-6 font-bold">
+        Hoy <span class="text-carobra-primary">Construimos</span> el Mañana
       </h2>
       <p class="text-gray-700 mb-8 paragraph-1">
         Con el mejor sistema de comisiones, capacitaciones constantes y reconocimiento a tus logros, en Carobra tu éxito está garantizado.

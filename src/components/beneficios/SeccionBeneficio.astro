@@ -33,7 +33,7 @@ const imageOrder = imagenDerecha ? 'lg:order-last' : 'lg:order-first';
 const contentOrder = imagenDerecha ? 'lg:order-first' : 'lg:order-last';
 ---
 
-<section class={`py-20 ${fondoBlanco ? 'bg-white' : ''}`} {...(!fondoBlanco ? { style: "background-color: #DEDEDE" } : {})}>
+<section class={`py-20 ${fondoBlanco ? 'bg-white' : 'bg-carobra-light-bg'}`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       <!-- Image ---->
@@ -50,7 +50,7 @@ const contentOrder = imagenDerecha ? 'lg:order-first' : 'lg:order-last';
       
       <!-- Content ---->
       <div class={contentOrder}>
-        <h2 class="text-gray-900 mb-6 font-extrabold text-center">
+        <h2 class="text-carobra-dark mb-6 font-extrabold text-center">
           {titulo}
         </h2>
         
@@ -59,7 +59,7 @@ const contentOrder = imagenDerecha ? 'lg:order-first' : 'lg:order-last';
         <!-- Acordeon ---->
         <div class="border-t border-gray-300 pt-4">
           <button 
-            class={`accordion-button-${accordionId} w-full flex items-center justify-between text-left paragraph-2 font-medium text-gray-900 py-3 hover:text-blue-600 transition-colors`}
+            class={`accordion-button-${accordionId} w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors`}
             aria-expanded="false"
           >
             <span>{accordionTitulo}</span>
