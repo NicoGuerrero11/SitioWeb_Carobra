@@ -11,8 +11,15 @@
   "dependencies": {
     "@astrojs/vercel": "^8.2.10",
     "@tailwindcss/vite": "^4.1.14",
+    "@vercel/blob": "^2.0.0",
     "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.14.5",
+    "nodemailer": "^7.0.10",
+    "pdf-lib": "^1.17.1",
     "tailwindcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@types/nodemailer": "^7.0.3"
   }
 }
