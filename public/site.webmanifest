@@ -1,0 +1,28 @@
+{
+  "name": "Carobra - Broker #1 en AFORE",
+  "short_name": "Carobra",
+  "description": "Broker líder en servicios financieros de México. #1 en AFORE por 12 años consecutivos.",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#003366",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

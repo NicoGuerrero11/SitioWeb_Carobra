@@ -1,0 +1,92 @@
+---
+// Schema.org Organization para Carobra
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Carobra",
+  "alternateName": "Carobra Consultores Especializados",
+  "description": "Broker líder en servicios financieros en México. #1 en AFORE por 12 años consecutivos, con más de 1,500 asesores y 13 años de experiencia en pensiones, seguros, inversiones y crédito.",
+  "url": "https://carobra.com.mx",
+  "logo": "https://carobra.com.mx/images/og-image.png",
+  "image": "https://carobra.com.mx/images/og-image.png",
+  "foundingDate": "2012",
+  "slogan": "Grow Your Financial Future Today",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Paseo Royal Country 4650",
+    "addressLocality": "Zapopan",
+    "addressRegion": "Jalisco",
+    "postalCode": "45116",
+    "addressCountry": "MX"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+52-33-3611-2959",
+    "contactType": "customer service",
+    "areaServed": "MX",
+    "availableLanguage": "Spanish"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "1500",
+    "bestRating": "5"
+  },
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 1500
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "award": [
+    "Broker #1 en AFORE - 12 años consecutivos",
+    "Más de 13 años de experiencia en servicios financieros"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios Financieros",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "FinancialProduct",
+          "name": "Pensiones y AFORE",
+          "description": "Administración y asesoría en fondos de retiro con Principal Afore"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "FinancialProduct",
+          "name": "Seguros",
+          "description": "Seguros de vida, gastos médicos, autos y empresariales con Quálitas y otras aseguradoras"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "FinancialProduct",
+          "name": "Inversiones",
+          "description": "Portafolios de inversión con Skandia e Infinity"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "FinancialProduct",
+          "name": "Créditos",
+          "description": "Productos de crédito en alianza con Bradesco"
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.facebook.com/carobra",
+    "https://www.linkedin.com/company/carobra"
+  ]
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

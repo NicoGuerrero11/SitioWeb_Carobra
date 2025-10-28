@@ -1,0 +1,48 @@
+---
+// Schema.org JobPosting para reclutamiento de asesores
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Asesor Financiero - Carobra",
+  "description": "Únete al broker #1 en AFORE por 12 años consecutivos. Oportunidad de crecimiento profesional con el mejor sistema de comisiones, capacitación continua y beneficios exclusivos. Más de 1,500 asesores confían en nosotros.",
+  "datePosted": "2024-01-01",
+  "validThrough": "2025-12-31",
+  "employmentType": ["FULL_TIME", "PART_TIME"],
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Carobra",
+    "sameAs": "https://carobra.com.mx",
+    "logo": "https://carobra.com.mx/favicon.svg"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Zapopan",
+      "addressRegion": "Jalisco",
+      "addressCountry": "MX"
+    }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "MXN",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": 15000,
+      "maxValue": 100000,
+      "unitText": "MONTH"
+    }
+  },
+  "responsibilities": "Asesorar a clientes en productos financieros como pensiones, seguros, inversiones y créditos. Prospectar y desarrollar cartera de clientes. Brindar seguimiento personalizado.",
+  "qualifications": "Mayor de edad, disponibilidad de tiempo, motivación para desarrollo profesional. No se requiere experiencia previa, brindamos capacitación completa.",
+  "benefits": "Sistema de comisiones competitivo con pagos dos veces por semana, Carobra University (capacitación continua), Carobra Rewards (bonos y premios), herramientas tecnológicas, apoyo administrativo, convenciones nacionales e internacionales.",
+  "industryType": "Servicios Financieros",
+  "jobLocationType": "TELECOMMUTE",
+  "applicantLocationRequirements": {
+    "@type": "Country",
+    "name": "México"
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
