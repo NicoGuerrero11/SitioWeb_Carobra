@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "@types/nodemailer": "^7.0.3"
+    "@types/nodemailer": "^7.0.3",
+    "terser": "^5.44.0"
   }
 }
