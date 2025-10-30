@@ -4,6 +4,8 @@ import { Image } from 'astro:assets';
 import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
 import SchemaJobPosting from '../components/seo/SchemaJobPosting.astro';
 import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+import SchemaTestimonios from '../components/seo/SchemaTestimonios.astro';
+import { fetchTestimonios } from '../utils/testimonios';
 
 // Importar imágenes
 import heroBeneficio from '../assets/images/beneficios/hero-beneficio.webp';
@@ -13,6 +15,17 @@ import rewards from '../assets/images/beneficios/rewards.webp';
 import herramientas from '../assets/images/beneficios/herramientas.webp';
 import apoyoStaff from '../assets/images/beneficios/apoyo-staff.webp';
 import convenciones from '../assets/images/beneficios/convensiones.webp';
+
+// Obtener testimonios de asesores desde el CSV
+const { asesores } = await fetchTestimonios();
+const testimoniosAsesores = asesores.length > 0 ? asesores : [
+  {
+    nombre: 'María López',
+    testimonio: 'Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente.',
+    cargo: 'Asesor/a',
+    fecha: ''
+  }
+];
 ---
 
 <SchemaBreadcrumbs items={[
@@ -26,6 +39,9 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 >
   <!-- Schema.org JobPosting -->
   <SchemaJobPosting />
+  
+  <!-- Schema.org Testimonios -->
+  <SchemaTestimonios testimonios={testimoniosAsesores} tipo="asesores" />
   
   <!-- Hero Section -->
   <section class="min-h-screen flex bg-white">
@@ -170,7 +186,7 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
   />
 
   <!-- Testimonios -->
-  <section class="bg-carobra-light-bg py-20">
+  <section class="bg-carobra-light-bg py-20" aria-label="Testimonios de asesores">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-carobra-dark text-center mb-16 font-extrabold">
         Testimonios de Asesores Carobra
@@ -184,32 +200,31 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 
         <!-- Testimonios -->
         <div class="flex-1">
-          <div class="testimonio-item text-center">
-            <p class="text-carobra-dark paragraph-1 mb-6">
-              "Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente."
-            </p>
-            <p class="text-carobra-primary font-semibold paragraph-2">
-              María López
-            </p>
-          </div>
-
-          <div class="testimonio-item text-center hidden">
-            <p class="text-carobra-dark paragraph-1 mb-6">
-              "El respaldo de Carobra es incomparable. Desde las herramientas tecnológicas hasta el apoyo del staff, todo está diseñado para que tengamos éxito. Las convenciones internacionales son un gran incentivo."
-            </p>
-            <p class="text-carobra-primary font-semibold paragraph-2">
-              Carlos Martínez
-            </p>
-          </div>
-
-          <div class="testimonio-item text-center hidden">
-            <p class="text-carobra-dark paragraph-1 mb-6">
-              "Lo que más valoro es la transparencia y el ambiente de crecimiento. Carobra no solo me ha dado ingresos estables, sino también la oportunidad de desarrollarme como líder."
-            </p>
-            <p class="text-carobra-primary font-semibold paragraph-2">
-              Ana García
-            </p>
-          </div>
+          {testimoniosAsesores.map((testimonio, index) => {
+            const esLargo = testimonio.testimonio.length > 200;
+            const textoCorto = esLargo ? testimonio.testimonio.substring(0, 200) + '...' : testimonio.testimonio;
+            
+            return (
+              <article class={`testimonio-item text-center ${index > 0 ? 'hidden' : ''}`} itemscope itemtype="https://schema.org/Review" data-testimonio-index={index}>
+                <blockquote class="text-carobra-dark paragraph-1 mb-6" itemprop="reviewBody">
+                  <span class="testimonio-texto-completo hidden md:inline">"{testimonio.testimonio}"</span>
+                  <span class="testimonio-texto-corto md:hidden">
+                    <span class="texto-preview">"{textoCorto}"</span>
+                    <span class="texto-completo hidden">"{testimonio.testimonio}"</span>
+                  </span>
+                  {esLargo && (
+                    <button class="leer-mas-btn md:hidden block mx-auto mt-2 text-carobra-primary hover:text-carobra-dark font-medium text-sm transition-colors" data-index={index}>
+                      Leer más
+                    </button>
+                  )}
+                </blockquote>
+                <p class="text-carobra-primary font-semibold paragraph-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">{testimonio.nombre}</span>
+                </p>
+                <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" content="5" />
+              </article>
+            );
+          })}
         </div>
 
         <!-- Next Button -->
@@ -339,6 +354,31 @@ import convenciones from '../assets/images/beneficios/convensiones.webp';
 
 
   <script>
+    // Botón "Leer más" para testimonios largos en mobile
+    document.querySelectorAll('.leer-mas-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const button = e.target as HTMLButtonElement;
+        const article = button.closest('article');
+        const textoCorto = article?.querySelector('.testimonio-texto-corto');
+        const preview = textoCorto?.querySelector('.texto-preview');
+        const completo = textoCorto?.querySelector('.texto-completo');
+        
+        if (preview && completo) {
+          const estaExpandido = completo.classList.contains('hidden');
+          
+          if (estaExpandido) {
+            preview.classList.add('hidden');
+            completo.classList.remove('hidden');
+            button.textContent = 'Leer menos';
+          } else {
+            preview.classList.remove('hidden');
+            completo.classList.add('hidden');
+            button.textContent = 'Leer más';
+          }
+        }
+      });
+    });
+
     // Carrusel de testimonios
     let currentTestimonio = 0;
     const testimonios = document.querySelectorAll('.testimonio-item');
