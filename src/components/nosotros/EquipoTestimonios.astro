@@ -19,79 +19,57 @@ const testimonios = trabajadores.length > 0
   testimonios={trabajadores.map(t => ({ nombre: t.nombre, testimonio: t.testimonio, fecha: t.fecha }))} 
   tipo="trabajadores" 
 />
-
 <section class="bg-carobra-light-bg py-20" aria-label="Testimonios del equipo">
-  <div class="w-full">
-    <div class="text-center mb-16 px-4">
-      <h2 class="text-carobra-dark mb-6">
-        El equipo que impulsa tu crecimiento
-      </h2>
-    </div>
-    <div class="relative w-full max-w-4xl mx-auto px-4">
-      <!-- Carousel Container -->
-      <div class="testimonios-carousel-nosotros relative flex items-center gap-8">
-        <!-- Prev Button -->
-        <button 
-          class="prev-btn-nosotros bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0 z-10"
-          aria-label="Anterior"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-carobra-dark text-center mb-16 font-extrabold">
+      El equipo que impulsa tu crecimiento
+    </h2>
+    
+    <div class="testimonios-carousel-nosotros relative flex items-center gap-8">
+      <!-- Prev Button -->
+      <button 
+        class="prev-btn-nosotros bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0"
+        aria-label="Anterior"
+      >
+        ←
+      </button>
 
-        <!-- Testimonios Container -->
-        <div class="flex-1">
-          {testimonios.map((testimonio, index) => {
-            const esLargo = testimonio.texto.length > 200;
-            const textoCorto = esLargo ? testimonio.texto.substring(0, 200) + '...' : testimonio.texto;
-            
-            return (
-              <article class={`testimonio-item-nosotros ${index > 0 ? 'hidden' : ''}`} itemscope itemtype="https://schema.org/Review" data-testimonio-index={index}>
-                <div class="bg-white rounded-lg px-6 py-5 md:px-8 md:py-6 shadow-sm max-w-2xl mx-auto">
-                  <!-- Comillas -->
-                  <div class="text-3xl md:text-4xl text-carobra-light leading-none mb-3" aria-hidden="true">
-                    "
-                  </div>
-                  
-                  <!-- Testimonio -->
-                  <blockquote class="text-sm md:text-base text-gray-900 max-w-[350px] mx-auto" style="line-height: 1.5;" itemprop="reviewBody">
-                    <span class="testimonio-texto-completo-nosotros hidden md:inline">{testimonio.texto}</span>
-                    <span class="testimonio-texto-corto-nosotros md:hidden">
-                      <span class="texto-preview-nosotros">{textoCorto}</span>
-                      <span class="texto-completo-nosotros hidden">{testimonio.texto}</span>
-                    </span>
-                    {esLargo && (
-                      <button class="leer-mas-btn-nosotros md:hidden block mx-auto mt-3 text-carobra-primary hover:text-carobra-dark font-medium text-sm transition-colors" data-index={index}>
-                        Leer más
-                      </button>
-                    )}
-                  </blockquote>
-                  
-                  <!-- Nombre -->
-                  <div class="mt-5 pt-4 border-t border-gray-200 max-w-[350px] mx-auto">
-                    <p class="text-sm md:text-base font-semibold text-gray-900" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                      <span itemprop="name">{testimonio.nombre}</span>
-                    </p>
-                  </div>
-                  <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" content="5" />
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <!-- Next Button -->
-        <button 
-          class="next-btn-nosotros bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0 z-10"
-          aria-label="Siguiente"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
+      <!-- Testimonios -->
+      <div class="flex-1">
+        {testimonios.map((testimonio, index) => {
+          const esLargo = testimonio.texto.length > 200;
+          const textoCorto = esLargo ? testimonio.texto.substring(0, 200) + '...' : testimonio.texto;
+          
+          return (
+            <article class={`testimonio-item-nosotros text-center ${index > 0 ? 'hidden' : ''}`} itemscope itemtype="https://schema.org/Review" data-testimonio-index={index}>
+              <blockquote class="text-carobra-dark paragraph-1 mb-6" itemprop="reviewBody">
+                <span class="testimonio-texto-completo-nosotros hidden md:inline">"{testimonio.texto}"</span>
+                <span class="testimonio-texto-corto-nosotros md:hidden">
+                  <span class="texto-preview-nosotros">"{textoCorto}"</span>
+                  <span class="texto-completo-nosotros hidden">"{testimonio.texto}"</span>
+                </span>
+                {esLargo && (
+                  <button class="leer-mas-btn-nosotros md:hidden block mx-auto mt-2 text-carobra-primary hover:bg-carobra-dark font-medium text-sm transition-colors" data-index={index}>
+                    Leer más
+                  </button>
+                )}
+              </blockquote>
+              <p class="text-carobra-primary font-semibold paragraph-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">{testimonio.nombre}</span>
+              </p>
+              <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" content="5" />
+            </article>
+          );
+        })}
       </div>
-    </div>
+
+      <!-- Next Button -->
+      <button 
+        class="next-btn-nosotros bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0"
+        aria-label="Siguiente"
+      >
+        →
+      </button>
     </div>
   </div>
 </section>
