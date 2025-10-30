@@ -1,0 +1,52 @@
+---
+interface Testimonio {
+  nombre: string;
+  testimonio: string;
+  fecha?: string;
+}
+
+interface Props {
+  testimonios: Testimonio[];
+  tipo: 'asesores' | 'trabajadores';
+}
+
+const { testimonios, tipo } = Astro.props;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Carobra Consultores",
+  "url": "https://www.carobra.com",
+  "review": testimonios.map((testimonio) => {
+    const review: any = {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": testimonio.nombre
+      },
+      "reviewBody": testimonio.testimonio,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    };
+    
+    // Solo agregar fecha si es válida
+    if (testimonio.fecha) {
+      try {
+        const fecha = new Date(testimonio.fecha);
+        if (!isNaN(fecha.getTime())) {
+          review.datePublished = fecha.toISOString().split('T')[0];
+        }
+      } catch (e) {
+        // Ignorar fechas inválidas
+      }
+    }
+    
+    return review;
+  })
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
