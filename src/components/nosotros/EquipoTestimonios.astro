@@ -1,73 +1,152 @@
 ---
-const testimonios = [
-  {
-    texto: "Trabajar aquí es formar parte de una familia que valora el crecimiento y la creatividad.",
-    nombre: "María González"
-  },
-  {
-    texto: "La empresa me ha dado oportunidades únicas para crecer profesionalmente y desafiarme cada día.",
-    nombre: "Carlos Martínez"
-  },
-  {
-    texto: "Aquí cada idea cuenta, y el equipo te motiva a ir más allá de tus límites.",
-    nombre: "Ana López"
-  }
-];
+import { fetchTestimonios } from '../../utils/testimonios';
+import SchemaTestimonios from '../seo/SchemaTestimonios.astro';
+
+// Obtener testimonios de trabajadores desde el CSV
+const { trabajadores } = await fetchTestimonios();
+const testimonios = trabajadores.length > 0 
+  ? trabajadores.map(t => ({ texto: t.testimonio, nombre: t.nombre }))
+  : [
+      {
+        texto: "Trabajar aquí es formar parte de una familia que valora el crecimiento y la creatividad.",
+        nombre: "María González"
+      }
+    ];
 ---
 
-<section class="bg-carobra-light-bg py-20">
+<!-- Schema.org Testimonios de trabajadores -->
+<SchemaTestimonios 
+  testimonios={trabajadores.map(t => ({ nombre: t.nombre, testimonio: t.testimonio, fecha: t.fecha }))} 
+  tipo="trabajadores" 
+/>
+
+<section class="bg-carobra-light-bg py-20" aria-label="Testimonios del equipo">
   <div class="w-full">
     <div class="text-center mb-16 px-4">
       <h2 class="text-carobra-dark mb-6">
         El equipo que impulsa tu crecimiento
       </h2>
     </div>
-    
-    <div class="relative w-full">
+    <div class="relative w-full max-w-4xl mx-auto px-4">
       <!-- Carousel Container -->
-      <div class="flex gap-8 overflow-visible justify-center px-4">
-        {testimonios.map((testimonio, index) => (
-          <div class="w-full md:w-[500px]" style="flex-shrink: 0;">
-            <div class="bg-white rounded-lg px-6 py-5 md:px-8 md:py-6 shadow-sm">
-              <!-- Comillas -->
-              <div class="text-3xl md:text-4xl text-carobra-light leading-none mb-3">
-                “
-              </div>
-              
-              <!-- Testimonio -->
-              <p class="text-sm md:text-base text-gray-900 max-w-[350px] mx-auto" style="line-height: 1.5;">
-                {testimonio.texto}
-              </p>
-              
-              <!-- Nombre -->
-              <div class="mt-5 pt-4 border-t border-gray-200 max-w-[350px] mx-auto">
-                <p class="text-sm md:text-base font-semibold text-gray-900">
-                  {testimonio.nombre}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div class="testimonios-carousel-nosotros relative flex items-center gap-8">
+        <!-- Prev Button -->
+        <button 
+          class="prev-btn-nosotros bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0 z-10"
+          aria-label="Anterior"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <!-- Testimonios Container -->
+        <div class="flex-1">
+          {testimonios.map((testimonio, index) => {
+            const esLargo = testimonio.texto.length > 200;
+            const textoCorto = esLargo ? testimonio.texto.substring(0, 200) + '...' : testimonio.texto;
+            
+            return (
+              <article class={`testimonio-item-nosotros ${index > 0 ? 'hidden' : ''}`} itemscope itemtype="https://schema.org/Review" data-testimonio-index={index}>
+                <div class="bg-white rounded-lg px-6 py-5 md:px-8 md:py-6 shadow-sm max-w-2xl mx-auto">
+                  <!-- Comillas -->
+                  <div class="text-3xl md:text-4xl text-carobra-light leading-none mb-3" aria-hidden="true">
+                    "
+                  </div>
+                  
+                  <!-- Testimonio -->
+                  <blockquote class="text-sm md:text-base text-gray-900 max-w-[350px] mx-auto" style="line-height: 1.5;" itemprop="reviewBody">
+                    <span class="testimonio-texto-completo-nosotros hidden md:inline">{testimonio.texto}</span>
+                    <span class="testimonio-texto-corto-nosotros md:hidden">
+                      <span class="texto-preview-nosotros">{textoCorto}</span>
+                      <span class="texto-completo-nosotros hidden">{testimonio.texto}</span>
+                    </span>
+                    {esLargo && (
+                      <button class="leer-mas-btn-nosotros md:hidden block mx-auto mt-3 text-carobra-primary hover:text-carobra-dark font-medium text-sm transition-colors" data-index={index}>
+                        Leer más
+                      </button>
+                    )}
+                  </blockquote>
+                  
+                  <!-- Nombre -->
+                  <div class="mt-5 pt-4 border-t border-gray-200 max-w-[350px] mx-auto">
+                    <p class="text-sm md:text-base font-semibold text-gray-900" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                      <span itemprop="name">{testimonio.nombre}</span>
+                    </p>
+                  </div>
+                  <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" content="5" />
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <!-- Next Button -->
+        <button 
+          class="next-btn-nosotros bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0 z-10"
+          aria-label="Siguiente"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
-      
-      <!-- Navigation Arrows -->
-      <button 
-        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-16 h-16 bg-carobra-primary hover:bg-carobra-dark rounded-full flex items-center justify-center text-white shadow-lg transition-colors"
-        aria-label="Anterior"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
-      
-      <button 
-        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-16 h-16 bg-carobra-primary hover:bg-carobra-dark rounded-full flex items-center justify-center text-white shadow-lg transition-colors"
-        aria-label="Siguiente"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
+    </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Botón "Leer más" para testimonios largos en mobile (Nosotros)
+  document.querySelectorAll('.leer-mas-btn-nosotros').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const button = e.target as HTMLButtonElement;
+      const article = button.closest('article');
+      const textoCorto = article?.querySelector('.testimonio-texto-corto-nosotros');
+      const preview = textoCorto?.querySelector('.texto-preview-nosotros');
+      const completo = textoCorto?.querySelector('.texto-completo-nosotros');
+      
+      if (preview && completo) {
+        const estaExpandido = completo.classList.contains('hidden');
+        
+        if (estaExpandido) {
+          preview.classList.add('hidden');
+          completo.classList.remove('hidden');
+          button.textContent = 'Leer menos';
+        } else {
+          preview.classList.remove('hidden');
+          completo.classList.add('hidden');
+          button.textContent = 'Leer más';
+        }
+      }
+    });
+  });
+
+  // Carrusel de testimonios en Nosotros
+  let currentTestimonioNosotros = 0;
+  const testimoniosNosotros = document.querySelectorAll('.testimonio-item-nosotros');
+  const prevBtnNosotros = document.querySelector('.prev-btn-nosotros');
+  const nextBtnNosotros = document.querySelector('.next-btn-nosotros');
+
+  function showTestimonioNosotros(index: number) {
+    testimoniosNosotros.forEach((item, i) => {
+      if (i === index) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  if (prevBtnNosotros && nextBtnNosotros && testimoniosNosotros.length > 0) {
+    prevBtnNosotros.addEventListener('click', () => {
+      currentTestimonioNosotros = (currentTestimonioNosotros - 1 + testimoniosNosotros.length) % testimoniosNosotros.length;
+      showTestimonioNosotros(currentTestimonioNosotros);
+    });
+
+    nextBtnNosotros.addEventListener('click', () => {
+      currentTestimonioNosotros = (currentTestimonioNosotros + 1) % testimoniosNosotros.length;
+      showTestimonioNosotros(currentTestimonioNosotros);
+    });
+  }
+</script>
