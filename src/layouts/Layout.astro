@@ -19,8 +19,18 @@ import SchemaOrganization from '../components/seo/SchemaOrganization.astro';
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<!-- Preload Hero Image -->
+		{Astro.url.pathname === '/' && (
+			<link rel="preload" as="image" href="/_astro/hero-index.*.webp" type="image/webp" fetchpriority="high" />
+		)}
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
 		<meta name="robots" content="index, follow" />
 		<meta name="googlebot" content="index, follow" />
 		<meta name="google-site-verification" content="nOJdC7T2BVQkvpL1nVrIDOwcqJIws58EVfSoVIqhDjE" />

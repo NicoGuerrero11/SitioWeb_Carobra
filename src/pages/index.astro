@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../assets/images/index/hero-index.webp';
@@ -42,6 +44,8 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
           src={heroImage} 
           alt="El mejor lugar para crecer como asesor financiero"
           class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
         />
       </div>
     </div>
@@ -67,6 +71,7 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
               src={servicioPensionImage} 
               alt="Pensiones y AFORE"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <h3 class="text-carobra-primary mb-4">Pensiones y Afore</h3>
@@ -82,6 +87,7 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
               src={servicioSeguroImage} 
               alt="Seguros"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <h3 class="text-carobra-primary mb-4">Seguros</h3>
@@ -97,6 +103,7 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
               src={servicioInversionesImage} 
               alt="Inversiones Skandia"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <h3 class="text-carobra-primary mb-4">Inversiones Skandia</h3>
@@ -112,6 +119,7 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
               src={servicioAsesoriaImage} 
               alt="Asesoría Personalizada"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <h3 class="text-carobra-primary mb-4">Asesoría Personalizada</h3>
@@ -139,6 +147,7 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
             src={nosotrosImage} 
             alt="Quiénes somos en Carobra"
             class="rounded-lg w-full h-auto object-cover"
+            loading="lazy"
           />
         </div>
         
