@@ -89,14 +89,6 @@ El sitio está configurado para deployarse automáticamente en Vercel:
 2. El deploy se realiza automáticamente en cada push a `main`
 3. Configuración incluida en `vercel.json`
 
-## 📋 Próximos Pasos
-
-- [ ] Crear páginas adicionales (Beneficios, Nosotros, Servicios, etc.)
-- [ ] Agregar imágenes reales
-- [ ] Implementar formularios de contacto
-- [ ] Optimizar SEO
-- [ ] Configurar analytics
-
 ---
 
 **© 2025 Carobra Consultores Especializados. Todos los derechos reservados.**
