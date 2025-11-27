@@ -26,7 +26,10 @@ import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 						¿Buscas más información sobre nuestros servicios financieros? Completa el formulario y uno de nuestros asesores te contactará.
 					</p>
 
-					<form class="space-y-6">
+					<form id="contacto-form" class="space-y-6">
+						<!-- Mensaje de estado -->
+						<div id="form-message" class="hidden p-4 rounded-lg"></div>
+
 						<!-- Nombre -->
 						<div>
 							<label class="block text-sm font-medium text-gray-700 mb-2">
@@ -88,9 +91,11 @@ import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 						<div>
 							<button 
 								type="submit"
-								class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors"
+								id="submit-btn"
+								class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 							>
-								Solicitar información
+								<span id="btn-text">Solicitar información</span>
+								<span id="btn-loading" class="hidden">Enviando...</span>
 							</button>
 						</div>
 					</form>
@@ -162,3 +167,67 @@ import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
 		</div>
 	</section>
 </Layout>
+
+<script>
+	// Manejar envío del formulario
+	const form = document.getElementById('contacto-form') as HTMLFormElement;
+	const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+	const btnText = document.getElementById('btn-text');
+	const btnLoading = document.getElementById('btn-loading');
+	const formMessage = document.getElementById('form-message');
+
+	if (form) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			// Mostrar estado de carga
+			if (submitBtn && btnText && btnLoading && formMessage) {
+				submitBtn.disabled = true;
+				btnText.classList.add('hidden');
+				btnLoading.classList.remove('hidden');
+				formMessage.classList.add('hidden');
+
+				try {
+					// Enviar formulario
+					const formData = new FormData(form);
+					const response = await fetch('/api/contacto', {
+						method: 'POST',
+						body: formData,
+					});
+
+					const result = await response.json();
+
+					if (response.ok) {
+						// Mostrar mensaje de éxito
+						formMessage.textContent = '¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.';
+						formMessage.className = 'p-4 rounded-lg bg-green-100 text-green-800';
+						formMessage.classList.remove('hidden');
+
+						// Limpiar formulario
+						form.reset();
+
+						// Scroll al mensaje
+						formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					} else {
+						// Mostrar mensaje de error
+						formMessage.textContent = result.error || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.';
+						formMessage.className = 'p-4 rounded-lg bg-red-100 text-red-800';
+						formMessage.classList.remove('hidden');
+						formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					}
+				} catch (error) {
+					console.error('Error:', error);
+					formMessage.textContent = 'Error de conexión. Por favor, verifica tu conexión a internet e inténtalo de nuevo.';
+					formMessage.className = 'p-4 rounded-lg bg-red-100 text-red-800';
+					formMessage.classList.remove('hidden');
+					formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+				} finally {
+					// Restaurar botón
+					submitBtn.disabled = false;
+					btnText.classList.remove('hidden');
+					btnLoading.classList.add('hidden');
+				}
+			}
+		});
+	}
+</script>
