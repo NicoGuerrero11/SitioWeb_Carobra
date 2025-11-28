@@ -17,6 +17,12 @@ const schemaData = {
   "@type": "Organization",
   "name": "Carobra Consultores",
   "url": "https://www.carobra.com",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": testimonios.length.toString(),
+    "bestRating": "5"
+  },
   "review": testimonios.map((testimonio) => {
     const review: any = {
       "@type": "Review",
