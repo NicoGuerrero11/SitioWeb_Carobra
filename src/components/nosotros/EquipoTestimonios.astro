@@ -57,7 +57,13 @@ const testimonios = trabajadores.length > 0
               <p class="text-carobra-primary font-semibold paragraph-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
                 <span itemprop="name">{testimonio.nombre}</span>
               </p>
-              <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" content="5" />
+              <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                <meta itemprop="ratingValue" content="5" />
+                <meta itemprop="bestRating" content="5" />
+              </div>
+              <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="Carobra" />
+              </div>
             </article>
           );
         })}
