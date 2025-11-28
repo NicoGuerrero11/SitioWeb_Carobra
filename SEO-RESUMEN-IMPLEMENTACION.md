@@ -6,7 +6,7 @@
 
 #### Sitemap automático
 - ✅ Instalado `@astrojs/sitemap`
-- ✅ Configurado en `astro.config.mjs` con site: `https://carobra.com.mx`
+- ✅ Configurado en `astro.config.mjs` con site: `https://carobra.com`
 - ✅ Se generará automáticamente en `/sitemap-index.xml` al hacer build
 
 #### robots.txt
@@ -133,8 +133,8 @@ npm run build
 
 ### 2. Verificar sitemap
 Después del deploy, visita:
-- `https://carobra.com.mx/sitemap-index.xml`
-- `https://carobra.com.mx/robots.txt`
+- `https://carobra.com/sitemap-index.xml`
+- `https://carobra.com/robots.txt`
 
 ### 3. Herramientas de validación
 - **Google Rich Results Test**: https://search.google.com/test/rich-results

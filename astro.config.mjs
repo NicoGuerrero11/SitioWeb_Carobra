@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://carobra.com.mx',
+  site: 'https://carobra.com',
   output: 'server',
   
   image: {

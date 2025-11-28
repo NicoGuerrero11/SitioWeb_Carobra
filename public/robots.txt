@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://carobra.com.mx/sitemap-index.xml
+Sitemap: https://carobra.com/sitemap-index.xml
