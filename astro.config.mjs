@@ -1,4 +1,4 @@
-``// @ts-check
+// @ts-check
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -36,6 +36,17 @@ export default defineConfig({
     }
   },
 
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    },
+    speedInsights: {
+      enabled: true
+    },
+    isr: {
+      expiration: false,
+      exclude: ['/api/*']
+    }
+  }),
   integrations: [sitemap()]
 });
