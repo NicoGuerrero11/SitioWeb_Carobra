@@ -7,7 +7,7 @@ import logoCarobra from '../assets/images/logo/CAROBRA HORIZONTAL COLOR  (1).png
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
     <div class="flex justify-between items-center">
       <!-- Logo -->
-      <div class="flex-shrink-0">
+      <div class="flex-shrink-0" style="position: relative; z-index: 10;">
         <a href="/" class="block">
           <Image 
             src={logoCarobra}
@@ -51,7 +51,7 @@ import logoCarobra from '../assets/images/logo/CAROBRA HORIZONTAL COLOR  (1).png
     </div>
 
     <!-- Mobile Navigation -->
-    <div class="mobile-menu hidden md:hidden">
+    <div class="mobile-menu hidden md:hidden" style="position: relative; z-index: 60;">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
         <a href="/beneficios" class="text-gray-700 hover:text-carobra-light block px-3 py-2 rounded-md text-base font-medium">
           Beneficios
@@ -75,14 +75,15 @@ import logoCarobra from '../assets/images/logo/CAROBRA HORIZONTAL COLOR  (1).png
 
 <script>
   // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-  });
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    });
+  }
 </script>
