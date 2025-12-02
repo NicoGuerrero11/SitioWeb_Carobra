@@ -1,116 +1,233 @@
 ---
+
 ---
 
 <style>
-/* ===== Timeline Carobra (inline CSS) ===== */
-:root{
-  --carobra-navy:#0A2342;
-  --carobra-cyan:#00A9E0;
-  --carobra-gray:#e9eef3;
-  --carobra-text:#222;
-}
-.timeline-wrap{
-  max-width:1200px;margin:40px auto;padding:10px 20px;
-  font-family:inherit;color:var(--carobra-text);
-}
-.timeline-title{margin:0 0 20px 0;text-align:center;font-weight:700;color:var(--carobra-navy);}
-.timeline-sub{margin:0 0 34px 0;text-align:center;color:#555;}
-.timeline{
-  position:relative;display:flex;flex-wrap:wrap;gap:26px;justify-content:center;
-}
-/* línea central (versión horizontal) */
-.timeline::before{
-  content:"";position:absolute;left:50%;top:22px;transform:translateX(-50%);
-  width:90%;height:3px;background:linear-gradient(90deg,var(--carobra-gray),#dbe6ef,var(--carobra-gray));
-  border-radius:2px;
-}
-.milestone{
-  position:relative; width:220px;min-height:155px;
-  background:#fff;border:1px solid #dde5ee;border-radius:14px;
-  padding:18px 16px 14px;text-align:center;
-  box-shadow:0 1px 0 rgba(0,0,0,.03);
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  cursor:default;
-}
-.milestone:hover{
-  transform:scale(1.06);
-  box-shadow:0 10px 30px rgba(11,31,58,.15);
-  border-color:var(--carobra-cyan);
-}
-/* punto sobre la tarjeta, conectado a la línea */
-.milestone::before{
-  content:"";position:absolute;left:50%;top:-14px;transform:translateX(-50%);
-  width:18px;height:18px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%, #fff 0%, #fff 38%, var(--carobra-cyan) 40%, var(--carobra-navy) 100%);
-  box-shadow:0 0 0 4px #fff;
-}
-.m-year{
-  font-weight:800;color:var(--carobra-navy);letter-spacing:.5px;
-  font-size:20px;margin-bottom:8px;
-}
-.m-text{
-  font-size:14px;line-height:1.45;color:#333;opacity:.82;
-  transition:opacity .25s ease; margin:0;
-}
-.milestone:hover .m-text{opacity:1}
+  /* ===== Timeline Carobra (inline CSS) ===== */
+  :root {
+    --carobra-navy: #0a2342;
+    --carobra-cyan: #00a9e0;
+    --carobra-gray: #e9eef3;
+    --carobra-text: #222;
+  }
+  .timeline-wrap {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 10px 20px;
+    font-family: inherit;
+    color: var(--carobra-text);
+  }
+  .timeline-title {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-weight: 700;
+    color: var(--carobra-navy);
+  }
+  .timeline-sub {
+    margin: 0 0 34px 0;
+    text-align: center;
+    color: #555;
+  }
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    justify-content: center;
+  }
+  /* línea central (versión horizontal) */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 22px;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--carobra-gray),
+      #dbe6ef,
+      var(--carobra-gray)
+    );
+    border-radius: 2px;
+  }
+  .milestone {
+    position: relative;
+    width: 220px;
+    min-height: 155px;
+    background: #fff;
+    border: 1px solid #dde5ee;
+    border-radius: 14px;
+    padding: 18px 16px 14px;
+    text-align: center;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+    cursor: default;
+  }
+  .milestone:hover {
+    transform: scale(1.06);
+    box-shadow: 0 10px 30px rgba(11, 31, 58, 0.15);
+    border-color: var(--carobra-cyan);
+  }
+  /* punto sobre la tarjeta, conectado a la línea */
+  .milestone::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -14px;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 35% 35%,
+      #fff 0%,
+      #fff 38%,
+      var(--carobra-cyan) 40%,
+      var(--carobra-navy) 100%
+    );
+    box-shadow: 0 0 0 4px #fff;
+  }
+  .m-year {
+    font-weight: 800;
+    color: var(--carobra-navy);
+    letter-spacing: 0.5px;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .m-text {
+    font-size: 14px;
+    line-height: 1.45;
+    color: #333;
+    opacity: 0.82;
+    transition: opacity 0.25s ease;
+    margin: 0;
+  }
+  .milestone:hover .m-text {
+    opacity: 1;
+  }
 
-/* ===== Responsive: pila vertical en móvil ===== */
-@media (max-width: 820px){
-  .timeline{flex-direction:column;align-items:center;gap:18px}
-  .timeline::before{display:none}
-  .milestone{width:100%;max-width:520px;text-align:left;padding:18px 18px 16px}
-  .milestone::before{left:18px;transform:none}
-  .m-year{margin-left:8px}
-}
+  /* ===== Responsive: pila vertical en móvil ===== */
+  @media (max-width: 820px) {
+    .timeline {
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .timeline::before {
+      display: none;
+    }
+    .milestone {
+      width: 100%;
+      max-width: 520px;
+      text-align: left;
+      padding: 18px 18px 16px;
+    }
+    .milestone::before {
+      left: 18px;
+      transform: none;
+    }
+    .m-year {
+      margin-left: 8px;
+    }
+  }
 </style>
 
 <section class="bg-white py-20">
   <div class="timeline-wrap">
     <h2 class="timeline-title">Nuestra historia</h2>
-    <p class="timeline-sub">Hitos que han impulsado el crecimiento de Carobra y de nuestra comunidad de asesores.</p>
+    <p class="timeline-sub">
+      Hitos que han impulsado el crecimiento de Carobra y de nuestra comunidad
+      de asesores.
+    </p>
 
     <div class="timeline">
-
       <div class="milestone">
         <div class="m-year">2011</div>
-        <p class="m-text">Iniciamos como un grupo de entusiastas: una pequeña promotoría de AFORE con visión de largo plazo.</p>
+        <p class="m-text">
+          Iniciamos como un grupo de entusiastas: una pequeña promotoría de
+          AFORE con visión de largo plazo.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2011</div>
-        <p class="m-text">Abrimos la línea de inversión con <strong>Skandia</strong>, sumando portafolios para construir patrimonio.</p>
+        <p class="m-text">
+          Abrimos la línea de inversión con <strong>Skandia</strong>, sumando
+          portafolios para construir patrimonio.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2012</div>
-        <p class="m-text">Sumamos la franquicia de <strong>Creditaria</strong> y comenzamos planes de retiro con <strong>Slovo</strong>.</p>
+        <p class="m-text">
+          Sumamos la franquicia de <strong>Creditaria</strong> y comenzamos planes
+          de retiro con <strong>Slovo</strong>.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2013</div>
-        <p class="m-text">Integramos la línea de <strong>Seguros</strong> con <strong>Quálitas</strong> para protección integral.</p>
+        <p class="m-text">
+          Integramos la línea de <strong>Seguros</strong> con <strong
+            >Quálitas</strong
+          > para protección integral.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2014</div>
-        <p class="m-text">Lanzamos la unidad de <strong>tarjetas de crédito</strong> en alianza con <strong>Dportenis</strong>.</p>
+        <p class="m-text">
+          Lanzamos la unidad de <strong>tarjetas de crédito</strong> en alianza con
+          <strong>Dportenis</strong>.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2020</div>
-        <p class="m-text">Nace la división <strong>Patrimonial</strong>, impulsando el crecimiento de nuestra unidad inmobiliaria.</p>
+        <p class="m-text">
+          Nace la división <strong>Patrimonial</strong>, impulsando el
+          crecimiento de nuestra unidad inmobiliaria.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2021</div>
-        <p class="m-text">Alianza estratégica en crédito con <strong>Bradesco</strong> y <strong>Bradescard</strong> para ampliar financiamiento.</p>
+        <p class="m-text">
+          Alianza estratégica en crédito con <strong>Bradescard</strong> para ampliar
+          financiamiento.
+        </p>
+      </div>
+
+      <div class="milestone">
+        <div class="m-year">2022</div>
+        <p class="m-text">
+          Creación de <strong>Carobra 40</strong>, fortaleciendo nuestro
+          ecosistema de asesores.
+        </p>
       </div>
 
       <div class="milestone">
         <div class="m-year">2023</div>
-        <p class="m-text">Nos consolidamos en inversiones de alto rendimiento con <strong>Infinity</strong>.</p>
+        <p class="m-text">
+          Nos consolidamos en inversiones de alto rendimiento con <strong
+            >Infinity y Plan Ideal</strong
+          >.
+        </p>
       </div>
 
+      <div class="milestone">
+        <div class="m-year">2025</div>
+        <p class="m-text">
+          Alianzas estratégicas con <strong>Invex</strong>, <strong>Sear</strong
+          > y <strong>Falabella</strong>, expandiendo nuestro portafolio de
+          servicios.
+        </p>
+      </div>
     </div>
   </div>
 </section>

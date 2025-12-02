@@ -1,75 +1,87 @@
 ---
 export const prerender = true;
 
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import SeccionBeneficio from '../components/beneficios/SeccionBeneficio.astro';
-import SchemaJobPosting from '../components/seo/SchemaJobPosting.astro';
-import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
-import SchemaTestimonios from '../components/seo/SchemaTestimonios.astro';
-import { fetchTestimonios } from '../utils/testimonios';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import SeccionBeneficio from "../components/beneficios/SeccionBeneficio.astro";
+import SchemaJobPosting from "../components/seo/SchemaJobPosting.astro";
+import SchemaBreadcrumbs from "../components/seo/SchemaBreadcrumbs.astro";
+import SchemaTestimonios from "../components/seo/SchemaTestimonios.astro";
+import { fetchTestimonios } from "../utils/testimonios";
 
 // Importar imágenes
-import heroBeneficio from '../assets/images/beneficios/hero-beneficio.webp';
-import dineroComisiones from '../assets/images/beneficios/dinero-comisiones.webp';
-import carobraUniversity from '../assets/images/beneficios/carobra-university.webp';
-import rewards from '../assets/images/beneficios/rewards.webp';
-import herramientas from '../assets/images/beneficios/herramientas.webp';
-import apoyoStaff from '../assets/images/beneficios/apoyo-staff.webp';
-import convenciones from '../assets/images/beneficios/convensiones.webp';
+import heroBeneficio from "../assets/images/beneficios/hero-beneficio.webp";
+import dineroComisiones from "../assets/images/beneficios/dinero-comisiones.webp";
+import carobraUniversity from "../assets/images/beneficios/carobra-university.webp";
+import rewards from "../assets/images/beneficios/rewards.webp";
+import herramientas from "../assets/images/beneficios/herramientas.webp";
+import apoyoStaff from "../assets/images/beneficios/apoyo-staff.webp";
+import convenciones from "../assets/images/beneficios/convensiones.webp";
 
 // Obtener testimonios de asesores desde el CSV
 const { asesores } = await fetchTestimonios();
-const testimoniosAsesores = asesores.length > 0 ? asesores : [
-  {
-    nombre: 'María López',
-    testimonio: 'Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente.',
-    cargo: 'Asesor/a',
-    fecha: ''
-  }
-];
+const testimoniosAsesores =
+  asesores.length > 0
+    ? asesores
+    : [
+        {
+          nombre: "María López",
+          testimonio:
+            "Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente.",
+          cargo: "Asesor/a",
+          fecha: "",
+        },
+      ];
 ---
 
-<SchemaBreadcrumbs items={[
-  { name: 'Inicio', url: '/' },
-  { name: 'Beneficios', url: '/beneficios' }
-]} />
+<SchemaBreadcrumbs
+  items={[
+    { name: "Inicio", url: "/" },
+    { name: "Beneficios", url: "/beneficios" },
+  ]}
+/>
 
-<Layout 
-  title="Trabaja como Asesor Financiero | Beneficios Carobra - Broker #1 AFORE" 
+<Layout
+  title="Trabaja como Asesor Financiero | Beneficios Carobra - Broker #1 AFORE"
   description="Únete al mejor equipo de asesores financieros de México. Broker #1 en AFORE 12 años consecutivos. Comisiones competitivas, capacitación continua, herramientas digitales. Más de 1,500 asesores confían en nosotros."
 >
   <!-- Schema.org JobPosting -->
   <SchemaJobPosting />
-  
+
   <!-- Schema.org Testimonios -->
   <SchemaTestimonios testimonios={testimoniosAsesores} tipo="asesores" />
-  
+
   <!-- Hero Section -->
   <section class="min-h-screen flex bg-white">
     <div class="w-full h-full min-h-screen flex flex-col lg:flex-row">
       <!-- Left Content -->
-      <div class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]">
+      <div
+        class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]"
+      >
         <div class="max-w-2xl">
           <h1 class="mb-12 text-carobra-dark font-bold text-center">
             Construye tu futuro con Carobra
           </h1>
-          
+
           <p class="mb-12 text-gray-700 paragraph-1 text-center">
-            Más de 1,500 asesores ya confían en nosotros. Tú puedes ser el siguiente.
+            Más de 2,000 asesores ya confían en nosotros. Tú puedes ser el
+            siguiente.
           </p>
-          
+
           <div class="flex justify-center">
-            <a href="/carrera" class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors inline-block">
+            <a
+              href="/carrera"
+              class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors inline-block"
+            >
               Quiero ser asesor Carobra
             </a>
           </div>
         </div>
       </div>
-      
+
       <!-- Right Image -->
       <div class="hidden lg:block lg:w-1/2 relative min-h-screen">
-        <Image 
+        <Image
           src={heroBeneficio}
           alt="Construye tu futuro con Carobra"
           class="absolute inset-0 w-full h-full object-cover"
@@ -79,15 +91,15 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
   </section>
 
   <!-- Sistema de comisiones -->
-  <SeccionBeneficio 
+  <SeccionBeneficio
     titulo="Sistema de Comisiones"
     descripcion="En Carobra contamos con el plan de comisiones más competitivo de la industria AFORE, diseñado para que tu esfuerzo se traduzca en ingresos reales y constantes."
     accordionTitulo="Conoce cómo funciona nuestro esquema de pagos rápidos y transparentes"
     accordionItems={[
-      'Pagos rápidos dos veces por semana (martes y viernes).',
-      'Comisiones por traspasos y registros con los mejores porcentajes del mercado.',
-      'Bonos adicionales al cumplimiento de presupuestos mensuales.',
-      'Transparencia total en los montos y fechas de pago.'
+      "Pagos rápidos dos veces por semana (martes y viernes).",
+      "Comisiones por traspasos y registros con los mejores porcentajes del mercado.",
+      "Bonos adicionales al cumplimiento de presupuestos mensuales.",
+      "Transparencia total en los montos y fechas de pago.",
     ]}
     imagen={dineroComisiones}
     imagenAlt="Sistema de Comisiones"
@@ -97,15 +109,15 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
   />
 
   <!-- Carobra University -->
-  <SeccionBeneficio 
+  <SeccionBeneficio
     titulo="Carobra University"
     descripcion="Nuestra plataforma de capacitación continua para que nunca dejes de crecer."
     accordionTitulo="Descubre todo lo que incluye nuestra plataforma de capacitación y certificación"
     accordionItems={[
-      'Entrenamientos digitales y presenciales.',
-      'Manuales de ventas y estrategias comerciales.',
-      'Programas de <strong>desarrollo humano y liderazgo.</strong>',
-      'Material descargable disponible en todo momento.'
+      "Entrenamientos digitales y presenciales.",
+      "Manuales de ventas y estrategias comerciales.",
+      "Programas de <strong>desarrollo humano y liderazgo.</strong>",
+      "Material descargable disponible en todo momento.",
     ]}
     imagen={carobraUniversity}
     imagenAlt="Carobra University"
@@ -120,12 +132,12 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
     descripcion="Reconocemos tu esfuerzo con recompensas constantes además de tus comisiones."
     accordionTitulo="Un programa de recompensas que reconoce tus resultados de forma tangible"
     accordionItems={[
-      'Bonos adicionales según cumplimiento de metas.',
-      'Premios mensuales que reconocen tu constancia.',
-      'Programas especiales para asesores destacados.',
-      'Sistema exclusivo de recompensas para asesores.',
-      'Beneficios adicionales por desempeño destacado.',
-      'Reconocimientos que fortalecen tu trayectoria.'
+      "Bonos adicionales según cumplimiento de metas.",
+      "Premios mensuales que reconocen tu constancia.",
+      "Programas especiales para asesores destacados.",
+      "Sistema exclusivo de recompensas para asesores.",
+      "Beneficios adicionales por desempeño destacado.",
+      "Reconocimientos que fortalecen tu trayectoria.",
     ]}
     imagen={rewards}
     imagenAlt="Carobra Rewards"
@@ -140,10 +152,10 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
     descripcion="Recibe el respaldo tecnológico que necesitas para trabajar más rápido y mejor"
     accordionTitulo="Tabletas, biométricos y sistemas digitales para facilitar tu trabajo diario"
     accordionItems={[
-      'Equipo biométrico y tabletas para trámites rápidos.',
-      'Sistema <strong>SISCA</strong> para detalle y control de ventas.',
-      'Banners digitales y recursos de marketing listos para usar.',
-      'Acceso a plataformas digitales que simplifican tu gestión.'
+      "Equipo biométrico y tabletas para trámites rápidos.",
+      "Sistema <strong>SISCA</strong> para detalle y control de ventas.",
+      "Banners digitales y recursos de marketing listos para usar.",
+      "Acceso a plataformas digitales que simplifican tu gestión.",
     ]}
     imagen={herramientas}
     imagenAlt="Herramientas Tecnológicas y Operativas"
@@ -154,14 +166,14 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
 
   <!-- Apoyo de Staff y Financiamiento -->
   <SeccionBeneficio
-    titulo="Apoyo de Staff y Financiamiento"
+    titulo="Apoyo de Staff y Financiamiento de equipos"
     descripcion="No trabajas solo: cuentas con el respaldo administrativo y financiero de Carobra"
     accordionTitulo="Conoce el respaldo administrativo y financiero que ofrecemos"
     accordionItems={[
-      'Acompañamiento constante de nuestro staff administrativo.',
-      'Apoyo en gestiones y trámites para que no pierdas tiempo.',
-      'Programas de financiamiento para impulsar tus operaciones.',
-      'Un equipo siempre disponible para resolver tus dudas.'
+      "Acompañamiento constante de nuestro staff administrativo.",
+      "Apoyo en gestiones y trámites para que no pierdas tiempo.",
+      "Programas de financiamiento para impulsar tus operaciones.",
+      "Un equipo siempre disponible para resolver tus dudas.",
     ]}
     imagen={apoyoStaff}
     imagenAlt="Apoyo de Staff y Financiamiento"
@@ -177,8 +189,8 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
     descripcion="Porque también celebramos tus logros, premiamos tu esfuerzo con viajes únicos."
     accordionTitulo="Viaja con nosotros a destinos únicos como parte de tus logros en Carobra"
     accordionItems={[
-      'Convenciones exclusivas para asesores destacados.',
-      'Viajes nacionales e internacionales como <strong>Cancún, Cuba, Nueva York, Las Vegas, Costa Rica, Colombia.</strong>'
+      "Convenciones exclusivas para asesores destacados.",
+      "Viajes nacionales e internacionales como <strong>Cancún, Cuba, Nueva York, Las Vegas, Costa Rica, Colombia, Panamá, Dubai, Rio y más.</strong>",
     ]}
     imagen={convenciones}
     imagenAlt="Convenciones Nacionales e Internacionales"
@@ -188,55 +200,94 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
   />
 
   <!-- Testimonios -->
-  <section class="bg-carobra-light-bg py-20" aria-label="Testimonios de asesores">
+  <section
+    class="bg-carobra-light-bg py-20"
+    aria-label="Testimonios de asesores"
+  >
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-carobra-dark text-center mb-16 font-extrabold">
         Testimonios de Asesores Carobra
       </h2>
-      
+
       <div class="testimonios-carousel relative flex items-center gap-8">
         <!-- Prev Button -->
-        <button class="prev-btn bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+        <button
+          class="prev-btn bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0"
+        >
           ←
         </button>
 
         <!-- Testimonios -->
         <div class="flex-1">
-          {testimoniosAsesores.map((testimonio, index) => {
-            const esLargo = testimonio.testimonio.length > 200;
-            const textoCorto = esLargo ? testimonio.testimonio.substring(0, 200) + '...' : testimonio.testimonio;
-            
-            return (
-              <article class={`testimonio-item text-center ${index > 0 ? 'hidden' : ''}`} itemscope itemtype="https://schema.org/Review" data-testimonio-index={index}>
-                <blockquote class="text-carobra-dark paragraph-1 mb-6" itemprop="reviewBody">
-                  <span class="testimonio-texto-completo hidden md:inline">"{testimonio.testimonio}"</span>
-                  <span class="testimonio-texto-corto md:hidden">
-                    <span class="texto-preview">"{textoCorto}"</span>
-                    <span class="texto-completo hidden">"{testimonio.testimonio}"</span>
-                  </span>
-                  {esLargo && (
-                    <button class="leer-mas-btn md:hidden block mx-auto mt-2 text-carobra-primary hover:text-carobra-dark font-medium text-sm transition-colors" data-index={index}>
-                      Leer más
-                    </button>
-                  )}
-                </blockquote>
-                <p class="text-carobra-primary font-semibold paragraph-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <span itemprop="name">{testimonio.nombre}</span>
-                </p>
-                <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                  <meta itemprop="ratingValue" content="5" />
-                  <meta itemprop="bestRating" content="5" />
-                </div>
-                <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
-                  <meta itemprop="name" content="Carobra" />
-                </div>
-              </article>
-            );
-          })}
+          {
+            testimoniosAsesores.map((testimonio, index) => {
+              const esLargo = testimonio.testimonio.length > 200;
+              const textoCorto = esLargo
+                ? testimonio.testimonio.substring(0, 200) + "..."
+                : testimonio.testimonio;
+
+              return (
+                <article
+                  class={`testimonio-item text-center ${index > 0 ? "hidden" : ""}`}
+                  itemscope
+                  itemtype="https://schema.org/Review"
+                  data-testimonio-index={index}
+                >
+                  <blockquote
+                    class="text-carobra-dark paragraph-1 mb-6"
+                    itemprop="reviewBody"
+                  >
+                    <span class="testimonio-texto-completo hidden md:inline">
+                      "{testimonio.testimonio}"
+                    </span>
+                    <span class="testimonio-texto-corto md:hidden">
+                      <span class="texto-preview">"{textoCorto}"</span>
+                      <span class="texto-completo hidden">
+                        "{testimonio.testimonio}"
+                      </span>
+                    </span>
+                    {esLargo && (
+                      <button
+                        class="leer-mas-btn md:hidden block mx-auto mt-2 text-carobra-primary hover:text-carobra-dark font-medium text-sm transition-colors"
+                        data-index={index}
+                      >
+                        Leer más
+                      </button>
+                    )}
+                  </blockquote>
+                  <p
+                    class="text-carobra-primary font-semibold paragraph-2"
+                    itemprop="author"
+                    itemscope
+                    itemtype="https://schema.org/Person"
+                  >
+                    <span itemprop="name">{testimonio.nombre}</span>
+                  </p>
+                  <div
+                    itemprop="reviewRating"
+                    itemscope
+                    itemtype="https://schema.org/Rating"
+                  >
+                    <meta itemprop="ratingValue" content="5" />
+                    <meta itemprop="bestRating" content="5" />
+                  </div>
+                  <div
+                    itemprop="itemReviewed"
+                    itemscope
+                    itemtype="https://schema.org/Organization"
+                  >
+                    <meta itemprop="name" content="Carobra" />
+                  </div>
+                </article>
+              );
+            })
+          }
         </div>
 
         <!-- Next Button -->
-        <button class="next-btn bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+        <button
+          class="next-btn bg-carobra-primary hover:bg-carobra-dark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors flex-shrink-0"
+        >
           →
         </button>
       </div>
@@ -253,90 +304,145 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
             FAQ
           </h2>
         </div>
-        
+
         <!-- Right: Preguntas -->
         <div class="lg:col-span-2 space-y-4">
           <div class="border-t border-gray-300 pt-4">
-            <button 
+            <button
               class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Cómo puedo unirme a Carobra?</span>
-              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              <svg
+                class="faq-icon w-6 h-6 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"></path>
               </svg>
             </button>
             <div class="faq-content hidden overflow-hidden">
               <div class="py-4 text-gray-700 paragraph-2">
-                Puedes iniciar el proceso contactándonos a través de nuestro formulario de contacto o llamando directamente a nuestras oficinas. Te guiaremos en cada paso del proceso de integración.
+                Puedes iniciar el proceso contactándonos a través de nuestro
+                formulario de contacto o llamando directamente a nuestras
+                oficinas. Te guiaremos en cada paso del proceso de integración.
               </div>
             </div>
           </div>
 
           <div class="border-t border-gray-300 pt-4">
-            <button 
+            <button
               class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Qué requisitos necesito para ser asesor?</span>
-              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              <svg
+                class="faq-icon w-6 h-6 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"></path>
               </svg>
             </button>
             <div class="faq-content hidden overflow-hidden">
               <div class="py-4 text-gray-700 paragraph-2">
-                Los requisitos básicos incluyen ser mayor de edad, contar con disponibilidad de tiempo y tener motivación para desarrollarte profesionalmente. Te brindaremos toda la capacitación necesaria.
+                Los requisitos básicos incluyen ser mayor de edad, contar con
+                disponibilidad de tiempo y tener motivación para desarrollarte
+                profesionalmente. Te brindaremos toda la capacitación necesaria.
               </div>
             </div>
           </div>
 
           <div class="border-t border-gray-300 pt-4">
-            <button 
+            <button
               class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Cuándo recibo mis comisiones?</span>
-              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              <svg
+                class="faq-icon w-6 h-6 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"></path>
               </svg>
             </button>
             <div class="faq-content hidden overflow-hidden">
               <div class="py-4 text-gray-700 paragraph-2">
-                Las comisiones se pagan dos veces por semana: los martes y viernes. Mantenemos total transparencia en los montos y fechas de pago.
+                Las comisiones se pagan dos veces por semana: los martes y
+                viernes. Mantenemos total transparencia en los montos y fechas
+                de pago.
               </div>
             </div>
           </div>
 
           <div class="border-t border-gray-300 pt-4">
-            <button 
+            <button
               class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Ofrecen capacitación inicial?</span>
-              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              <svg
+                class="faq-icon w-6 h-6 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"></path>
               </svg>
             </button>
             <div class="faq-content hidden overflow-hidden">
               <div class="py-4 text-gray-700 paragraph-2">
-                Sí, contamos con Carobra University, nuestra plataforma de capacitación continua que incluye entrenamientos digitales y presenciales, manuales de ventas y programas de desarrollo.
+                Sí, contamos con Carobra University, nuestra plataforma de
+                capacitación continua que incluye entrenamientos digitales y
+                presenciales, manuales de ventas y programas de desarrollo.
               </div>
             </div>
           </div>
 
           <div class="border-t border-b border-gray-300 pt-4 pb-4">
-            <button 
+            <button
               class="faq-button w-full flex items-center justify-between text-left paragraph-2 font-medium text-carobra-dark py-3 hover:text-carobra-light transition-colors"
               aria-expanded="false"
             >
               <span>¿Puedo trabajar desde cualquier parte de México?</span>
-              <svg class="faq-icon w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              <svg
+                class="faq-icon w-6 h-6 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"></path>
               </svg>
             </button>
             <div class="faq-content hidden overflow-hidden">
               <div class="py-4 text-gray-700 paragraph-2">
-                Sí, contamos con presencia en todo el país a través de nuestras 38 sucursales y canales digitales. Puedes trabajar desde donde te encuentres con el respaldo de nuestra red.
+                Sí, contamos con presencia en todo el país a través de nuestras
+                38 sucursales y canales digitales. Puedes trabajar desde donde
+                te encuentres con el respaldo de nuestra red.
               </div>
             </div>
           </div>
@@ -352,36 +458,39 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
         Hoy <span class="text-carobra-primary">Construimos</span> el Mañana
       </h2>
       <p class="text-gray-700 mb-8 paragraph-1">
-        Con el mejor sistema de comisiones, capacitaciones constantes y reconocimiento a tus logros, en Carobra tu éxito está garantizado.
+        Con el mejor sistema de comisiones, capacitaciones constantes y
+        reconocimiento a tus logros, en Carobra tu éxito está garantizado.
       </p>
-      <a href="/carrera" class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block">
+      <a
+        href="/carrera"
+        class="bg-gray-800 hover:bg-gray-900 text-gray-100 font-medium py-3 px-8 rounded-lg transition-colors inline-block"
+      >
         Empieza tu camino con nosotros
       </a>
     </div>
   </section>
 
-
   <script>
     // Botón "Leer más" para testimonios largos en mobile
-    document.querySelectorAll('.leer-mas-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    document.querySelectorAll(".leer-mas-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
         const button = e.target as HTMLButtonElement;
-        const article = button.closest('article');
-        const textoCorto = article?.querySelector('.testimonio-texto-corto');
-        const preview = textoCorto?.querySelector('.texto-preview');
-        const completo = textoCorto?.querySelector('.texto-completo');
-        
+        const article = button.closest("article");
+        const textoCorto = article?.querySelector(".testimonio-texto-corto");
+        const preview = textoCorto?.querySelector(".texto-preview");
+        const completo = textoCorto?.querySelector(".texto-completo");
+
         if (preview && completo) {
-          const estaExpandido = completo.classList.contains('hidden');
-          
+          const estaExpandido = completo.classList.contains("hidden");
+
           if (estaExpandido) {
-            preview.classList.add('hidden');
-            completo.classList.remove('hidden');
-            button.textContent = 'Leer menos';
+            preview.classList.add("hidden");
+            completo.classList.remove("hidden");
+            button.textContent = "Leer menos";
           } else {
-            preview.classList.remove('hidden');
-            completo.classList.add('hidden');
-            button.textContent = 'Leer más';
+            preview.classList.remove("hidden");
+            completo.classList.add("hidden");
+            button.textContent = "Leer más";
           }
         }
       });
@@ -389,61 +498,62 @@ const testimoniosAsesores = asesores.length > 0 ? asesores : [
 
     // Carrusel de testimonios
     let currentTestimonio = 0;
-    const testimonios = document.querySelectorAll('.testimonio-item');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const testimonios = document.querySelectorAll(".testimonio-item");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
 
     function showTestimonio(index) {
       testimonios.forEach((item, i) => {
         if (i === index) {
-          item.classList.remove('hidden');
+          item.classList.remove("hidden");
         } else {
-          item.classList.add('hidden');
+          item.classList.add("hidden");
         }
       });
     }
 
     if (prevBtn && nextBtn) {
-      prevBtn.addEventListener('click', () => {
-        currentTestimonio = (currentTestimonio - 1 + testimonios.length) % testimonios.length;
+      prevBtn.addEventListener("click", () => {
+        currentTestimonio =
+          (currentTestimonio - 1 + testimonios.length) % testimonios.length;
         showTestimonio(currentTestimonio);
       });
 
-      nextBtn.addEventListener('click', () => {
+      nextBtn.addEventListener("click", () => {
         currentTestimonio = (currentTestimonio + 1) % testimonios.length;
         showTestimonio(currentTestimonio);
       });
     }
 
     // FAQ Acordeones
-    const faqButtons = document.querySelectorAll('.faq-button');
-    
-    faqButtons.forEach(button => {
-      button.addEventListener('click', () => {
+    const faqButtons = document.querySelectorAll(".faq-button");
+
+    faqButtons.forEach((button) => {
+      button.addEventListener("click", () => {
         const content = button.nextElementSibling;
-        const icon = button.querySelector('.faq-icon');
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        
+        const icon = button.querySelector(".faq-icon");
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+
         // Cerrar todos los otros acordeones
-        faqButtons.forEach(otherButton => {
+        faqButtons.forEach((otherButton) => {
           if (otherButton !== button) {
             const otherContent = otherButton.nextElementSibling;
-            const otherIcon = otherButton.querySelector('.faq-icon');
-            otherButton.setAttribute('aria-expanded', 'false');
-            otherContent.classList.add('hidden');
-            otherIcon.style.transform = 'rotate(0deg)';
+            const otherIcon = otherButton.querySelector(".faq-icon");
+            otherButton.setAttribute("aria-expanded", "false");
+            otherContent.classList.add("hidden");
+            otherIcon.style.transform = "rotate(0deg)";
           }
         });
-        
+
         // Toggle el acordeon actual
         if (isExpanded) {
-          button.setAttribute('aria-expanded', 'false');
-          content.classList.add('hidden');
-          icon.style.transform = 'rotate(0deg)';
+          button.setAttribute("aria-expanded", "false");
+          content.classList.add("hidden");
+          icon.style.transform = "rotate(0deg)";
         } else {
-          button.setAttribute('aria-expanded', 'true');
-          content.classList.remove('hidden');
-          icon.style.transform = 'rotate(45deg)';
+          button.setAttribute("aria-expanded", "true");
+          content.classList.remove("hidden");
+          icon.style.transform = "rotate(45deg)";
         }
       });
     });

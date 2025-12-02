@@ -1,47 +1,62 @@
 ---
 export const prerender = true;
 
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import heroImage from '../assets/images/index/hero-index.webp';
-import nosotrosImage from '../assets/images/index/nosotros-index.webp';
-import servicioPensionImage from '../assets/images/index/servicio-pension.webp';
-import servicioSeguroImage from '../assets/images/index/servicio-seguro.webp';
-import servicioInversionesImage from '../assets/images/index/servicio-inversiones.webp';
-import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/index/hero-index.webp";
+import nosotrosImage from "../assets/images/index/nosotros-index.webp";
+import servicioPensionImage from "../assets/images/index/servicio-pension.webp";
+import servicioSeguroImage from "../assets/images/index/servicio-seguro.webp";
+import servicioInversionesImage from "../assets/images/index/servicio-inversiones.webp";
+import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp";
 ---
 
-<Layout title="Carobra - Broker #1 en AFORE | Mejor Consultora Financiera México 2025" description="Únete al broker líder en servicios financieros. #1 en AFORE por 12 años consecutivos. Más de 1,500 asesores, comisiones competitivas y capacitación continua. Crece como asesor financiero con Carobra.">
-  
+<Layout
+  title="Carobra - Broker #1 en AFORE | Mejor Consultora Financiera México 2025"
+  description="Únete al broker líder en servicios financieros. #1 en AFORE por 12 años consecutivos. Más de 2000 asesores, comisiones competitivas y capacitación continua. Crece como asesor financiero con Carobra."
+>
   <!-- Hero Section -->
   <section class="bg-carobra-light-bg min-h-screen flex">
     <div class="w-full h-full min-h-screen flex flex-col lg:flex-row">
       <!-- Left Content -->
-      <div class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]">
+      <div
+        class="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-12 lg:pl-[max(3rem,calc((100vw-80rem)/2))]"
+      >
         <div class="max-w-2xl">
           <h1 class="mb-8 text-carobra-dark font-bold text-center lg:text-left">
             El mejor lugar para crecer como asesor financiero
           </h1>
-          
+
           <p class="mb-8 text-gray-700 paragraph-2">
-            +13 años de experiencia, más de 1,500 asesores y 12 años consecutivos como Broker #1 en AFORE.
+            14 años de experiencia, más de 2000 asesores y única empresa
+            especializada en asesoría de afore en México.
           </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="/carrera" aria-label="Únete a Carobra y comienza tu carrera como asesor financiero" class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors text-center">
+
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+          >
+            <a
+              href="/carrera"
+              aria-label="Únete a Carobra y comienza tu carrera como asesor financiero"
+              class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors text-center"
+            >
               Únete a Carobra
             </a>
-            <a href="/beneficios" aria-label="Descubre los beneficios de trabajar en Carobra" class="btn-secondary border-2 border-carobra-primary text-carobra-primary hover:bg-carobra-primary hover:text-white py-3 px-8 rounded-lg transition-colors text-center">
+            <a
+              href="/beneficios"
+              aria-label="Descubre los beneficios de trabajar en Carobra"
+              class="btn-secondary border-2 border-carobra-primary text-carobra-primary hover:bg-carobra-primary hover:text-white py-3 px-8 rounded-lg transition-colors text-center"
+            >
               Descubre beneficios
             </a>
           </div>
         </div>
       </div>
-      
+
       <!-- Right Image -->
       <div class="hidden lg:block lg:w-1/2 relative min-h-screen">
-        <Image 
-          src={heroImage} 
+        <Image
+          src={heroImage}
           alt="El mejor lugar para crecer como asesor financiero"
           class="absolute inset-0 w-full h-full object-cover"
           loading="eager"
@@ -59,78 +74,105 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
           Soluciones financieras con propósito
         </h2>
         <p class="text-gray-700 max-w-4xl mx-auto paragraph-1">
-          En Carobra transformamos cada servicio en una herramienta que impulsa el crecimiento de asesores y clientes
+          En Carobra transformamos cada servicio en una herramienta que impulsa
+          el crecimiento de asesores y clientes
         </p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch"
+      >
         <!-- Pensiones y AFORE -->
         <div class="text-center flex flex-col">
           <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <Image 
-              src={servicioPensionImage} 
+            <Image
+              src={servicioPensionImage}
               alt="Pensiones y AFORE"
               class="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center">Pensiones y Afore</h3>
+          <h3
+            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+          >
+            Pensiones y Afore
+          </h3>
           <p class="text-gray-600 paragraph-2 flex-grow">
-            Ayudamos a nuestros clientes a planear y optimizar su retiro con las mejores opciones del mercado
+            Ayudamos a nuestros clientes a planear y optimizar su retiro con las
+            mejores opciones del mercado
           </p>
         </div>
 
         <!-- Seguros -->
         <div class="text-center flex flex-col">
           <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <Image 
-              src={servicioSeguroImage} 
+            <Image
+              src={servicioSeguroImage}
               alt="Seguros"
               class="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center">Seguros</h3>
+          <h3
+            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+          >
+            Seguros
+          </h3>
           <p class="text-gray-600 paragraph-2 flex-grow">
-            Protección integral para familias y empresas, respaldadas por aseguradoras líderes que garantizan confianza
+            Protección integral para familias y empresas, respaldadas por
+            aseguradoras líderes que garantizan confianza
           </p>
         </div>
 
         <!-- Inversiones -->
         <div class="text-center flex flex-col">
           <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <Image 
-              src={servicioInversionesImage} 
+            <Image
+              src={servicioInversionesImage}
               alt="Inversiones Skandia"
               class="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center">Inversiones Skandia</h3>
+          <h3
+            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+          >
+            Inversiones Skandia
+          </h3>
           <p class="text-gray-600 paragraph-2 flex-grow">
-            Alternativas de inversión confiables que generan crecimiento real a largo plazo, con soporte especializado
+            Alternativas de inversión confiables que generan crecimiento real a
+            largo plazo, con soporte especializado
           </p>
         </div>
 
         <!-- Asesoría -->
         <div class="text-center flex flex-col">
           <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <Image 
-              src={servicioAsesoriaImage} 
+            <Image
+              src={servicioAsesoriaImage}
               alt="Asesoría Personalizada"
               class="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center">Asesoría Personalizada</h3>
+          <h3
+            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+          >
+            Asesoría Personalizada
+          </h3>
           <p class="text-gray-600 paragraph-2 flex-grow">
-            Acompañamiento experto, formación continua y herramientas digitales que facilitan tu labor como asesor
+            Acompañamiento experto, formación continua y herramientas digitales
+            que facilitan tu labor como asesor
           </p>
         </div>
       </div>
-      
+
       <div class="text-center mt-16">
-        <a href="/servicios" aria-label="Ver todos nuestros servicios financieros" class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors inline-block">
+        <a
+          href="/servicios"
+          aria-label="Ver todos nuestros servicios financieros"
+          class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors inline-block"
+        >
           Ver Servicios
         </a>
       </div>
@@ -143,45 +185,66 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
       <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
         <!-- Left Image -->
         <div class="mb-12 lg:mb-0">
-          <Image 
-            src={nosotrosImage} 
+          <Image
+            src={nosotrosImage}
             alt="Quiénes somos en Carobra"
             class="rounded-lg w-full h-auto object-cover"
             loading="lazy"
           />
         </div>
-        
+
         <!-- Right Content -->
         <div>
-          <h2 class="text-carobra-dark mb-6">
-            Quiénes somos en Carobra
-          </h2>
+          <h2 class="text-carobra-dark mb-6">Quiénes somos en Carobra</h2>
           <h3 class="text-gray-700 mb-8">
-            <span class="font-bold text-carobra-primary">13 años</span> impulsando el crecimiento de asesores y asegurando el futuro financiero de miles de clientes.
+            <span class="font-bold text-carobra-primary">14 años</span> impulsando
+            el crecimiento de asesores y asegurando el futuro financiero de miles
+            de clientes.
           </h3>
-          
+
           <div class="space-y-6 mb-8 text-gray-700">
             <p class="paragraph-2">
-              En Carobra somos una firma de consultoría integral que ofrece soluciones en <span class="font-semibold text-carobra-primary">pensiones y AFORE, seguros, inversiones, crédito e inmobiliario</span>. 
-              Nuestro propósito es acompañar a cada cliente con estrategias que maximicen sus ahorros, fortalezcan su seguridad y generen crecimiento sostenible.
+              En Carobra somos una firma de consultoría integral que ofrece
+              soluciones en <span class="font-semibold text-carobra-primary"
+                >pensiones y AFORE, seguros, inversiones, crédito e inmobiliario</span
+              >. Nuestro propósito es acompañar a cada cliente con estrategias
+              que maximicen sus ahorros, fortalezcan su seguridad y generen
+              crecimiento sostenible.
             </p>
-            
+
             <p class="paragraph-2">
-              Con más de 1,500 asesores en todo el país y alianzas con instituciones líderes como <span class="font-semibold text-carobra-primary">Skandia, Quálitas, Bradesco e Infinity</span>, 
-              hemos construido una red que combina experiencia, confianza e innovación.
+              Con más de 2,000 asesores en todo el país y alianzas con
+              instituciones líderes como <span
+                class="font-semibold text-carobra-primary"
+                >Skandia, Quálitas, Bradesco e Infinity</span
+              >, hemos construido una red que combina experiencia, confianza e
+              innovación.
             </p>
-            
+
             <p class="paragraph-2">
-              Durante 12 años consecutivos hemos sido reconocidos como <span class="font-bold text-carobra-primary">Broker #1 en AFORE</span>, 
-              pero lo que realmente nos distingue es la diversidad de servicios y el compromiso de nuestro equipo en transformar el futuro financiero de miles de personas.
+              Durante 14 años consecutivos hemos sido reconocidos como <span
+                class="font-bold text-carobra-primary">Broker #1 en AFORE</span
+              >, pero lo que realmente nos distingue es la diversidad de
+              servicios y el compromiso de nuestro equipo en transformar el
+              futuro financiero de miles de personas.
             </p>
           </div>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="/nosotros" aria-label="Conoce la historia de Carobra y nuestro equipo" class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors text-center">
+
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+          >
+            <a
+              href="/nosotros"
+              aria-label="Conoce la historia de Carobra y nuestro equipo"
+              class="btn-primary bg-carobra-primary hover:bg-carobra-dark text-white py-3 px-8 rounded-lg transition-colors text-center"
+            >
               Conoce nuestra historia
             </a>
-            <a href="/beneficios" aria-label="Ver más información sobre los beneficios de Carobra" class="btn-secondary border-2 border-carobra-primary text-carobra-primary hover:bg-carobra-primary hover:text-white py-3 px-8 rounded-lg transition-colors text-center">
+            <a
+              href="/beneficios"
+              aria-label="Ver más información sobre los beneficios de Carobra"
+              class="btn-secondary border-2 border-carobra-primary text-carobra-primary hover:bg-carobra-primary hover:text-white py-3 px-8 rounded-lg transition-colors text-center"
+            >
               Ver más sobre Carobra
             </a>
           </div>
@@ -189,6 +252,4 @@ import servicioAsesoriaImage from '../assets/images/index/servicio-asesoria.webp
       </div>
     </div>
   </section>
-
-  
 </Layout>

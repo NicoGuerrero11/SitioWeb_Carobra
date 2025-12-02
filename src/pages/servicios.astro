@@ -1,45 +1,47 @@
 ---
 export const prerender = true;
 
-import Layout from '../layouts/Layout.astro';
-import HeroServicios from '../components/servicios/HeroServicios.astro';
-import ServicioItem from '../components/servicios/ServicioItem.astro';
-import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+import Layout from "../layouts/Layout.astro";
+import HeroServicios from "../components/servicios/HeroServicios.astro";
+import ServicioItem from "../components/servicios/ServicioItem.astro";
+import SchemaBreadcrumbs from "../components/seo/SchemaBreadcrumbs.astro";
 
 // Importar imágenes
-import pensionesImg from '../assets/images/servicios/pensiones.webp';
-import segurosImg from '../assets/images/servicios/seguros.webp';
-import inversionesImg from '../assets/images/servicios/inversiones.webp';
-import creditosImg from '../assets/images/servicios/creditos.webp';
-import tarjetaImg from '../assets/images/servicios/tarjeta.webp';
-import patrimonioCadaImg from '../assets/images/servicios/patrimonio-cada.webp';
-import asesoriaImg from '../assets/images/servicios/asesoria.webp';
+import pensionesImg from "../assets/images/servicios/pensiones.webp";
+import segurosImg from "../assets/images/servicios/seguros.webp";
+import inversionesImg from "../assets/images/servicios/inversiones.webp";
+import creditosImg from "../assets/images/servicios/creditos.webp";
+import tarjetaImg from "../assets/images/servicios/tarjeta.webp";
+import patrimonioCadaImg from "../assets/images/servicios/patrimonio-cada.webp";
+import asesoriaImg from "../assets/images/servicios/asesoria.webp";
 ---
 
-<SchemaBreadcrumbs items={[
-  { name: 'Inicio', url: '/' },
-  { name: 'Servicios', url: '/servicios' }
-]} />
+<SchemaBreadcrumbs
+  items={[
+    { name: "Inicio", url: "/" },
+    { name: "Servicios", url: "/servicios" },
+  ]}
+/>
 
-<Layout 
-  title="Servicios Financieros | Carobra - Pensiones, Seguros, Inversiones y Crédito" 
+<Layout
+  title="Servicios Financieros | Carobra - Pensiones, Seguros, Inversiones y Crédito"
   description="Broker #1 en AFORE. Servicios financieros integrales: pensiones con Principal, seguros con Quálitas, inversiones con Skandia, créditos con Bradesco. 13 años de experiencia, 1,500+ asesores en México."
 >
   <HeroServicios />
-  
+
   <!-- Pensiones y AFORE -->
-  <ServicioItem 
+  <ServicioItem
     titulo="Pensiones y Afore"
     imagen={pensionesImg}
     imagenAlt="Pensiones y AFORE"
     queEs="El Sistema de Ahorro para el Retiro (AFORE) en México administra las aportaciones de trabajadores y empleadores para asegurar un ingreso estable en la jubilación. Además, existen planes complementarios que permiten ampliar el ahorro con beneficios fiscales y diferentes estrategias de inversión."
-    queHace="En alianza con <strong>Principal Afore</strong>, líder en pensiones con más de 25 años en el mercado, ayudamos a nuestros clientes a tomar decisiones informadas y aprovechar al máximo su cuenta de ahorro. Nuestro papel como broker es acompañar, asesorar e intermediar para que cada trabajador entienda y optimice su plan de retiro.<br><br>Además, ponemos a disposición opciones complementarias como <strong>Plan Ideal, Slovo y Carobra 40</strong>, diseñadas para diversificar la estrategia de retiro, maximizar beneficios fiscales y brindar alternativas específicas, incluso para quienes comienzan a ahorrar después de los 40 años."
+    queHace="En alianza con <strong>Principal Afore</strong>, líder en pensiones con más de 25 años en el mercado, ayudamos a nuestros clientes a tomar decisiones informadas y aprovechar al máximo su cuenta de ahorro. Nuestro papel como broker es acompañar, asesorar e intermediar para que cada trabajador entienda y optimice su plan de retiro.<br><br>Además, ponemos a disposición opciones complementarias como <strong>Plan Ideal</strong>, diseñadas para diversificar la estrategia de retiro, maximizar beneficios fiscales y brindar alternativas específicas, incluso para quienes comienzan a ahorrar después de los 40 años."
     beneficios={[
-      'Respaldo de <strong>Principal Afore</strong>, con más de $340,000 millones administrados y millones de cuentas activas.',
-      'Reconocimiento como <strong>Broker #1 en pensiones durante 12 años consecutivos</strong>.',
-      'Portafolios de inversión diversificados: <strong>Personalizados, Premium y Skandia</strong>.',
-      'Opciones adicionales como <strong>Plan Ideal, Slovo y Carobra 40</strong>, que permiten ajustar el ahorro según la edad y el perfil del cliente.',
-      'Red de <strong>38 sucursales en México</strong> y canales digitales de atención (app, WhatsApp y call center).'
+      "Respaldo de <strong>Principal Afore</strong>, con más de $340,000 millones administrados y millones de cuentas activas.",
+      "Reconocimiento como <strong>Broker #1 en pensiones durante 12 años consecutivos</strong>.",
+      "Portafolios de inversión diversificados: <strong>Personalizados, Premium y Skandia</strong>.",
+      "Opciones adicionales como <strong>Plan Ideal</strong>, que permiten ajustar el ahorro según la edad y el perfil del cliente.",
+      "Red de <strong>38 sucursales en México</strong> y canales digitales de atención (app, WhatsApp y call center).",
     ]}
     ctaText="Quiero asesoría en mi plan de retiro"
     ctaLink="/contacto"
@@ -47,17 +49,17 @@ import asesoriaImg from '../assets/images/servicios/asesoria.webp';
   />
 
   <!-- Seguros -->
-  <ServicioItem 
+  <ServicioItem
     titulo="Seguros"
     imagen={segurosImg}
     imagenAlt="Seguros"
     queEs="Los seguros son herramientas financieras diseñadas para proteger a las personas, familias y empresas frente a riesgos como accidentes, enfermedades, daños materiales o pérdidas inesperadas. Funcionan como un respaldo económico que ofrece tranquilidad y estabilidad en situaciones imprevistas."
     queHace="En Carobra trabajamos en alianza con aseguradoras líderes como <strong>Quálitas y otras compañías de prestigio</strong>, para ofrecer pólizas personalizadas que se adapten a cada necesidad. Nuestro papel como broker es ayudar a los clientes a identificar los riesgos más relevantes, comparar opciones y contratar la cobertura adecuada con el respaldo de aseguradoras sólidas."
     beneficios={[
-      'Portafolio amplio: seguros de vida, gastos médicos, autos, hogar y empresariales.',
-      'Respaldo de aseguradoras con <strong>años de experiencia y reconocimiento nacional</strong>.',
-      'Asesoría objetiva: no vendemos una sola póliza, sino que analizamos opciones para cada cliente.',
-      'Acompañamiento durante todo el ciclo: desde la contratación hasta la gestión de siniestros.'
+      "Portafolio amplio: seguros de vida, gastos médicos, autos, hogar y empresariales.",
+      "Respaldo de aseguradoras con <strong>años de experiencia y reconocimiento nacional</strong>.",
+      "Asesoría objetiva: no vendemos una sola póliza, sino que analizamos opciones para cada cliente.",
+      "Acompañamiento durante todo el ciclo: desde la contratación hasta la gestión de siniestros.",
     ]}
     ctaText="Solicitar información sobre seguros"
     ctaLink="/contacto"
@@ -66,94 +68,94 @@ import asesoriaImg from '../assets/images/servicios/asesoria.webp';
   />
 
   <!-- Inversiones -->
-  <ServicioItem 
+  <ServicioItem
     titulo="Inversiones"
     imagen={inversionesImg}
     imagenAlt="Inversiones"
     queEs="Las inversiones son herramientas financieras que permiten hacer crecer el capital a través de portafolios diseñados para distintos perfiles: desde quienes buscan seguridad y estabilidad hasta quienes desean mayores rendimientos a largo plazo."
     queHace="En Carobra conectamos a nuestros clientes con opciones de inversión sólidas gracias a alianzas con instituciones de prestigio como <strong>Skandia e Infinity</strong>. Nuestro papel como broker es acercar estas alternativas, explicar sus características y acompañar a los asesores para que puedan guiar mejor a cada cliente en la toma de decisiones."
     beneficios={[
-      '<strong>Skandia</strong>: portafolios diversificados y flexibles que se ajustan a distintos perfiles de riesgo y horizonte de inversión.',
-      '<strong>Infinity</strong>: opciones de inversión enfocadas en generar altos rendimientos.',
-      'Acceso a productos respaldados por instituciones reconocidas a nivel nacional e internacional.',
-      'Acompañamiento personalizado para elegir la estrategia más adecuada.'
+      "<strong>Skandia</strong>: portafolios diversificados y flexibles que se ajustan a distintos perfiles de riesgo y horizonte de inversión.",
+      "<strong>Infinity</strong>: opciones de inversión enfocadas en generar altos rendimientos.",
+      "Acceso a productos respaldados por instituciones reconocidas a nivel nacional e internacional.",
+      "Acompañamiento personalizado para elegir la estrategia más adecuada.",
     ]}
     ctaText="Explorar opciones de inversión"
     ctaLink="/contacto"
     imagenIzquierda={true}
   />
 
-    <!-- Credito -->
-    <ServicioItem
-            titulo="Créditos"
-            imagen={creditosImg}
-            imagenAlt="Créditos"
-            queEs="Los créditos son herramientas financieras que permiten a personas y empresas acceder a recursos económicos para consumo, inversión o consolidación de deudas, con planes de pago estructurados según sus necesidades."
-            queHace="A través de nuestras alianzas con Bradesco y Bradescard, acercamos a los clientes productos de crédito respaldados por una de las instituciones financieras más importantes de Latinoamérica. Nuestro papel como broker es facilitar el acceso, brindar asesoría clara y acompañar el proceso para que cada cliente obtenga la solución adecuada.Además, contamos con la alianza de Creditaria, que nos permite ampliar la oferta hacia el crédito hipotecario y planes de financiamiento personal, dándole a los asesores más herramientas para cubrir distintas necesidades de sus clientes."
-            beneficios={[
-                'Representar a <strong> Bradesco </strong>, banco líder en la región, genera confianza inmediata en los clientes.',
-                'Portafolio de créditos diversificado con opciones de consumo y financiamiento accesibles.',
-                'Proceso ágil respaldado por la experiencia de un broker con más de 12 años en el mercado.',
-                'Acompañamiento cercano al cliente durante la contratación y seguimiento del crédito.'
-            ]}
-            ctaText="Conocer Alternativas de Crédito"
-            ctaLink="/contacto"
-            imagenIzquierda={false}
-            fondoBlanco={true}
-    />
+  <!-- Credito -->
+  <ServicioItem
+    titulo="Créditos"
+    imagen={creditosImg}
+    imagenAlt="Créditos"
+    queEs="Los créditos son herramientas financieras que permiten a personas y empresas acceder a recursos económicos para consumo, inversión o consolidación de deudas, con planes de pago estructurados según sus necesidades."
+    queHace="A través de nuestras alianzas con <strong>Multiva</strong>, acercamos a los clientes productos de crédito respaldados por una de las instituciones financieras más importantes de Latinoamérica. Nuestro papel como broker es facilitar el acceso, brindar asesoría clara y acompañar el proceso para que cada cliente obtenga la solución adecuada. Además, contamos con <strong>Carobra 40</strong>, que nos permite ampliar la oferta hacia el crédito hipotecario y planes de financiamiento personal, dándole a los asesores más herramientas para cubrir distintas necesidades de sus clientes."
+    beneficios={[
+      "Representar a <strong> Multiva </strong>, banco líder en la región, genera confianza inmediata en los clientes.",
+      "Portafolio de créditos diversificado con opciones de consumo y financiamiento accesibles.",
+      "Proceso ágil respaldado por la experiencia de un broker con más de 14 años en el mercado.",
+      "Acompañamiento cercano al cliente durante la contratación y seguimiento del crédito.",
+    ]}
+    ctaText="Conocer Alternativas de Crédito"
+    ctaLink="/contacto"
+    imagenIzquierda={false}
+    fondoBlanco={true}
+  />
 
-    <!-- Tarjeta de Credito -->
-    <ServicioItem
-            titulo="Tarjeta de Crédito"
-            imagen={tarjetaImg}
-            imagenAlt="Tarjeta de Crédito"
-            queEs="Las tarjetas de crédito son una herramienta financiera que permite a los clientes acceder a financiamiento inmediato para compras, con opciones de pago flexibles y beneficios adicionales según la institución emisora."
-            queHace="En alianza con <strong>Dportenis</strong>, ofrecemos a nuestros asesores la posibilidad de acercar a sus clientes un producto de crédito accesible y con respaldo comercial. Nuestro papel como broker es facilitar la promoción y contratación de estas tarjetas, brindando soporte y asesoría durante todo el proceso."
-            beneficios={[
-                'Acceso a un producto de crédito respaldado por una marca reconocida en el mercado nacional.',
-                'Opción de financiamiento diseñada para un público amplio, con procesos de aprobación accesibles.',
-                'Respaldo del broker para acompañar al cliente desde la solicitud hasta el uso responsable de la tarjeta.',
-                'Un portafolio de productos que diversifica la oferta de los asesores más allá de pensiones o seguros.'
-            ]}
-            ctaText="Solicitar mi tarjeta"
-            ctaLink="/contacto"
-            imagenIzquierda={true}
-    />
+  <!-- Tarjeta de Credito -->
+  <ServicioItem
+    titulo="Tarjeta de Crédito"
+    imagen={tarjetaImg}
+    imagenAlt="Tarjeta de Crédito"
+    queEs="Las tarjetas de crédito son una herramienta financiera que permite a los clientes acceder a financiamiento inmediato para compras, con opciones de pago flexibles y beneficios adicionales según la institución emisora."
+    queHace="En alianza con <strong>Bradescard</strong>, <strong>Banco Falabella</strong>, <strong>Sears</strong> e <strong>Invex</strong>, ofrecemos a nuestros asesores la posibilidad de acercar a sus clientes un producto de crédito accesible y con respaldo comercial. Nuestro papel como broker es facilitar la promoción y contratación de estas tarjetas, brindando soporte y asesoría durante todo el proceso."
+    beneficios={[
+      "Acceso a un producto de crédito respaldado por una marca reconocida en el mercado nacional.",
+      "Opción de financiamiento diseñada para un público amplio, con procesos de aprobación accesibles.",
+      "Respaldo del broker para acompañar al cliente desde la solicitud hasta el uso responsable de la tarjeta.",
+      "Un portafolio de productos que diversifica la oferta de los asesores más allá de pensiones o seguros.",
+    ]}
+    ctaText="Solicitar mi tarjeta"
+    ctaLink="/contacto"
+    imagenIzquierda={true}
+  />
 
-    <!-- División Patrimonial e Inmobiliaria -->
-    <ServicioItem
-            titulo="División Patrimonial e Inmobiliaria"
-            imagen={patrimonioCadaImg}
-            imagenAlt="División Patrimonial e Inmobiliaria"
-            queEs="La gestión patrimonial e inmobiliaria permite a las personas proteger y hacer crecer su patrimonio a través de inversiones en bienes raíces y soluciones de asesoría financiera. Es un camino para diversificar activos y generar valor a largo plazo."
-            queHace="En alianza con <strong>Patrimonial Ferdann</strong>, conectamos a nuestros clientes con oportunidades inmobiliarias curadas y estructuradas. Como broker, filtramos opciones, explicamos riesgos/beneficios, y acompañamos el proceso (análisis, propuesta, cierre y seguimiento) para que cada inversión encaje con el plan financiero del cliente."
-            beneficios={[
-                '<strong>Alianza con Patrimonial Ferdann</strong> para acceso a oportunidades residenciales y comerciales seleccionadas.',
-                'Curaduría y evaluación profesional antes de presentar cada proyecto.',
-                'Integración con otras soluciones (inversión, seguros y retiro) para una estrategia patrimonial completa.',
-                'Proceso claro y transparente: scouting → evaluación → propuesta → cierre → seguimiento.'
-            ]}
-            ctaText="Recibir información de oportunidades patrimoniales"
-            ctaLink="/contacto"
-            imagenIzquierda={false}
-            fondoBlanco={true}
-    />
+  <!-- División Patrimonial e Inmobiliaria -->
+  <ServicioItem
+    titulo="División Patrimonial e Inmobiliaria"
+    imagen={patrimonioCadaImg}
+    imagenAlt="División Patrimonial e Inmobiliaria"
+    queEs="La gestión patrimonial e inmobiliaria permite a las personas proteger y hacer crecer su patrimonio a través de inversiones en bienes raíces y soluciones de asesoría financiera. Es un camino para diversificar activos y generar valor a largo plazo."
+    queHace="En alianza con <strong>Patrimonial Ferdann</strong>, conectamos a nuestros clientes con oportunidades inmobiliarias curadas y estructuradas. Como broker, filtramos opciones, explicamos riesgos/beneficios, y acompañamos el proceso (análisis, propuesta, cierre y seguimiento) para que cada inversión encaje con el plan financiero del cliente."
+    beneficios={[
+      "<strong>Alianza con Patrimonial Ferdann</strong> para acceso a oportunidades residenciales y comerciales seleccionadas.",
+      "Curaduría y evaluación profesional antes de presentar cada proyecto.",
+      "Integración con otras soluciones (inversión, seguros y retiro) para una estrategia patrimonial completa.",
+      "Proceso claro y transparente: scouting → evaluación → propuesta → cierre → seguimiento.",
+    ]}
+    ctaText="Recibir información de oportunidades patrimoniales"
+    ctaLink="/contacto"
+    imagenIzquierda={false}
+    fondoBlanco={true}
+  />
 
-    <!-- Asesoría Personalizada -->
-    <ServicioItem
-            titulo="Asesoría Personalizada"
-            imagen={asesoriaImg}
-            imagenAlt="Asesoría Personalizada"
-            queEs="Cada cliente tiene necesidades financieras distintas: algunos buscan protegerse, otros crecer su capital, y otros asegurar su retiro. La asesoría personalizada es la clave para transformar esos objetivos en planes reales."
-            queHace="En Carobra ponemos al centro el acompañamiento humano. Nuestros asesores no solo ofrecen productos, sino que entienden la situación de cada persona y diseñan estrategias a la medida. Nuestro papel como broker es brindarles capacitación, herramientas y respaldo para que esa asesoría sea clara, confiable y cercana."
-            beneficios={[
-                'Diagnóstico financiero individual antes de recomendar soluciones.',
-                'Estrategias que combinan pensiones, seguros, inversión, crédito e inmobiliario.',
-                'Acompañamiento continuo: desde la primera consulta hasta el seguimiento a largo plazo.',
-                'Respaldo de una red con más de <strong>1,500 asesores capacitados y 12 años como broker líder.</strong>'
-            ]}
-            ctaText="Hablar con un asesor de Carobra"
-            ctaLink="/contacto"
-            imagenIzquierda={true}
-    />
+  <!-- Asesoría Personalizada -->
+  <ServicioItem
+    titulo="Asesoría Personalizada"
+    imagen={asesoriaImg}
+    imagenAlt="Asesoría Personalizada"
+    queEs="Cada cliente tiene necesidades financieras distintas: algunos buscan protegerse, otros crecer su capital, y otros asegurar su retiro. La asesoría personalizada es la clave para transformar esos objetivos en planes reales."
+    queHace="En Carobra ponemos al centro el acompañamiento humano. Nuestros asesores no solo ofrecen productos, sino que entienden la situación de cada persona y diseñan estrategias a la medida. Nuestro papel como broker es brindarles capacitación, herramientas y respaldo para que esa asesoría sea clara, confiable y cercana."
+    beneficios={[
+      "Diagnóstico financiero individual antes de recomendar soluciones.",
+      "Estrategias que combinan pensiones, seguros, inversión, crédito e inmobiliario.",
+      "Acompañamiento continuo: desde la primera consulta hasta el seguimiento a largo plazo.",
+      "Respaldo de una red con más de <strong>1,500 asesores capacitados y 12 años como broker líder.</strong>",
+    ]}
+    ctaText="Hablar con un asesor de Carobra"
+    ctaLink="/contacto"
+    imagenIzquierda={true}
+  />
 </Layout>
