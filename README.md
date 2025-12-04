@@ -62,6 +62,7 @@ Sitio web corporativo para **Carobra Consultores Especializados**, empresa líde
 │   │   ├── beneficios.astro     # Página de beneficios
 │   │   ├── carrera.astro        # Trabaja con nosotros
 │   │   ├── contacto.astro       # Página de contacto
+│   │   ├── galeria.astro        # Galería de fotos desde Flickr
 │   │   ├── index.astro          # Página principal
 │   │   ├── nosotros.astro       # Sobre nosotros
 │   │   └── servicios.astro      # Página de servicios
@@ -82,15 +83,17 @@ Sitio web corporativo para **Carobra Consultores Especializados**, empresa líde
 - 🎁 **Beneficios:** Descripción detallada de beneficios para asesores
 - 👥 **Nosotros:** Historia, timeline, testimonios, galería de fotos
 - 💼 **Servicios:** Overview de todos los servicios financieros
+- 📸 **Galería:** Widget embed de Flickr (sin costo)
 - 📝 **Trabaja con nosotros:** Formulario de aplicación con upload de CV
 - 📞 **Contacto:** Formulario de contacto, mapa, información de ubicación
 
 ### ✅ **Funcionalidades**
+- 📸 **Galería Flickr** con widget embed oficial (sin API, gratis)
 - 📧 **Envío de emails** con Resend (Nodemailer SMTP)
 - 📄 **Upload de CV** con conversión a PDF y almacenamiento en Vercel Blob
 - 📱 **Formularios funcionales** en contacto y carrera
 - 🎨 **Diseño responsive** optimizado para móvil, tablet y desktop
-- 🧭navigation** con dropdown de servicios
+- 🧭 **Navegación principal** con menú adaptativo
 
 ### ✅ **SEO y Performance**
 - 🎯 **SEO Score: 100/100** en Lighthouse
@@ -144,6 +147,8 @@ EMAIL_TO=contacto@carobra.com.mx
 # Almacenamiento opcional (Vercel Blob)
 BLOB_READ_WRITE_TOKEN=tu_token_de_vercel_blob
 ```
+
+**📸 Galería de Flickr:** La galería usa el widget embed de Flickr (gratis, sin API). Ver `GALERIA_FLICKR.md` para más información.
 
 ### Configuración de Vercel
 
