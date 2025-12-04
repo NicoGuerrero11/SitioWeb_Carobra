@@ -13,6 +13,11 @@ const FLICKR_USERNAME = "carobra";
   title="Galería de Fotos y Eventos | Carobra Consultores" 
   description="Descubre nuestra galería de fotos de eventos, convenciones, aniversarios y reconocimientos de Carobra. Más de 13 álbumes con eventos corporativos, premios Xcellence Awards, convenciones TDC y celebraciones de aniversario."
 >
+    <!-- Preload primera imagen para LCP -->
+    {albums.length > 0 && (
+        <link rel="preload" as="image" href={albums[0].coverImage} fetchpriority="high" slot="head" />
+    )}
+    
     <!-- SEO: Schema.org Markup -->
     <SchemaImageGallery albums={albums} />
     
@@ -36,7 +41,7 @@ const FLICKR_USERNAME = "carobra";
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Grid de álbumes estilo Flickr -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" style="content-visibility: auto;">
                 {albums.map((album) => (
                     <a
                         href={album.url}
@@ -49,8 +54,12 @@ const FLICKR_USERNAME = "carobra";
                             <img
                                 src={album.coverImage}
                                 alt={album.title}
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                class="w-full h-full object-cover"
                                 loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
+                                width="320"
+                                height="180"
                             />
                             <!-- Overlay con info -->
                             <div class="absolute inset-0 bg-gradient-to-t from-carobra-dark/80 via-carobra-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -93,8 +102,7 @@ const FLICKR_USERNAME = "carobra";
                         href="https://www.flickr.com/photos/carobra/albums/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-3 bg-gradient-to-r from-carobra-primary to-carobra-light text-white px-8 py-4 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
-                        style="font-family: 'Poppins', sans-serif;"
+                        class="inline-flex items-center gap-3 bg-gradient-to-r from-carobra-primary to-carobra-light text-white px-8 py-4 rounded-lg hover:opacity-90 transition-opacity duration-200"
                     >
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
@@ -111,3 +119,4 @@ const FLICKR_USERNAME = "carobra";
         </div>
     </section>
 </Layout>
+
