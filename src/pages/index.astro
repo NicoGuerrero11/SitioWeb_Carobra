@@ -9,6 +9,9 @@ import servicioPensionImage from "../assets/images/index/servicio-pension.webp";
 import servicioSeguroImage from "../assets/images/index/servicio-seguro.webp";
 import servicioInversionesImage from "../assets/images/index/servicio-inversiones.webp";
 import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp";
+import servicioCreditosImage from "../assets/images/index/servicio-creditos.webp";
+import servicioTarjetaImage from "../assets/images/index/servicio-tarjeta.webp";
+import servicioPatrimonioImage from "../assets/images/index/servicio-inmobilaria.webp";
 ---
 
 <Layout
@@ -80,11 +83,17 @@ import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
       >
         <!-- Pensiones y AFORE -->
-        <div class="text-center flex flex-col">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+        <a
+          href="/servicios#pensiones"
+          aria-label="Ver más sobre servicios de Pensiones y AFORE"
+          class="text-center flex flex-col group hover:scale-105 transition-transform duration-300"
+        >
+          <div
+            class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+          >
             <Image
               src={servicioPensionImage}
               alt="Pensiones y AFORE"
@@ -93,7 +102,7 @@ import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp
             />
           </div>
           <h3
-            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+            class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
           >
             Pensiones y Afore
           </h3>
@@ -101,11 +110,17 @@ import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp
             Ayudamos a nuestros clientes a planear y optimizar su retiro con las
             mejores opciones del mercado
           </p>
-        </div>
+        </a>
 
         <!-- Seguros -->
-        <div class="text-center flex flex-col">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+        <a
+          href="/servicios#seguros"
+          aria-label="Ver más sobre servicios de Seguros"
+          class="text-center flex flex-col group hover:scale-105 transition-transform duration-300"
+        >
+          <div
+            class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+          >
             <Image
               src={servicioSeguroImage}
               alt="Seguros"
@@ -114,7 +129,7 @@ import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp
             />
           </div>
           <h3
-            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+            class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
           >
             Seguros
           </h3>
@@ -122,11 +137,17 @@ import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp
             Protección integral para familias y empresas, respaldadas por
             aseguradoras líderes que garantizan confianza
           </p>
-        </div>
+        </a>
 
         <!-- Inversiones -->
-        <div class="text-center flex flex-col">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+        <a
+          href="/servicios#inversiones"
+          aria-label="Ver más sobre servicios de Inversiones"
+          class="text-center flex flex-col group hover:scale-105 transition-transform duration-300"
+        >
+          <div
+            class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+          >
             <Image
               src={servicioInversionesImage}
               alt="Inversiones Skandia"
@@ -135,35 +156,127 @@ import servicioAsesoriaImage from "../assets/images/index/servicio-asesoria.webp
             />
           </div>
           <h3
-            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+            class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
           >
-            Inversiones Skandia
+            Inversiones
           </h3>
           <p class="text-gray-600 paragraph-2 flex-grow">
             Alternativas de inversión confiables que generan crecimiento real a
             largo plazo, con soporte especializado
           </p>
-        </div>
+        </a>
 
-        <!-- Asesoría -->
-        <div class="text-center flex flex-col">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+        <!-- Créditos -->
+        <a
+          href="/servicios#creditos"
+          aria-label="Ver más sobre servicios de Créditos"
+          class="text-center flex flex-col group hover:scale-105 transition-transform duration-300"
+        >
+          <div
+            class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+          >
             <Image
-              src={servicioAsesoriaImage}
-              alt="Asesoría Personalizada"
+              src={servicioCreditosImage}
+              alt="Créditos"
               class="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
           <h3
-            class="text-carobra-primary mb-4 min-h-[3.5rem] flex items-center justify-center"
+            class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
           >
-            Asesoría Personalizada
+            Créditos
           </h3>
           <p class="text-gray-600 paragraph-2 flex-grow">
-            Acompañamiento experto, formación continua y herramientas digitales
-            que facilitan tu labor como asesor
+            Acceso a recursos económicos con planes de pago estructurados y
+            respaldo de instituciones líderes
           </p>
+        </a>
+
+        <!-- Wrapper para las últimas 3 tarjetas centradas -->
+        <div
+          class="col-span-1 sm:col-span-2 lg:col-span-4 flex flex-wrap justify-center gap-6 md:gap-8 mt-6 md:mt-8"
+        >
+          <!-- Tarjeta de Crédito -->
+          <a
+            href="/servicios#tarjeta"
+            aria-label="Ver más sobre servicios de Tarjeta de Crédito"
+            class="text-center flex flex-col group hover:scale-105 transition-transform duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] max-w-sm"
+          >
+            <div
+              class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+            >
+              <Image
+                src={servicioTarjetaImage}
+                alt="Tarjeta de Crédito"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <h3
+              class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
+            >
+              Tarjeta de Crédito
+            </h3>
+            <p class="text-gray-600 paragraph-2 flex-grow">
+              Financiamiento inmediato con opciones flexibles respaldadas por
+              marcas reconocidas
+            </p>
+          </a>
+
+          <!-- División Patrimonial -->
+          <a
+            href="/servicios#patrimonio"
+            aria-label="Ver más sobre servicios de División Patrimonial e Inmobiliaria"
+            class="text-center flex flex-col group hover:scale-105 transition-transform duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] max-w-sm"
+          >
+            <div
+              class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+            >
+              <Image
+                src={servicioPatrimonioImage}
+                alt="División Patrimonial e Inmobiliaria"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <h3
+              class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
+            >
+              División Patrimonial e Inmobiliaria
+            </h3>
+            <p class="text-gray-600 paragraph-2 flex-grow">
+              Protege y haz crecer tu patrimonio con inversiones inmobiliarias
+              curadas y estrategias financieras
+            </p>
+          </a>
+
+          <!-- Asesoría Personalizada -->
+          <a
+            href="/servicios#asesoria"
+            aria-label="Ver más sobre servicios de Asesoría Personalizada"
+            class="text-center flex flex-col group hover:scale-105 transition-transform duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] max-w-sm"
+          >
+            <div
+              class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow"
+            >
+              <Image
+                src={servicioAsesoriaImage}
+                alt="Asesoría Personalizada"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <h3
+              class="text-carobra-primary group-hover:text-carobra-dark mb-4 min-h-[3.5rem] flex items-center justify-center transition-colors"
+            >
+              Asesoría Personalizada
+            </h3>
+            <p class="text-gray-600 paragraph-2 flex-grow">
+              Acompañamiento experto, formación continua y herramientas
+              digitales que facilitan tu labor como asesor
+            </p>
+          </a>
         </div>
       </div>
 

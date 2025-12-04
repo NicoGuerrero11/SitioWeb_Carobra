@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
+  id: string;
   titulo: string;
   imagen: ImageMetadata;
   imagenAlt: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const { 
+  id,
   titulo, 
   imagen,
   imagenAlt,
@@ -29,7 +31,7 @@ const {
 } = Astro.props;
 ---
 
-<section class={`${fondoBlanco ? 'bg-white' : 'bg-carobra-light-bg'} py-20 md:py-28 lg:py-32`}>
+<section id={id} class={`${fondoBlanco ? 'bg-white' : 'bg-carobra-light-bg'} py-20 md:py-28 lg:py-32`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class={`grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start ${imagenIzquierda ? 'lg:flex-row-reverse' : ''}`}>
       <!-- Imagen -->
