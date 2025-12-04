@@ -1,15 +1,17 @@
 ---
 import { fetchTestimonios } from '../../utils/testimonios';
 import SchemaTestimonios from '../seo/SchemaTestimonios.astro';
+import fotoEjemplo from '../../assets/images/contacto/esfera.webp';
 
 // Obtener testimonios de trabajadores desde el CSV
 const { trabajadores } = await fetchTestimonios();
 const testimonios = trabajadores.length > 0 
-  ? trabajadores.map(t => ({ texto: t.testimonio, nombre: t.nombre }))
+  ? trabajadores.map(t => ({ texto: t.testimonio, nombre: t.nombre, foto: t.foto }))
   : [
       {
         texto: "Trabajar aquí es formar parte de una familia que valora el crecimiento y la creatividad.",
-        nombre: "María González"
+        nombre: "María González",
+        foto: fotoEjemplo.src
       }
     ];
 ---
@@ -42,6 +44,16 @@ const testimonios = trabajadores.length > 0
           
           return (
             <article class={`testimonio-item-nosotros text-center ${index > 0 ? 'hidden' : ''}`} itemscope itemtype="https://schema.org/Review" data-testimonio-index={index}>
+              {testimonio.foto && (
+                <div class="mb-8 flex justify-center">
+                  <img
+                    src={testimonio.foto}
+                    alt={testimonio.nombre}
+                    class="w-32 h-32 rounded-full object-cover border-4 border-carobra-light shadow-xl"
+                    loading="lazy"
+                  />
+                </div>
+              )}
               <blockquote class="text-carobra-dark paragraph-1 mb-6" itemprop="reviewBody">
                 <span class="testimonio-texto-completo-nosotros hidden md:inline">"{testimonio.texto}"</span>
                 <span class="testimonio-texto-corto-nosotros md:hidden">

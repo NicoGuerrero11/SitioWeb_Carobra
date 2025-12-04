@@ -11,6 +11,7 @@ import { fetchTestimonios } from "../utils/testimonios";
 
 // Importar imágenes
 import heroBeneficio from "../assets/images/beneficios/hero-beneficio.webp";
+import fotoEjemplo from "../assets/images/contacto/esfera.webp";
 import dineroComisiones from "../assets/images/beneficios/dinero-comisiones.webp";
 import carobraUniversity from "../assets/images/beneficios/carobra-university.webp";
 import rewards from "../assets/images/beneficios/rewards.webp";
@@ -30,6 +31,7 @@ const testimoniosAsesores =
             "Trabajar en Carobra ha transformado mi carrera. El sistema de comisiones es justo y los pagos son puntuales. Además, la capacitación constante me ha permitido crecer profesionalmente.",
           cargo: "Asesor/a",
           fecha: "",
+          foto: fotoEjemplo.src,
         },
       ];
 ---
@@ -233,6 +235,16 @@ const testimoniosAsesores =
                   itemtype="https://schema.org/Review"
                   data-testimonio-index={index}
                 >
+                  {testimonio.foto && (
+                    <div class="mb-8 flex justify-center">
+                      <img
+                        src={testimonio.foto}
+                        alt={testimonio.nombre}
+                        class="w-32 h-32 rounded-full object-cover border-4 border-carobra-light shadow-xl"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <blockquote
                     class="text-carobra-dark paragraph-1 mb-6"
                     itemprop="reviewBody"

@@ -3,6 +3,7 @@ interface Testimonio {
   cargo: string;
   testimonio: string;
   fecha: string;
+  foto?: string; // URL de la foto (opcional)
 }
 
 interface TestimoniosPorTipo {
@@ -189,12 +190,13 @@ export async function fetchTestimonios(): Promise<TestimoniosPorTipo> {
     
     for (const columns of dataRows) {
       
-      // Estructura: Marca temporal, Nombre y Apellido, Cargo, Testimonio, Autorizo
+      // Estructura: Marca temporal, Nombre y Apellido, Cargo, Testimonio, Autorizo, Foto (opcional)
       if (columns.length >= 5 && columns[4].toLowerCase() === 'sí') {
         const fecha = columns[0] || '';
         const nombre = columns[1] || '';
         const cargo = columns[2] || '';
         const testimonio = columns[3] || '';
+        const foto = columns[5] || ''; // Columna 6: URL de foto (opcional)
         
         // Validar que tengamos los datos necesarios
         if (nombre && cargo && testimonio) {
@@ -202,7 +204,8 @@ export async function fetchTestimonios(): Promise<TestimoniosPorTipo> {
             nombre: normalizarNombre(nombre),
             cargo: cargo.trim(),
             testimonio: normalizarTexto(testimonio),
-            fecha: fecha.trim()
+            fecha: fecha.trim(),
+            foto: foto.trim() || undefined // Solo incluir si tiene valor
           };
           
           // Clasificar según el cargo
