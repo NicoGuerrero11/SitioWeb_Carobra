@@ -1,16 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import albums from "../data/flickr-albums.json";
+import SchemaImageGallery from "../components/seo/SchemaImageGallery.astro";
+import BreadcrumbsGaleria from "../components/seo/BreadcrumbsGaleria.astro";
 
 // Configuración del usuario de Flickr
 const FLICKR_USER_ID = "161628002@N05"; // ID de usuario de carobra
 const FLICKR_USERNAME = "carobra";
 ---
 
-<Layout
-    title="Galería de Fotos | Carobra"
-    description="Explora nuestra galería de fotos y conoce más sobre el trabajo de Carobra."
+<Layout 
+  title="Galería de Fotos y Eventos | Carobra Consultores" 
+  description="Descubre nuestra galería de fotos de eventos, convenciones, aniversarios y reconocimientos de Carobra. Más de 13 álbumes con eventos corporativos, premios Xcellence Awards, convenciones TDC y celebraciones de aniversario."
 >
+    <!-- SEO: Schema.org Markup -->
+    <SchemaImageGallery albums={albums} />
+    
+    <!-- Breadcrumbs -->
+    <BreadcrumbsGaleria />
+
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-carobra-dark to-carobra-primary text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

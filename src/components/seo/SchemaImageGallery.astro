@@ -1,0 +1,42 @@
+---
+interface Props {
+  albums: Array<{
+    id: string;
+    title: string;
+    photos: number;
+    views: number;
+    coverImage: string;
+    url: string;
+  }>;
+}
+
+const { albums } = Astro.props;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Galería de Fotos y Eventos Carobra",
+  "description": "Galería de fotos de eventos corporativos, convenciones, aniversarios y reconocimientos de Carobra Consultores Especializados",
+  "url": "https://www.carobra.com/galeria",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Carobra Consultores Especializados",
+    "url": "https://www.carobra.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.carobra.com/images/logo-carobra.png"
+    }
+  },
+  "image": albums.slice(0, 10).map(album => ({
+    "@type": "ImageObject",
+    "name": album.title,
+    "url": album.coverImage,
+    "contentUrl": album.url,
+    "thumbnailUrl": album.coverImage,
+    "caption": `${album.title} - ${album.photos} fotos`,
+    "representativeOfPage": true
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
