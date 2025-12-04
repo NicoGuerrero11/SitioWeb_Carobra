@@ -140,7 +140,7 @@ async function sendEmail(
         filename: fileName,
         content: pdfBuffer,
         contentType: 'application/pdf',
-        contentDisposition: 'inline', // Permite abrir directamente desde Gmail/Outlook
+        contentDisposition: 'attachment', // Descarga el archivo en lugar de abrirlo en el navegador
       },
     ],
   });
