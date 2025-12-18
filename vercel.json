@@ -15,5 +15,6 @@
       "destination": "https://www.carobra.com/:path*",
       "permanent": true
     }
-  ]
+  ],
+  "trailingSlash": true
 }

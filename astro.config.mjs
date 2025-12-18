@@ -10,6 +10,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.carobra.com',
   output: 'server',
+  trailingSlash: 'always',
   
   image: {
     service: {
