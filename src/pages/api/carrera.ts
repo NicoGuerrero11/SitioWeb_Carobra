@@ -30,22 +30,41 @@ async function convertToPDF(file: File): Promise<Buffer> {
   return Buffer.from(pdfBytes);
 }
 
-// Función para subir archivo a Vercel Blob (opcional)
+// Función para subir archivo a Vercel Blob Storage con acceso público permanente
 async function uploadToBlob(pdfBuffer: Buffer, fileName: string): Promise<string | null> {
   try {
-    if (!import.meta.env.BLOB_READ_WRITE_TOKEN) {
-      console.log('BLOB_READ_WRITE_TOKEN no configurado, saltando upload a Vercel Blob');
+    const token = import.meta.env.BLOB_READ_WRITE_TOKEN;
+    
+    if (!token) {
+      console.error('BLOB_READ_WRITE_TOKEN no configurado');
       return null;
     }
 
-    const blob = await put(`cv/${Date.now()}-${fileName}`, pdfBuffer, {
+    // Sanitizar nombre del archivo para evitar problemas con caracteres especiales
+    const sanitizedFileName = fileName
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remover acentos
+      .replace(/[^a-zA-Z0-9.-]/g, '_'); // Reemplazar caracteres especiales
+
+    const timestamp = Date.now();
+    const path = `cv/${timestamp}-${sanitizedFileName}`;
+
+    console.log(`Subiendo archivo a Vercel Blob: ${path}`);
+
+    const blob = await put(path, pdfBuffer, {
       access: 'public',
-      token: import.meta.env.BLOB_READ_WRITE_TOKEN,
+      token: token,
+      addRandomSuffix: false, // Mantener el nombre exacto para consistencia
     });
 
+    console.log(`Archivo subido exitosamente: ${blob.url}`);
     return blob.url;
   } catch (error) {
     console.error('Error subiendo a Vercel Blob:', error);
+    // Imprimir detalles del error para debugging
+    if (error instanceof Error) {
+      console.error('Error details:', error.message);
+    }
     return null;
   }
 }
@@ -140,7 +159,7 @@ async function sendEmail(
         filename: fileName,
         content: pdfBuffer,
         contentType: 'application/pdf',
-        contentDisposition: 'attachment', // Descarga el archivo en lugar de abrirlo en el navegador
+        contentDisposition: 'inline', // Permite abrir el PDF directamente en el navegador
       },
     ],
   });
