@@ -1,10 +1,14 @@
 # Sitio Web Carobra
 
-## 📋 Descripción
+## 🎯 Proyecto Freelance
 
-Sitio web corporativo para **Carobra Consultores Especializados**, empresa líder en servicios financieros con más de 13 años de experiencia. Desarrollado con Astro, Tailwind CSS y optimizado para Vercel.
+Sitio web corporativo desarrollado como proyecto freelance para Carobra Consultores Especializados, empresa líder en servicios financieros con más de 13 años de experiencia.
 
-### 🏢 Sobre Carobra
+**🔗 Sitio en vivo:** [carobra.com](https://carobra.com)
+
+> ⚠️ **Nota:** Este repositorio es una versión de demostración del proyecto. Las credenciales y configuraciones sensibles han sido removidas.
+
+### 🏢 Sobre el Cliente
 - **13+ años** de experiencia en el sector financiero
 - **+1,500 asesores** activos en todo el país
 - **#1 en AFORE** durante 12 años consecutivos
@@ -17,8 +21,18 @@ Sitio web corporativo para **Carobra Consultores Especializados**, empresa líde
 - **Deployment:** Vercel
 - **Lenguaje:** TypeScript
 
-## 📁 Estructura del Proyecto
+## 💡 Aspectos Destacados del Desarrollo
 
+- ✅ Integración de Vercel Blob para manejo y almacenamiento de archivos
+- ✅ Implementación completa de Schema.org para SEO avanzado
+- ✅ Optimización de imágenes con Astro Image (formato WebP)
+- ✅ **Score perfecto de SEO (100/100)** en Lighthouse
+- ✅ **Performance Score: 86/100** - Real Experience Score
+- ✅ Formularios con validación y envío por email transaccional
+- ✅ Integración de widget Flickr sin costos de API
+- ✅ Sistema de upload de archivos (CV) con conversión a PDF
+
+## 📁 Estructura del Proyecto
 ```text
 /
 ├── public/                      # Assets estáticos
@@ -110,6 +124,16 @@ Sitio web corporativo para **Carobra Consultores Especializados**, empresa líde
 - 🎯 **Lazy loading** de imágenes
 - 📦 **Tailwind CSS** optimizado
 
+## 🛠️ Tecnologías y Herramientas
+
+- **Framework:** Astro 5.14.5 - SSG para performance óptima
+- **Styling:** Tailwind CSS 4.1.14 - Utility-first CSS
+- **Email:** Resend - Servicio de email transaccional
+- **Storage:** Vercel Blob - Almacenamiento de archivos
+- **Deployment:** Vercel - CI/CD automático
+- **SEO:** Schema.org markup completo
+- **Analytics:** Vercel Analytics & Speed Insights
+
 ## 🧞 Comandos de Desarrollo
 
 Todos los comandos se ejecutan desde la raíz del proyecto:
@@ -122,33 +146,25 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 | `npm run preview`         | Vista previa del build antes de deploy          |
 | `npm run astro ...`       | Ejecuta comandos CLI de Astro                   |
 
-## 📞 Información de Contacto (Carobra)
-
-- **Dirección:** Av. Paseo Royal Country 4650, Puerta de Hierro, 45116 Zapopan, Jal.
-- **Email:** contacto@carobra.com.mx
-- **Teléfono:** (33) 3611-2959
-- **Horarios:** Lunes – Viernes, 9:00 AM – 6:00 PM
-
 ## ⚙️ Configuración
 
 ### Variables de Entorno
 
-Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
-
+Crea un archivo `.env` en la raíz del proyecto:
 ```bash
-# Configuración de Email - Resend
+# Configuración de Email (ejemplo con Resend)
 EMAIL_HOST=smtp.resend.com
 EMAIL_PORT=587
 EMAIL_USER=resend
-EMAIL_PASSWORD=tu_api_key_de_resend
-EMAIL_FROM=send@tudominio.com
-EMAIL_TO=contacto@carobra.com.mx
+EMAIL_PASSWORD=your_resend_api_key
+EMAIL_FROM=noreply@yourdomain.com
+EMAIL_TO=contact@yourdomain.com
 
-# Almacenamiento opcional (Vercel Blob)
-BLOB_READ_WRITE_TOKEN=tu_token_de_vercel_blob
+# Almacenamiento (Vercel Blob)
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
 ```
 
-**📸 Galería de Flickr:** La galería usa el widget embed de Flickr (gratis, sin API). Ver `GALERIA_FLICKR.md` para más información.
+**📸 Galería de Flickr:** La galería usa el widget embed de Flickr (gratis, sin API). Ver documentación del proyecto para más información.
 
 ### Configuración de Vercel
 
@@ -164,16 +180,18 @@ El sitio está configurado para deployarse automáticamente en Vercel:
 3. El deploy se realiza **automáticamente** en cada push a `main`
 4. Configuración incluida en `vercel.json`
 
-### Dominios Configurados
-- **Principal:** carobra.com
-- **WWW:** www.carobra.com
-- **Redirección 301:** carobra.com.mx → carobra.com
+### Configuración de Dominios
+- Dominio principal configurado con SSL/TLS
+- Redirecciones 301 implementadas
+- DNS configurado para performance óptima
 
-### DNS y Email
-- **Proveedor DNS:** Squarespace (carobra.com)
-- **Email Service:** Resend con dominio verificado
-- **Redirección:** DreamHost (carobra.com.mx)
+## 📞 Contacto
+
+Para más información sobre este proyecto o colaboraciones:
+
+- **GitHub:** [https://github.com/NicoGuerrero11]
+- **LinkedIn:** [https://www.linkedin.com/in/nicolas-guerrero-dev/]
 
 ---
 
-**© 2025 Carobra Consultores Especializados. Todos los derechos reservados.**
+**Proyecto desarrollado en 2025 - Todos los derechos del cliente reservados.**
