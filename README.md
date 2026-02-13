@@ -189,8 +189,8 @@ El sitio está configurado para deployarse automáticamente en Vercel:
 
 Para más información sobre este proyecto o colaboraciones:
 
-- **[GitHub]** (https://github.com/NicoGuerrero11)
-- **[LinkedIn]** (https://www.linkedin.com/in/nicolas-guerrero-dev/)
+- **GitHub** https://github.com/NicoGuerrero11
+- **LinkedIn** https://www.linkedin.com/in/nicolas-guerrero-dev/
 
 ---
 
