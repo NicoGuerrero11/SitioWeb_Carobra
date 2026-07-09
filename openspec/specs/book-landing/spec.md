@@ -45,12 +45,12 @@ The book landing page SHALL only present claims, descriptions, and content detai
 - **THEN** the landing omits that claim, uses a visual-only treatment, or marks the content as pending input instead of fabricating copy
 
 ### Requirement: Purchase CTA prepared for later commerce integration
-The book landing page SHALL include primary call-to-action placement that can be connected to the future commerce flow without redesigning the page.
+The book landing page SHALL include a primary call-to-action that serves as the live entrypoint into the purchase flow while preserving the existing page structure and editorial presentation.
 
-#### Scenario: CTA is present before checkout implementation
-- **WHEN** the initial landing is delivered before the commerce backend is complete
-- **THEN** the page still includes a clearly positioned primary purchase CTA
+#### Scenario: CTA is present on the landing
+- **WHEN** a visitor reviews the book landing page
+- **THEN** the page displays a clearly positioned primary purchase CTA tied to the book offer
 
-#### Scenario: CTA evolves into checkout entrypoint
-- **WHEN** the commerce flow is implemented in a later phase
-- **THEN** the existing CTA can be connected to that flow without requiring a structural redesign of the landing
+#### Scenario: CTA initiates live checkout flow
+- **WHEN** a visitor activates the primary purchase CTA
+- **THEN** the landing initiates the dedicated checkout session flow for the book instead of behaving as a placeholder for a future integration

@@ -9,7 +9,7 @@ The goal is to add:
 - a new section/page to present the book
 - a secure purchase flow with Stripe Checkout
 - order persistence in Neon
-- transactional notifications with Resend
+- transactional notifications with Resend over SMTP
 - an operational flow so logistics can fulfill paid orders
 
 This document is intentionally detailed so implementation can begin with minimal ambiguity.
@@ -26,7 +26,7 @@ Included:
 - order creation before payment
 - secure Stripe webhook confirmation
 - order persistence in Neon
-- logistics notification by email through Resend
+- logistics notification by email through Resend over SMTP
 - optional customer confirmation email
 - manual post-payment order handling by the team
 
@@ -78,7 +78,7 @@ Source of truth by responsibility:
 
 - Stripe: payment processing and payment confirmation events
 - Neon: canonical order record and order lifecycle
-- Resend: operational notifications
+- Resend SMTP: operational notifications
 - Astro: presentation layer and backend orchestration
 
 ## System Overview
@@ -106,7 +106,7 @@ Webhook updates order in Neon to paid
    ↓
 Webhook stores customer + shipping details from Stripe
    ↓
-Webhook sends logistics email with Resend
+Webhook sends logistics email with Resend over SMTP
    ↓
 Optional customer confirmation email
 ```
@@ -125,7 +125,7 @@ New isolated book commerce module
 ├── new checkout initiation endpoint
 ├── new Stripe webhook endpoint
 ├── new order persistence layer
-└── new Resend transactional emails
+└── new transactional emails via Resend SMTP
 ```
 
 The new commerce module may be linked from the existing site, but it must not introduce breaking coupling into current site functionality.
@@ -198,7 +198,7 @@ After a successful payment:
 
 Once the webhook confirms the payment and persists the order update:
 
-- Resend sends a logistics email
+- Resend SMTP sends a logistics email
 - the team uses the order record in Neon as the canonical operational reference
 
 ## Trust Boundaries
@@ -467,7 +467,7 @@ Receive trusted payment events from Stripe and move the internal order into the 
 9. Persist Stripe references.
 10. Persist customer and shipping details from Stripe.
 11. Persist `paid_at`.
-12. Send logistics email through Resend.
+12. Send logistics email through Resend SMTP.
 13. Optionally send customer email.
 
 ### Required data persisted from Stripe
@@ -504,7 +504,7 @@ If Neon persistence fails:
 
 - return failure so Stripe can retry webhook
 
-If Resend email fails after Neon update succeeds:
+If the Resend SMTP email fails after Neon update succeeds:
 
 - do not roll back order state
 - log notification failure
@@ -668,11 +668,14 @@ Expected result:
 
 - `DATABASE_URL`
 
-### Resend
+### Resend SMTP
 
-- `RESEND_API_KEY`
-- `RESEND_FROM_EMAIL`
-- `LOGISTICS_NOTIFICATION_EMAIL`
+- `EMAIL_HOST` = `smtp.resend.com`
+- `EMAIL_PORT` = `587`
+- `EMAIL_USER` = `resend`
+- `EMAIL_PASSWORD` = Resend SMTP/API credential used as the SMTP password
+- `EMAIL_FROM`
+- `BOOK_DISTRIBUTOR_EMAIL`
 
 ### App URLs
 
@@ -685,7 +688,7 @@ Expected result:
 - define product config for the book
 - provision Neon schema
 - connect Stripe server SDK
-- connect Resend server SDK
+- connect the SMTP mailer for Resend delivery
 
 ### Phase 2: purchase flow
 
@@ -731,7 +734,7 @@ Frontend intent
 → Stripe Checkout
 → trusted webhook
 → Neon update
-→ Resend notification
+→ Resend SMTP notification
 ```
 
 If any future implementation violates that order of operations, it should be considered out of contract unless there is a documented design change.
