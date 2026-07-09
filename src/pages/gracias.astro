@@ -1,0 +1,44 @@
+---
+export const prerender = false;
+
+import Layout from "../layouts/Layout.astro";
+
+const orderNumber = Astro.url.searchParams.get("order");
+---
+
+<Layout
+  title="Gracias por tu compra | Carobra"
+  description="Confirmacion de compra del libro de Daniel Cabrera en Carobra."
+>
+  <section class="bg-carobra-light-bg py-24 sm:py-28">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] border border-carobra-primary/10 bg-white px-8 py-12 text-center shadow-[0_18px_40px_rgba(0,78,138,0.10)]">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-carobra-primary">
+          Compra recibida
+        </p>
+        <h1 class="mt-4 text-[3rem] font-bold tracking-[-0.04em] text-carobra-dark sm:text-[4rem]">
+          Gracias por tu compra
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl paragraph-2 text-gray-700">
+          Estamos validando tu pago de forma segura. La confirmacion real ocurre
+          cuando Stripe termina de notificar el pago a nuestro sistema.
+        </p>
+        <p class="mx-auto mt-4 max-w-2xl paragraph-2 text-gray-700">
+          Si todo fue correcto, el distribuidor recibira la informacion para dar
+          seguimiento a tu pedido.
+        </p>
+        {orderNumber && (
+          <p class="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-carobra-primary/80">
+            Referencia de orden: {orderNumber}
+          </p>
+        )}
+        <a
+          href="/libro/#compra"
+          class="btn-primary mt-10 inline-flex min-h-14 items-center justify-center rounded-xl bg-carobra-primary px-10 text-white transition-colors hover:bg-carobra-dark"
+        >
+          Volver al libro
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

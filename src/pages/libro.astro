@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import heroCover from "../assets/images/book/hero-cover.png";
 
 const bookPrice = "$499 MXN";
+const checkoutSlug = "nunca-digas-no-tengo-dinero";
 ---
 
 <Layout
@@ -42,12 +43,14 @@ const bookPrice = "$499 MXN";
           </div>
 
           <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-            <a
-              href="#compra"
+            <button
+              type="button"
+              data-book-checkout
+              data-book-slug={checkoutSlug}
               class="btn-primary inline-flex min-h-14 items-center justify-center rounded-lg bg-carobra-primary px-8 text-white transition-colors hover:bg-carobra-dark"
             >
               Comprar libro
-            </a>
+            </button>
             <a
               href="#autor"
               class="btn-secondary inline-flex min-h-14 items-center justify-center rounded-lg border-2 border-carobra-primary/30 bg-white/60 px-8 text-carobra-primary transition-colors hover:bg-white hover:text-carobra-dark"
@@ -311,14 +314,84 @@ const bookPrice = "$499 MXN";
           >
             {bookPrice}
           </p>
-          <a
-            href="/contacto/"
+          <button
+            type="button"
+            data-book-checkout
+            data-book-slug={checkoutSlug}
             class="btn-primary mt-7 inline-flex min-h-14 items-center justify-center rounded-xl bg-carobra-primary px-12 text-white transition-colors hover:bg-carobra-dark"
           >
             Comprar ahora
-          </a>
+          </button>
+          <p
+            id="book-checkout-status"
+            class="mt-4 min-h-6 paragraph-2 text-center text-sm text-[#4b6287] lg:text-right"
+            aria-live="polite"
+          >
+            Pago seguro con Stripe.
+          </p>
         </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<script is:inline>
+  const checkoutButtons = document.querySelectorAll("[data-book-checkout]");
+  const statusNode = document.querySelector("#book-checkout-status");
+
+  function setStatus(message, isError = false) {
+    if (!statusNode) {
+      return;
+    }
+
+    statusNode.textContent = message;
+    statusNode.classList.toggle("text-red-600", isError);
+    statusNode.classList.toggle("text-[#4b6287]", !isError);
+  }
+
+  async function handleCheckoutClick(event) {
+    const button = event.currentTarget;
+    const originalLabel = button.textContent;
+
+    button.disabled = true;
+    button.textContent = "Conectando...";
+    button.classList.add("opacity-80");
+    setStatus("Estamos conectando tu compra con Stripe.");
+
+    try {
+      const response = await fetch("/api/checkout/create-session/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          bookSlug: button.dataset.bookSlug,
+          quantity: 1,
+        }),
+      });
+
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok || !payload?.checkoutUrl) {
+        throw new Error(payload?.error || "No fue posible iniciar el checkout.");
+      }
+
+      window.location.href = payload.checkoutUrl;
+    } catch (error) {
+      console.error(error);
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : "No fue posible iniciar la compra en este momento.",
+        true,
+      );
+      button.disabled = false;
+      button.textContent = originalLabel;
+      button.classList.remove("opacity-80");
+    }
+  }
+
+  checkoutButtons.forEach((button) => {
+    button.addEventListener("click", handleCheckoutClick);
+  });
+</script>
