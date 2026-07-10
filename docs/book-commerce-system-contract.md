@@ -310,7 +310,7 @@ All monetary values should be stored in the smallest currency unit.
 
 Examples:
 
-- MXN 499.00 -> `49900`
+- MXN 399.00 -> `39900`
 - USD 25.00 -> `2500`
 
 This avoids floating-point errors.

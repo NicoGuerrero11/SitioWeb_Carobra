@@ -3,7 +3,7 @@ import type { BookCommerceEnv, BookProductConfig } from "./types";
 const DEFAULT_BOOK_PRODUCT: BookProductConfig = {
   slug: "nunca-digas-no-tengo-dinero",
   title: 'Nunca Digas: "No Tengo Dinero"',
-  unitAmount: 49900,
+  unitAmount: 39900,
   currency: "mxn",
   active: true,
   maxQuantity: 1,
