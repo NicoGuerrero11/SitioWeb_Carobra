@@ -43,10 +43,6 @@ export default defineConfig({
     },
     speedInsights: {
       enabled: true
-    },
-    isr: {
-      expiration: false,
-      exclude: [/^\/api\/.+/]
     }
   }),
   integrations: [sitemap()]
