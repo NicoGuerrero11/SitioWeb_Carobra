@@ -83,3 +83,10 @@ p {
   text-transform: none;
   font-size: 1rem;
 }
+
+.book-hero-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}

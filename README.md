@@ -128,7 +128,7 @@ Sitio web corporativo desarrollado como proyecto freelance para Carobra Consulto
 
 - **Framework:** Astro 5.14.5 - SSG para performance óptima
 - **Styling:** Tailwind CSS 4.1.14 - Utility-first CSS
-- **Email:** Resend - Servicio de email transaccional
+- **Email:** Resend por SMTP a traves de Nodemailer
 - **Storage:** Vercel Blob - Almacenamiento de archivos
 - **Deployment:** Vercel - CI/CD automático
 - **SEO:** Schema.org markup completo
@@ -152,13 +152,19 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 
 Crea un archivo `.env` en la raíz del proyecto:
 ```bash
-# Configuración de Email (ejemplo con Resend)
+# Configuración de Email (Resend por SMTP con Nodemailer)
 EMAIL_HOST=smtp.resend.com
 EMAIL_PORT=587
 EMAIL_USER=resend
 EMAIL_PASSWORD=your_resend_api_key
 EMAIL_FROM=noreply@yourdomain.com
 EMAIL_TO=contact@yourdomain.com
+
+# Comercio del libro
+BOOK_DISTRIBUTOR_EMAIL=pedidos@yourdomain.com
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+DATABASE_URL=postgresql://...
 
 # Almacenamiento (Vercel Blob)
 BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
