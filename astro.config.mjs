@@ -46,7 +46,7 @@ export default defineConfig({
     },
     isr: {
       expiration: false,
-      exclude: ['/api/*']
+      exclude: [/^\/api\/.+/]
     }
   }),
   integrations: [sitemap()]
