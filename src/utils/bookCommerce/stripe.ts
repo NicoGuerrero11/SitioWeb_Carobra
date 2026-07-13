@@ -89,7 +89,7 @@ export function buildPaidOrderUpdate(params: {
     );
   }
 
-  const shippingDetails = session.shipping_details;
+  const shippingDetails = session.collected_information?.shipping_details;
   const customerDetails = session.customer_details;
   const customerName = toNullableString(shippingDetails?.name ?? customerDetails?.name);
   const customerEmail = toNullableString(customerDetails?.email);
